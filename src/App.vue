@@ -1,8 +1,24 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+  import HelloWorld from './components/HelloWorld.vue'
+  import AppHeader from './components/AppHeader.vue'
+  import AppFooter from './components/AppFooter.vue'
+
+  export default {
+    components: {
+      HelloWorld,
+      AppHeader,
+      AppFooter,
+    },
+    data() {
+      return {
+          
+      }
+    }
+  }
 </script>
 
 <template>
+  <AppHeader/>
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -12,6 +28,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <AppFooter/>
 </template>
 
 <style scoped>
