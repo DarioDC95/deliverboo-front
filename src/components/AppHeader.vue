@@ -23,7 +23,7 @@
         <nav class="navbar flex-row navbar-expand-md flex-md-nowrap p-3 shadow" style="background-color:#159895">
             <div class="container-fluid">
                 <router-link :to="{ name: 'homepage' }" class="navbar-brand me-0">
-                    <img style="width: 10rem" src="../../public/img/logo-white.png" alt="Logo deliveboo">
+                    <img style="width: 10rem" src="../../img/logo-white.png" alt="Logo deliveboo">
                 </router-link>
             
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

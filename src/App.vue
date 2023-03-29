@@ -25,6 +25,7 @@ export default {
           store.restaurants = response.data.result.data;
           store.loading = false;
           store.last_page = response.data.result.last_page;
+          store.loading = false;
 
           console.log(store.restaurants)
         }

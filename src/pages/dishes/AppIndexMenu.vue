@@ -1,7 +1,13 @@
 <script>
 import {store} from '../../store';
 import axios from 'axios';
+
+import AppLoader from '../../components/AppLoader.vue';
+
 export default {
+    components: {
+        AppLoader,
+    },
     data(){
         return{
             store
@@ -13,6 +19,7 @@ export default {
     },
     methods:{
         getDishes(){
+            store.loading = true;
             axios.get(`${store.url_restaurants}api/dishes/${this.$route.params.id}`).then((response) => {
                 if (response.data.success) {
                     store.dishes_by_restaurant = response.data.result;
@@ -30,7 +37,8 @@ export default {
 </script>
 
 <template>
-    <main>
+    <AppLoader v-if="store.loading"/>
+    <main v-else>
         <section>
             <div class="container">
                 <div class="row gy-4">
@@ -51,7 +59,7 @@ export default {
                                             {{ dish.ingredients }}
                                         </div>
                                     </div>
-                                    <div class="mb-2">
+                                    <div class="mb-4">
                                         <p class="mb-0">
                                             <em><strong>Descrizione:</strong></em>
                                         </p>
