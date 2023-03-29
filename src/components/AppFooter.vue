@@ -11,7 +11,7 @@ export default {
                 <div class="row d-flex">
                     <nav class="d-flex flex-column flex-md-row navbar-expand-md flex-md-nowrap p-3 shadow my-5 bg-navbar">
                     
-                        <div class="col-md-3 col-sm-6 col-12 col-lg-2 offset-lg-1 mb-3 footer-links">
+                        <div class="col-md-3 col-sm-6 col-12 footer-links">
                             <h4>Scopri Deliveboo</h4>
                             <ul class="list-unstyled">
                                 <li class="mb-1"><a href="#">Investitori</a></li>
@@ -25,7 +25,7 @@ export default {
                             </ul>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-12 col-lg-2 offset-lg-1 mb-3 justify-content-start footer-links">
+                        <div class="col-md-3 col-sm-6 col-12 footer-links">
                             <h4>Note legali</h4>
                             <ul class="list-unstyled">
                                 <li class="mb-1"><a href="#">Termini & Condizioni</a></li>
@@ -34,7 +34,7 @@ export default {
                             </ul>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-12 col-lg-2 offset-lg-1 mb-3 footer-links">
+                        <div class="col-md-3 col-sm-6 col-12 footer-links">
                             <h4>Aiuto</h4>
                             <ul class="list-unstyled">
                                 <li class="mb-1"><a href="#">Contatti</a></li>
@@ -43,7 +43,7 @@ export default {
                             </ul>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-12 col-6 col-lg-2 offset-lg-1 mb-3 footer-links">
+                        <div class="col-md-3 col-sm-6 col-12 footer-links">
                             <h4>Porta Deliveboo con te</h4>
                             <div class="image-store">
                                 <ul class="list-unstyled">
@@ -63,6 +63,12 @@ export default {
 @use "../styles/partials/mixins" as *;
 @use "../styles/partials/variables" as *;
 
+section{
+    background-color: rgba(0,204,188,255);
+    height: 35em;
+    display: flex;
+    align-items: center;
+}
 .bg-navbar{
     background-color: #2e3333 ;
     color: #c8c8fa;
