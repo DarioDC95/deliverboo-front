@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     getRestaurants() {
-      axios.get(`${store.url_restaurants} / api / restaurants ? page = ${store.current_page}`).then((response) => {
+      axios.get(`${store.url_restaurants}api/restaurants?page=${store.current_page}`).then((response) => {
         if (response.data.success) {
           store.restaurants = response.data.result.data;
           store.loading = false;
