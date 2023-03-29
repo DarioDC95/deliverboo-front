@@ -21,13 +21,13 @@ const router = createRouter({
       component: AppFailed404
     },
     {
-      name: 'restaurants',
       path: '/restaurants',
+      name: 'restaurants',
       component: AppIndexRestaurants
     },
     {
+      path: '/dishes/:id',
       name: 'dishes',
-      path: '/dishes/:id', 
       component: AppIndexMenu
     }
   ]

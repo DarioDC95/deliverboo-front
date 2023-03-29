@@ -9,36 +9,23 @@ export default {
         }
     },
     mounted(){
-        axios.get(`${store.url_restaurants}api/dishes/${this.$router.params.id}`).then((response) => {
-            console.log('sono entrato nella chiamata')
-            if (response.data.success) {
-            store.dishes_by_restaurant = response.data.result.data;
-            store.loading = false;
-            
-            console.log(store.dishes_by_restaurant)
-            }
-            else {
-            this.$router.push('/failed');
-            }
-        })
+        this.getDishes()
     },
     methods:{
-    //     getDishes(){
-    //     // axios.get(`${store.url_restaurants}api/dishes/${this.$router.params.id}`).then((response) => {
-    //     //     console.log('sono entrato nella chiamata')
-    //     //     if (response.data.success) {
-    //     //     store.dishes_by_restaurant = response.data.result.data;
-    //     //     store.loading = false;
-            
-    //     //     console.log(store.dishes_by_restaurant)
-    //     //     }
-    //     //     else {
-    //     //     this.$router.push('/failed');
-    //     //     }
-    //     // })
-    //     // }
-    // },
-
+        getDishes(){
+            axios.get(`${store.url_restaurants}api/dishes/${this.$route.params.id}`).then((response) => {
+                console.log(response)
+                if (response.data.success) {
+                    store.dishes_by_restaurant = response.data.result;
+                    store.loading = false;
+                    
+                    console.log(store.dishes_by_restaurant)
+                }
+                else {
+                    this.$router.push('/failed');
+                }
+            })
+        },
     }
 }
 </script>
