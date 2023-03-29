@@ -22,9 +22,6 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div class="col text-center text-lg-start">
-                    <img src="src\assets\" class="img-fluid rotate" alt="" data-aos="zoom-out" data-aos-delay="300" />
-                </div>
             </div>
         </section>
     </div>
