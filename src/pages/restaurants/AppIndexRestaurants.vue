@@ -17,7 +17,7 @@ export default {
         <section>
             <div class="container">
                 <div class="row">
-                    <div class="col-3" v-for="(restaurant, index) in store.restaurants" :key="index">
+                    <div class="col-12 col-sm-6 col-md-3" v-for="(restaurant, index) in store.restaurants" :key="index">
                         <div class="card h-100">
                             <img :src="restaurant.cover_path == null ? 'https://picsum.photos/id/1/200/300' : `${store.url_restaurants}storage/${restaurant.cover_path}`" :alt="restaurant.user.name" class="card-img-top">
                             <div class="card-body d-flex flex-column">
@@ -26,8 +26,8 @@ export default {
                                     <h6>Via: {{ restaurant.address }}</h6>
                                 </div>
                                 <div class="flex-grow-1 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <p>
+                                    <div class="mb-2">
+                                        <p class="mb-0">
                                             <em><strong>Tipologia:</strong></em>
                                         </p>
                                         <div>

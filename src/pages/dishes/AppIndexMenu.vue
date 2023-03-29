@@ -33,8 +33,8 @@ export default {
     <main>
         <section>
             <div class="container">
-                <div class="row">
-                    <div v-for="(dish, index) in store.dishes_by_restaurant" :key="index" class="col-3">
+                <div class="row gy-4">
+                    <div v-for="(dish, index) in store.dishes_by_restaurant" :key="index" class="col-12 col-sm-6 col-md-3" :class="dish.visible ? '' : 'd-none'">
                         <div class="card h-100">
                             <img :src="dish.image_path == null ? 'https://picsum.photos/id/1/200/300' : `${store.url_restaurants}storage/${dish.image_path}`" :alt="dish.name" class="card-img-top">
                             <div class="card-body d-flex flex-column">
@@ -43,18 +43,25 @@ export default {
                                     <h6>Via: {{ dish.vegan }}</h6>
                                 </div>
                                 <div class="flex-grow-1 d-flex flex-column justify-content-between">
-                                    <div>
-                                        <p>
-                                            <em><strong>Tipologia:</strong></em>
+                                    <div class="mb-2">
+                                        <p class="mb-0">
+                                            <em><strong>Ingredienti:</strong></em>
                                         </p>
                                         <div>
-                                            <!-- <span class="badge bg-success mx-1" v-for="(type, index) in restaurant.types" :key="index">{{type.name}}</span> -->
+                                            {{ dish.ingredients }}
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <p class="mb-0">
+                                            <em><strong>Descrizione:</strong></em>
+                                        </p>
+                                        <div>
+                                            {{ dish.description }}
                                         </div>
                                     </div>
                                     <div>
                                         <div>
                                             QUESTO E' IL BUTTON PER AGGIUNGERLO AL CARRELLO
-                                            <!-- <router-link :to="{ name: 'dishes', params: { id: restaurant.id } }" class="btn btn-secondary">Vai al Menù</router-link>  -->
                                         </div>
                                     </div>
                                 </div>
