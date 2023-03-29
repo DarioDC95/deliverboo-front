@@ -8,6 +8,10 @@
                         label: 'Homepage',
                         routeName: 'homepage'
                     },
+                    {
+                        label: 'Restaurants',
+                        routeName: 'restaurants'
+                    },
                 ]
             }
         }

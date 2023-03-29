@@ -29,7 +29,7 @@ export default {
           console.log(store.restaurants)
         }
         else {
-          this.$router.push('/page_not_found');
+          this.$router.push('/failed');
         }
       })
     },

@@ -6,4 +6,6 @@ export const store = reactive({
     restaurants: null,
     current_page: 1,
     last_page: null,
+    dishes_by_restaurant: null,
+
 })
