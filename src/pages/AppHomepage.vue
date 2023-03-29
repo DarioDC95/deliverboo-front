@@ -1,15 +1,19 @@
 <script>
-    export default {
-        
+
+import Jumbotron from "../components/Jumbotron.vue";
+export default {
+    components: { Jumbotron },
+    name: "AppHome",
+    data() {
+        return {
+
+        }
     }
+}
 </script>
 
 <template>
-    <div>
-        ciao sono la welcome page
-    </div>
+    <Jumbotron></Jumbotron>
 </template>
 
-<style scoped lang="scss">
-    
-</style>
+<style scoped lang="scss"></style>
