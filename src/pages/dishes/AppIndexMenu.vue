@@ -39,7 +39,7 @@ export default {
 <template>
     <AppLoader v-if="store.loading"/>
     <main v-else>
-        <section>
+        <section class="menu">
             <div class="container">
                 <div class="row gy-4">
                     <div v-for="(dish, index) in store.dishes_by_restaurant" :key="index" class="col-12 col-sm-6 col-md-3" :class="dish.visible ? '' : 'd-none'">
@@ -67,6 +67,38 @@ export default {
                                             {{ dish.description }}
                                         </div>
                                     </div>
+                                    <div class="icons mb-4">
+                                        <div class="mb-2">
+                                            <div v-if="dish.vegan" class="d-flex align-items-center">
+                                                <div class="vegan me-2">
+                                                    <i class="fa-solid fa-seedling"></i>
+                                                </div>
+                                                <div>Vegano</div>
+                                            </div>
+                                            <div v-else class="d-flex align-items-center">
+                                                <div class="no-vegan me-2">
+                                                    <div class="slash"></div>
+                                                    <i class="fa-solid fa-seedling"></i>
+                                                </div>
+                                                <div>No Vegano</div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div v-if="dish.vegan" class="d-flex align-items-center">
+                                                <div class="vegan me-2">
+                                                    <i class="fa-solid fa-leaf"></i>
+                                                </div>
+                                                <div class="text-break">Vegetariano</div>
+                                            </div>
+                                            <div v-else class="d-flex align-items-center">
+                                                <div class="no-vegan me-2">
+                                                    <div class="slash"></div>
+                                                    <i class="fa-solid fa-leaf"></i>
+                                                </div>
+                                                <div class="text-break">No Vegetariano</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div>
                                         <div>
                                             QUESTO E' IL BUTTON PER AGGIUNGERLO AL CARRELLO
@@ -83,5 +115,42 @@ export default {
 </template>
 
 <style scoped lang="scss">
-    
+    .menu {
+
+        .icons {
+
+            .vegan, .no-vegan {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                min-width: 40px;
+                min-height: 40px;
+                border-radius: 50%;
+                
+                .fa-solid {
+                    color: green;
+                }
+            }
+
+            .vegan {
+                border: 3px solid green;
+            }
+
+            .no-vegan {
+                position: relative;
+                border: 3px solid red;
+
+                .slash {
+                    height: 5px;
+                    width: 100%;
+                    background-color: red;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+            }
+        }
+    }
 </style>
