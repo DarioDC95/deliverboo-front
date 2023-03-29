@@ -28,8 +28,11 @@
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:8000/">Area Clienti</a>
+                        </li>
                         <li v-for="(value, index) in data_navbar" :key="index" class="nav-item">
-                            <router-link :to="{ name: value.routeName }" class="nav-link active" aria-current="page" href="#">{{ value.label }}</router-link>
+                            <router-link :to="{ name: value.routeName }" class="nav-link {{  }}" aria-current="page" href="#">{{ value.label }}</router-link>
                         </li>
                     </ul>
                 </div>
