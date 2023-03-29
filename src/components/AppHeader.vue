@@ -3,42 +3,33 @@
         name: 'AppHeader',
         data() {
             return {
-                
+                data_navbar: [
+                    {
+                        label: 'Homepage',
+                        routeName: 'homepage'
+                    },
+                ]
             }
         }
     }
 </script>
 
 <template>
-    <header class="sticky-top w-100">
+    <header class="sticky-top">
         <nav class="navbar flex-row navbar-expand-md flex-md-nowrap p-3 shadow" style="background-color:#159895">
-            <div class="container d-flex">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0" href=""><img style="width: 10rem" src="" alt=""></a>
+            <div class="container-fluid">
+                <router-link :to="{ name: 'homepage' }" class="navbar-brand me-0">
+                    <img style="width: 10rem" src="../../public/img/logo-white.png" alt="Logo deliveboo">
+                </router-link>
             
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent">
-                    
-                    <ul class="navbar-nav me-auto ">
-                        <li class="nav-item">
-                            <a class="nav-link" href=""></a>
-                        </li>
-                    </ul>
-
-                    <ul class="navbar-nav ml-auto">
-                        
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">Dashboard</a>
-                                <a class="dropdown-item" href=""></a>
-                                <a class="dropdown-item" href=""></a>
-                            </div>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li v-for="(value, index) in data_navbar" :key="index" class="nav-item">
+                            <router-link :to="{ name: value.routeName }" class="nav-link active" aria-current="page" href="#">{{ value.label }}</router-link>
                         </li>
                     </ul>
                 </div>
