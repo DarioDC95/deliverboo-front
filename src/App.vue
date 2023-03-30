@@ -43,7 +43,7 @@ export default {
 
 <template>
   <AppHeader />
-  <router-view @increase-by="changePage" @decrease-by="changePage" @selectPage="changePage"/>
+  <router-view @increase-by="changePage" @decrease-by="changePage" @selectPage="changePage" />
   <AppFooter />
 </template>
 
