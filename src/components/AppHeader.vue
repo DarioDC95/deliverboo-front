@@ -12,6 +12,10 @@
                         label: 'Restaurants',
                         routeName: 'restaurants'
                     },
+                    {
+                        label: 'Cart',
+                        routeName: 'cart'
+                    },
                 ]
             }
         }

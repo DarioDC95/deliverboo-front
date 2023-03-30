@@ -6,6 +6,7 @@ import AppHomepage from './pages/AppHomepage.vue';
 import AppFailed404 from './components/AppFailed404.vue';
 import AppIndexRestaurants from './pages/restaurants/AppIndexRestaurants.vue';
 import AppIndexMenu from './pages/dishes/AppIndexMenu.vue';
+import AppCart from './pages/dishes/AppCart.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -29,6 +30,11 @@ const router = createRouter({
       path: '/dishes/:id',
       name: 'dishes',
       component: AppIndexMenu
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: AppCart
     }
   ]
 })
