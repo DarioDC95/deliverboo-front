@@ -9,7 +9,8 @@ export default {
         <section class="footer-section py-4 py-md-5">
             <div class="container-fluid py-md-3 px-5 px-md-3 text-body-secondary shadow">
                 <div class="row d-flex">
-                    <nav class="d-flex flex-column flex-md-row navbar-expand-md flex-md-nowrap p-3 shadow my-5 bg-navbar shadow">
+                    <nav
+                        class="d-flex flex-column flex-md-row navbar-expand-md flex-md-nowrap p-3 shadow my-5 bg-navbar shadow">
 
                         <div class="col-md-3 col-sm-6 col-12 footer-links">
                             <h4 class="text-uppercase mb-4 front-weight-bold">Scopri Deliveboo</h4>
@@ -61,21 +62,30 @@ export default {
                                                 height="65" />
                                         </a>
                                     </li>
-
-                                    <li class="mb-1"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                                    <li class="mb-1"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li class="mb-1"><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li class="mb-1"><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                     </nav>
-                    <div class="col-md-7 col-lg-8 text-white">
-                        <p><i class="fa-regular fa-copyright"> 2023</i> Deliveboo
-                
-                        </p>
+
+                    <div class="container-fluid">
+                        <div class="row d-flex justify-content-end">
+                            <div class="col-md-3 col-sm-6 col-12 footer-links">
+                                <ul class="d-flex justify-content-between align-items-center mr">
+                                    <li class="mb-1 fs-3"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                                    <li class="mb-1 fs-3"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li class="mb-1 fs-3"><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                    <li class="mb-1 fs-3"><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                            <!-- <div
+                                class="col-md-3 col-sm-6 col-12 footer-links">
+                                <ul class="d-flex justify-content-between align-items-center ">
+                                    <li class="mb-1 fs-6"><a href="#"><i class="fa-regular fa-copyright"> 2023</i> Deliveboo</a>
+                                    </li>
+                                </ul>
+                            </div> -->
+                        </div>
                     </div>
-    
                 </div>
             </div>
         </section>
@@ -108,5 +118,9 @@ section {
         text-decoration: none;
         color: #827f7f;
     }
+}
+
+.mr{
+    margin-right: 1em;
 }
 </style>
