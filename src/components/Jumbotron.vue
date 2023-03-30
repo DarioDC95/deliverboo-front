@@ -26,7 +26,7 @@ export default {
         </section>
     </div>
     <div>
-        <CategoryList class="text-center" />
+        
     </div>
 </template>
 <style lang="scss" scoped>
