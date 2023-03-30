@@ -33,7 +33,18 @@ export default {
             })
         },
         addCart(dish) {
-            store.cart.push(dish)
+
+            console.log(dish)
+            let order = []
+            
+            const item = {
+                dish,
+                quantity: 1
+            };
+
+            order.push(item);
+            
+            store.cart.push(order)
             console.log(store.cart)
         }
 
