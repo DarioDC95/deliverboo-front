@@ -10,8 +10,7 @@ export default {
     },
     data() {
         return {
-            store
-
+            store,
         }
     },
     mounted() {
@@ -42,16 +41,19 @@ export default {
             }
             
             order.push(item)
+
+            let lengthStoreCart = store.cart.length
             
             if (store.cart.length !== 0) {
-                for (let i = 0; i < store.cart.length; i++) {
+                for (let i = 0; i < lengthStoreCart; i++) {
                     console.log('sono entrato nel primo ciclo')
                     for (let j = 0; j < store.cart[i].length; j++) {
                         console.log('sono entrato nel secondo ciclo')
-                        if (store.cart[i][j].dish.restaurant_id == dish.restaurant_id) {
+                        if (store.cart[i][0].dish.restaurant_id == dish.restaurant_id) {
                             if(store.cart[i][j].dish.id == dish.id) {
+                                console.log(store.cart[i][j].dish.restaurant_id)
                                 store.cart[i][j].quantity++;
-                                console.log(store.cart[i])
+                                console.log(store.cart)
                                 console.log('sono nel if del secondo ciclo')
                                 break;
                             }
@@ -59,9 +61,15 @@ export default {
                                 console.log('sono entrato nell\'else del secondo ciclo ');
 
                                 store.cart[i].push(item)
-                                console.log(store.cart[i])
+                                console.log(store.cart)
                                 break;
                             }
+                        }
+                        else if(i == lengthStoreCart - 1) {
+                            store.cart.push(order)
+                            console.log('sono entrato nel else if esterno')
+                            console.log(store.cart)
+                            break;
                         }
                     }
                 }
@@ -70,9 +78,6 @@ export default {
                 store.cart.push(order)
                 console.log(store.cart)
             }
-            
-            // store.cart.push(order)
-            // console.log(store.cart)
         }
 
         // removeCart(dish){
