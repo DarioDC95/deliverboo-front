@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 export default {
     data() {
         return {};
@@ -6,21 +6,24 @@ export default {
 };
 </script>
 <template>
-    <div class="my-container">
-        <section id="jumbo" class="jumbotron">
+    <div class="container-fluid bg-personale">
+        <section >
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6 d-flex align-items-center">
-                        <h1 class="text-purple"><strong>I piatti che ami a domicilio!</strong> </h1>
-                    </div>
-                    <div class="col-sm-12 overflow-hidden col-md-6 col-lg-6">
-                        <img src="img/deliveboo.png" alt="deliveboo" class="img-fluid img-deliveboo">
-                    </div>
-                    <div class="row container-button">
-                        <div class="btn col-6">
-                            <!-- <router-link :to="{ name: 'restaurants' }" class="btn mybtn">Scopri i ristoranti</router-link>  -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-center">
+                            <h1 class="text-purple">I piatti che ami, a domicilio!</h1>
                         </div>
+                        <div class="col-sm-12 col-md-6 ">
+                            <img src="img/deliveboo.png" alt="deliveboo" class="img-fluid img-deliveboo">
+                        </div>
+                        <!-- <div class="row container-button">
+                            <div class="btn col-6">
+                                
+                            </div>
+                        </div> -->
                     </div>
+
                 </div>
             </div>
         </section>
@@ -33,8 +36,8 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 
 .text-purple {
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 47px;
+    font-weight: bold;
     margin-bottom: 20px;
     color: #440063;
 }
@@ -43,24 +46,17 @@ export default {
     transform: rotate(180deg);
 }
 
-.my-container {
-    background-color: #d0eb99;
+.bg-personale {
+    bbackground: hsla(175, 100%, 40%, 1);
+
+    background: linear-gradient(135deg, hsla(175, 100%, 40%, 1) 46%, hsla(80, 67%, 76%, 1) 46%);
+
+    background: -moz-linear-gradient(135deg, hsla(175, 100%, 40%, 1) 46%, hsla(80, 67%, 76%, 1) 46%);
+
+    background: -webkit-linear-gradient(-84deg, hsla(175, 100%, 40%, 1) 46%, hsla(80, 67%, 76%, 1) 46%);
+
+
 
 }
 
-.my-button {
-    background-color: #00ccbc;
-    width: 100%;
-
-}
-
-.verde {
-    background-color: #d0eb99;
-}
-
-
-.logo-jumbo {
-    width: 300px;
-    margin-bottom: -100px;
-}
 </style>
