@@ -79,11 +79,6 @@ export default {
                 console.log(store.cart)
             }
         }
-
-        // removeCart(dish){
-        //     store.cart.pop(dish)
-        //     console.log(store.cart)
-        // }
     }
 }
 </script>
