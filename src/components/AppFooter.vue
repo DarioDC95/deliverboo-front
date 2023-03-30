@@ -5,12 +5,12 @@ export default {
 </script>
 
 <template>
-    <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
-        <section class="footer-section ">
+    <footer class="bd-footer  mt-5 bg-body-tertiary">
+        <section class="footer-section py-4 py-md-5">
             <div class="container py-md-3 px-5 px-md-3 text-body-secondary shadow">
                 <div class="row d-flex">
                     <nav class="d-flex flex-column flex-md-row navbar-expand-md flex-md-nowrap p-3 shadow my-5 bg-navbar">
-                    
+
                         <div class="col-md-3 col-sm-6 col-12 footer-links">
                             <h4>Scopri Deliveboo</h4>
                             <ul class="list-unstyled">
@@ -63,22 +63,23 @@ export default {
 @use "../styles/partials/mixins" as *;
 @use "../styles/partials/variables" as *;
 
-section{
-    background-color: rgba(0,204,188,255);
-    height: 35em;
+section {
+    background-color: rgba(0, 204, 188, 255);
     display: flex;
     align-items: center;
 }
-.bg-navbar{
-    background-color: #2e3333 ;
+
+.bg-navbar {
+    background-color: #2e3333;
     color: #c8c8fa;
-} 
+}
+
 .footer-links {
-    
+
 
     ul li {
         list-style: none;
-        
+
 
     }
 
