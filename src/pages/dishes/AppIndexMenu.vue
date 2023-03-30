@@ -1,6 +1,6 @@
 <script>
 import { store } from '../../store';
-import axios from 'axios';
+import axios, { formToJSON } from 'axios';
 
 import AppLoader from '../../components/AppLoader.vue';
 
@@ -34,18 +34,45 @@ export default {
         },
         addCart(dish) {
 
-            console.log(dish)
             let order = []
-            
-            const item = {
+
+            let item = {
                 dish,
                 quantity: 1
-            };
-
-            order.push(item);
+            }
             
-            store.cart.push(order)
-            console.log(store.cart)
+            order.push(item)
+            
+            if (store.cart.length !== 0) {
+                for (let i = 0; i < store.cart.length; i++) {
+                    console.log('sono entrato nel primo ciclo')
+                    for (let j = 0; j < store.cart[i].length; j++) {
+                        console.log('sono entrato nel secondo ciclo')
+                        if (store.cart[i][j].dish.restaurant_id == dish.restaurant_id) {
+                            if(store.cart[i][j].dish.id == dish.id) {
+                                store.cart[i][j].quantity++;
+                                console.log(store.cart[i])
+                                console.log('sono nel if del secondo ciclo')
+                                break;
+                            }
+                            else if(j == store.cart[i].length - 1) {
+                                console.log('sono entrato nell\'else del secondo ciclo ');
+
+                                store.cart[i].push(item)
+                                console.log(store.cart[i])
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                store.cart.push(order)
+                console.log(store.cart)
+            }
+            
+            // store.cart.push(order)
+            // console.log(store.cart)
         }
 
         // removeCart(dish){
