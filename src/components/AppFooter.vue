@@ -63,27 +63,25 @@ export default {
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
-                    </nav>
 
-                    <div class="container-fluid">
-                        <div class="row d-flex justify-content-end">
-                            <div class="col-md-3 col-sm-6 col-12 footer-links">
-                                <ul class="d-flex justify-content-between align-items-center mr">
+                                <ul class="d-flex justify-content-between align-items-center mrlt-social">
                                     <li class="mb-1 fs-3"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
                                     <li class="mb-1 fs-3"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
                                     <li class="mb-1 fs-3"><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
                                     <li class="mb-1 fs-3"><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
-                            <!-- <div
-                                class="col-md-3 col-sm-6 col-12 footer-links">
-                                <ul class="d-flex justify-content-between align-items-center ">
-                                    <li class="mb-1 fs-6"><a href="#"><i class="fa-regular fa-copyright"> 2023</i> Deliveboo</a>
+                        </div>
+                    </nav>
+                    <div class="container-fluid">
+                        <div class="row d-flex justify-content-center align-items-center copyrigt">
+                            <div class="col-md-3 col-sm-6 col-12 footer-links">
+                                <ul class="d-flex justify-content-between align-items-center m-cr">
+                                    <li class="mb-1 fs-6"><a class="text-white shadow" href="#"><i
+                                                class="fa-regular fa-copyright"> 2023</i> Deliveboo</a>
                                     </li>
                                 </ul>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -91,6 +89,7 @@ export default {
         </section>
     </footer>
 </template>
+
 
 <style scoped lang="scss">
 @use "../styles/partials/mixins" as *;
@@ -120,7 +119,13 @@ section {
     }
 }
 
-.mr{
-    margin-right: 1em;
+.mrlt-social {
+    margin-right: 0.5em;
+    margin-left: -2em;
+    margin-top: 2em;
+}
+
+.copyrigt {
+    margin-top: -1em;
 }
 </style>
