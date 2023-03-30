@@ -1,6 +1,6 @@
 <script>
 import { store } from '../../store';
-import axios from 'axios';
+import axios, { formToJSON } from 'axios';
 
 import AppLoader from '../../components/AppLoader.vue';
 
@@ -10,8 +10,7 @@ export default {
     },
     data() {
         return {
-            store
-
+            store,
         }
     },
     mounted() {
@@ -33,14 +32,56 @@ export default {
             })
         },
         addCart(dish) {
-            store.cart.push(dish)
-            console.log(store.cart)
-        }
 
-        // removeCart(dish){
-        //     store.cart.pop(dish)
-        //     console.log(store.cart)
-        // }
+            let order = []
+
+            let item = {
+                dish,
+                quantity: 1
+            }
+            
+            order.push(item)
+
+            let slag = true;
+            let lengthStoreCart = store.cart.length
+            
+            if (store.cart.length !== 0) {
+                for (let i = 0; i < lengthStoreCart; i++) {
+                    console.log('sono entrato nel primo ciclo')
+                    if (store.cart[i][0].dish.restaurant_id == dish.restaurant_id) {
+                        for (let j = 0; j < store.cart[i].length; j++) {
+                            console.log('sono entrato nel secondo ciclo')
+                            if(store.cart[i][j].dish.id == dish.id) {
+                                console.log(store.cart[i][j].dish.restaurant_id)
+                                store.cart[i][j].quantity++;
+                                slag = false;
+                                console.log(store.cart)
+                                console.log('sono nel if del secondo ciclo')
+                                break;
+                            }
+                            else if(j == store.cart[i].length - 1) {
+                                console.log('sono entrato nell\'else del secondo ciclo ');
+
+                                slag = false
+                                store.cart[i].push(item)
+                                console.log(store.cart)
+                                break;
+                            }
+                        }
+                    }
+                    else if(i == lengthStoreCart - 1 && slag) {
+                        store.cart.push(order)
+                        console.log('sono entrato nel else if esterno')
+                        console.log(store.cart)
+                        break;
+                    }
+                }
+            }
+            else {
+                store.cart.push(order)
+                console.log(store.cart)
+            }
+        }
     }
 }
 </script>
