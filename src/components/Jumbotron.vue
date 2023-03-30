@@ -17,7 +17,7 @@ export default {
                         <img src="img/deliveboo.png" alt="deliveboo" class="img-fluid img-deliveboo">
                     </div>
                     <div class="row container-button">
-                        <div class="btn-jumbo col-6">
+                        <div class="btn col-6">
                             <!-- <router-link :to="{ name: 'restaurants' }" class="btn mybtn">Scopri i ristoranti</router-link>  -->
                         </div>
                     </div>
