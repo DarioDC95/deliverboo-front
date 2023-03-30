@@ -59,35 +59,6 @@ export default {
 }
 
 
-
-.form {
-    background-color: #fff;
-    border-radius: 4px;
-    position: relative;
-    padding: 24px 35px;
-    z-index: 102;
-
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
-    display: flex;
-    flex-direction: column;
-
-    font-family: sans-serif;
-    margin: 0;
-    font-weight: 400;
-
-}
-
-.jumbotron h1 {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #440063;
-}
-
-.jumbotron h2 span {
-    color: var(--color-primary);
-}
-
 .logo-jumbo {
     width: 300px;
     margin-bottom: -100px;
