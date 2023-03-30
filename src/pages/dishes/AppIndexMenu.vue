@@ -32,6 +32,15 @@ export default {
                 }
             })
         },
+        addCart(dish){
+           store.cart.push(dish)
+           console.log(store.cart)
+        }
+
+        // removeCart(dish){
+        //     store.cart.pop(dish)
+        //     console.log(store.cart)
+        // }
     }
 }
 </script>
@@ -41,16 +50,15 @@ export default {
     <main v-else>
         <section class="menu">
             <div class="container">
-                <div class="row gy-4">
+                <div class="row mt-3 gy-4">
                     <div v-for="(dish, index) in store.dishes_by_restaurant" :key="index" class="col-12 col-sm-6 col-md-3" :class="dish.visible ? '' : 'd-none'">
                         <div class="card h-100">
                             <img :src="dish.image_path == null ? 'https://picsum.photos/id/1/200/300' : `${store.url_restaurants}storage/${dish.image_path}`" :alt="dish.name" class="card-img-top">
                             <div class="card-body d-flex flex-column">
                                 <div>
                                     <h4>{{ dish.name }}</h4>
-                                    <h6>Via: {{ dish.vegan }}</h6>
                                 </div>
-                                <div class="flex-grow-1 d-flex flex-column justify-content-between">
+                                <div class="flex-grow-1 d-flex flex-column ">
                                     <div class="mb-2">
                                         <p class="mb-0">
                                             <em><strong>Ingredienti:</strong></em>
@@ -65,6 +73,14 @@ export default {
                                         </p>
                                         <div>
                                             {{ dish.description }}
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <p class="mb-0">
+                                            <em><strong>Prezzo:</strong></em>
+                                        </p>
+                                        <div>
+                                            {{ `${dish.price}&#8364;` }}
                                         </div>
                                     </div>
                                     <div class="icons mb-4">
@@ -101,6 +117,8 @@ export default {
                                     </div>
                                     <div>
                                         <div>
+                                            <button @click="addCart(dish)" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i></button>
+                                            <!-- <button @click="removeCart(dish)" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus"></i></button> -->
                                             QUESTO E' IL BUTTON PER AGGIUNGERLO AL CARRELLO
                                         </div>
                                     </div>
