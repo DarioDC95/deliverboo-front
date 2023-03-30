@@ -7,11 +7,34 @@ export default {
     components: {
         AppLoader,
     },
+    emits: [
+            'increase-by',
+            'decrease-by',
+            'select-page',
+        ],
     data() {
         return {
-            store
+            store,
         }
-    }
+    },
+    methods: {
+        increaseByOne() {
+            if(store.current_page < store.last_page) {
+                store.current_page += 1;
+                this.$emit('increase-by')
+            }
+        },
+        decreaseByOne() {
+            if(store.current_page > 1) {
+                store.current_page -= 1;
+                this.$emit('decrease-by')
+            }
+        },
+        selectPage(value) {
+            store.current_page = value;
+            this.$emit('select-page')
+        }
+    },
 }
 </script>
 
@@ -47,6 +70,21 @@ export default {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col">
+                        <div class="mycard">
+                            <div class="d-flex justify-content-center">
+                                <button @click="increaseByOne()" class="btn btn-square btn-primary fs-6" :class="store.current_page == store.last_page ? 'disabled' : ''">&#8680;</button>
+                                <ul class="list-unstyled d-flex mb-0">
+                                    <li v-for="(value, index) in store.last_page" :key="index">
+                                        <button @click="selectPage((value))" class="btn btn-square btn-light" :class="store.current_page == value ? 'bg-dark-subtle' : ''">{{ value }}</button>
+                                    </li>
+                                </ul>
+                                <button @click="decreaseByOne()" class="btn btn-square btn-primary fs-6" :class="store.current_page == 1 ? 'disabled' : ''">&#8678;</button>
                             </div>
                         </div>
                     </div>
