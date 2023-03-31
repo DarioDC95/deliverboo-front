@@ -53,7 +53,7 @@ export default {
 
     <!-- * inizio carosello -->
 
-    <div class="container-fluid">
+    <div class="container-xxl">
         <div id="carouselExampleDark" class="carousel carousel-dark slide carousel-container" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
