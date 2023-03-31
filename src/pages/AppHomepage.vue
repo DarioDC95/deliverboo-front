@@ -175,7 +175,7 @@ export default {
 }
 
 .img-cover {
-    background-size: cover;
+    object-fit: cover;
 }
 
 .carousel-container {
