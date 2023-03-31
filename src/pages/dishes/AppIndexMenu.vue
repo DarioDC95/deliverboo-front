@@ -161,7 +161,7 @@ export default {
                                     <div class="mt-auto">
                                         <div>
                                             <button @click="addCart(dish)" class="btn btn-primary btn-sm"><i
-                                                    class="fa-solid fa-plus"></i></button>
+                                                    class="fa-solid fa-plus"> Aggiungi al carrello</i></button>
                                             <!-- <button @click="removeCart(dish)" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus"></i></button> -->
                                         </div>
                                     </div>
