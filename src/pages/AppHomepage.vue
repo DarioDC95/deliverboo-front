@@ -88,7 +88,7 @@ export default {
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="/img/ristorante-giapponesi.jpg" class="d-block w-100" alt="Image-Restaurant">
+                    <img src="/img/ristorante-pizzeria.jpg" class="d-block w-100" alt="Image-Restaurant">
                     <div class="carousel-caption d-none d-md-block text-white">
                         <p class="fs-2">{{ description4 }}</p>
                     </div>
