@@ -123,7 +123,7 @@ export default {
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="card shadow" style="height: 100%;">
+                <div class="card shadow " style="height: 100%;">
                     <img src="/img/OIP.jpg" style="height: 15em;" class="card-img-top img-fluid img-cover"
                         alt="Image-Restaurant">
                     <div class="card-body">
@@ -139,8 +139,7 @@ export default {
                 <img src="/img/ristorante-dolci.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ title2a }}</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                        content. This content is a little bit longer.</p>
+                    <p class="card-text">Dolci piaceri per rendere la giornata ancora più gustosa.</p>
                 </div>
 
             </div>
@@ -148,7 +147,7 @@ export default {
                 <img src="/img/ristorante-pizzeria.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ title2b }}</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">Una base leggera per una farcitura sempre diversa.</p>
                 </div>
 
             </div>
@@ -156,8 +155,7 @@ export default {
                 <img src="/img/ristorante-giapponesi.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ title2c }}</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                        content. This card has even longer content than the first to show that equal height action.</p>
+                    <p class="card-text">Le grandi esclusive che scaldano il cuore, selezionate da noi.</p>
                 </div>
             </div>
         </div>
@@ -169,7 +167,9 @@ export default {
 
 <style scoped lang="scss">
 //*Carosello
-
+.margin-top {
+    margin-bottom: 10px;
+}
 
 .img-cover {
     object-fit: cover;
