@@ -107,8 +107,8 @@ export default {
     <!-- * fine carosello -->
 
     <!-- * 1° sezione -->
-    <!-- 2 colonne -->
 
+    <!-- 2 colonne -->
     <div class="container-xl">
         <h2 class="my-3 fs-1">{{ title }}</h2>
 
