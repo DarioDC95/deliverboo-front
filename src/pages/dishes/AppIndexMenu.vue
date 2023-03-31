@@ -39,19 +39,19 @@ export default {
                 dish,
                 quantity: 1
             }
-            
+
             order.push(item)
 
             let slag = true;
             let lengthStoreCart = store.cart.length
-            
+
             if (store.cart.length !== 0) {
                 for (let i = 0; i < lengthStoreCart; i++) {
                     console.log('sono entrato nel primo ciclo')
                     if (store.cart[i][0].dish.restaurant_id == dish.restaurant_id) {
                         for (let j = 0; j < store.cart[i].length; j++) {
                             console.log('sono entrato nel secondo ciclo')
-                            if(store.cart[i][j].dish.id == dish.id) {
+                            if (store.cart[i][j].dish.id == dish.id) {
                                 console.log(store.cart[i][j].dish.restaurant_id)
                                 store.cart[i][j].quantity++;
                                 slag = false;
@@ -59,7 +59,7 @@ export default {
                                 console.log('sono nel if del secondo ciclo')
                                 break;
                             }
-                            else if(j == store.cart[i].length - 1) {
+                            else if (j == store.cart[i].length - 1) {
                                 console.log('sono entrato nell\'else del secondo ciclo ');
 
                                 slag = false
@@ -69,7 +69,7 @@ export default {
                             }
                         }
                     }
-                    else if(i == lengthStoreCart - 1 && slag) {
+                    else if (i == lengthStoreCart - 1 && slag) {
                         store.cart.push(order)
                         console.log('sono entrato nel else if esterno')
                         console.log(store.cart)
@@ -96,7 +96,7 @@ export default {
                         :class="dish.visible ? '' : 'd-none'">
                         <div class="card h-100">
                             <img :src="dish.image_path == '' ? '../../../img/logo-blue.png' : `${store.url_restaurants}storage/${dish.image_path}`"
-                                :alt="dish.name" class="card-img-top">
+                                :alt="dish.name" class="card-img-top mt-3">
                             <div class="card-body d-flex flex-column">
                                 <div>
                                     <h4>{{ dish.name }}</h4>
@@ -158,10 +158,10 @@ export default {
                                             </div>
                                         </div>
                                     </div>
-                                    <div>
+                                    <div class="mt-auto">
                                         <div>
                                             <button @click="addCart(dish)" class="btn btn-primary btn-sm"><i
-                                                    class="fa-solid fa-plus"></i></button>
+                                                    class="fa-solid fa-plus"> Aggiungi al carrello</i></button>
                                             <!-- <button @click="removeCart(dish)" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus"></i></button> -->
                                         </div>
                                     </div>
