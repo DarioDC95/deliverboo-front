@@ -80,8 +80,8 @@ export default {
                     <div class="col">
                         <div class="mycard">
                             <div class="d-flex justify-content-center">
-                                <button @click="increaseByOne()" class="btn btn-square btn-primary fs-6"
-                                    :class="store.current_page == store.last_page ? 'disabled' : ''">&#8680;</button>
+                                <button @click="decreaseByOne()" class="btn btn-square btn-primary fs-6"
+                                    :class="store.current_page == 1 ? 'disabled' : ''">&#8678;</button>
                                 <ul class="list-unstyled d-flex mb-0">
                                     <li v-for="(value, index) in store.last_page" :key="index">
                                         <button @click="selectPage((value))" class="btn btn-square btn-light"
@@ -89,8 +89,8 @@ export default {
                                             }}</button>
                                     </li>
                                 </ul>
-                                <button @click="decreaseByOne()" class="btn btn-square btn-primary fs-6"
-                                    :class="store.current_page == 1 ? 'disabled' : ''">&#8678;</button>
+                                <button @click="increaseByOne()" class="btn btn-square btn-primary fs-6"
+                                    :class="store.current_page == store.last_page ? 'disabled' : ''">&#8680;</button>
                             </div>
                         </div>
                     </div>
@@ -106,6 +106,7 @@ export default {
 
     img {
         max-height: 100%;
+        object-fit: cover;
     }
 }
 </style>
