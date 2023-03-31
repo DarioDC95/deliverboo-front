@@ -41,7 +41,7 @@ export default {
 <template>
     <Jumbotron></Jumbotron>
 
-    <!-- Intestazione -->
+    <!-- * main top -->
 
     <div class="container-fluid mt-5">
         <div class="row">
@@ -52,7 +52,7 @@ export default {
         </div>
     </div>
 
-    <!-- inizio carosello -->
+    <!-- * inizio carosello -->
 
     <div class="container-fluid">
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -105,9 +105,10 @@ export default {
         </div>
     </div>
 
-    <!-- fine carosello -->
+    <!-- * fine carosello -->
 
-    <!-- 1° sezione -->
+    <!-- * 1° sezione -->
+    <!-- 2 colonne -->
 
     <div class="container-xl">
         <h2 class="my-3 fs-1">{{ title }}</h2>
@@ -161,7 +162,7 @@ export default {
             </div>
         </div>
 
-
+        <!-- 2 colonne -->
         <div class="row my-5 text-center">
             <div class="col-sm-7">
                 <div class="card">
