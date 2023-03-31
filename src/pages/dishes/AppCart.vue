@@ -13,13 +13,17 @@ export default {
         },
         totalPrice() {
             store.totalPrice = 0;
-            store.cart.forEach(item => {
-                store.totalPrice += parseFloat(item.price)
-            })
+            for(let i = 0; i< store.cart.length; i++){
+                console.log('sono dentro il primo for')
+                
+                for(let j=0 ; j< store.cart[i].length ; j++){
+                    console.log('sono dentro nel secondo for')
+                    store.totalPrice += (store.cart[i][j].dish.price * store.cart[i][j].quantity)
+                    console.log(store.cart[i][j].dish.price)
+                }
+            }
         },
-        prova() {
-            console.log(store.totalPrice)
-        }
+
     },
     mounted() {
         this.totalPrice()
