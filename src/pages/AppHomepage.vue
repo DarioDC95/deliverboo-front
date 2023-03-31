@@ -160,27 +160,6 @@ export default {
                 </div>
             </div>
         </div>
-
-        <!-- 2 colonne -->
-        <div class="row my-5 text-center">
-            <div class="col-sm-7">
-                <div class="card">
-                    <img src="/img/ristorante-giapponesi.jpg" style="height: 15em;" class="card-img-top img-cover "
-                        alt="Image 3">
-                    <div class="card-body">
-                        <p class="card-text">{{ description3 }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-5">
-                <div class="card">
-                    <img src="/img/OIP.jpg" style="height: 15em;" class="card-img-top img-fluid img-cover" alt="Image 4">
-                    <div class="card-body">
-                        <p class="card-text">{{ description4 }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 

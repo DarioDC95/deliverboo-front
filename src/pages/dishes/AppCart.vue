@@ -35,6 +35,7 @@ export default {
                     <li v-for="(item, index) in store.cart" :key="index">
                         <div v-for="(value, beta) in store.cart[index]" :key="beta" class="d-flex">
                             <p><span>{{ value.dish.name }}</span><span class="mx-2">{{ `${value.dish.price}&#8364;` }}</span></p>
+                            <p>Quantità: {{ value.quantity }}</p>
                             <div>
                                 <button @click="removeCart(index)" class="btn btn-danger btn-sm "><i
                                         class="fa-solid fa-minus"></i></button>
