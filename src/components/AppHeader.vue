@@ -40,15 +40,16 @@ import { store } from '../store';
                     <ul class="navbar-nav">
                         <li v-for="(value, index) in data_navbar" :key="index" class="nav-item">
                             <div v-if="value.label == 'Cart'">
-                                <router-link :to="{ name: value.routeName }" class="nav-link position-relative" :class="$route.name == value.routeName ? 'text-white' : ''" aria-current="page" href="#">
-                                    <button class="btn-personal">
-                                        <i class="fa-solid fa-cart-shopping"></i><span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">prova
+                                <router-link :to="{ name: value.routeName }" class="nav-link position-relative" aria-current="page" href="#">
+                                    <button class="btn-personal" :class="$route.name == value.routeName ? 'present-page' : ''">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">prova
                                             <span class="visually-hidden"></span>
                                         </span>
                                     </button> 
                                 </router-link>
                             </div>
-                            <router-link v-else :to="{ name: value.routeName }" class="nav-link" :class="$route.name == value.routeName ? 'text-white' : ''" aria-current="page" href="#"><button class="btn-personal">{{ value.label }}</button></router-link>
+                            <router-link v-else :to="{ name: value.routeName }" class="nav-link" :class="$route.name == value.routeName ? 'text-white' : ''" aria-current="page" href="#"><button class="btn-personal" :class="$route.name == value.routeName ? 'present-page' : ''">{{ value.label }}</button></router-link>
                         </li>
                         <li class="mt-16 ">
                             <a class="btn-personal text-decoration-none" href="http://127.0.0.1:8000/">Area Clienti</a>
@@ -79,6 +80,11 @@ import { store } from '../store';
             background-color: #d0eb99;
             border: #0f7d8a  3px solid;
         }
+    }
+
+    .btn-personal.present-page {
+        background-color: #d0eb99;
+        border: #0f7d8a  3px solid;
     }
     
 </style>

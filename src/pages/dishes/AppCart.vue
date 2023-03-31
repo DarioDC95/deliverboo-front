@@ -45,7 +45,6 @@ export default {
                     </li>
                 </ul>
                 <button class="btn btn-primary mx-2" @click="totalPrice()">aggiorna totale</button>
-                <button class="btn btn-primary mx-2" @click="prova()">vedi in console array totalPrice</button>
 
             </div>
             <div>

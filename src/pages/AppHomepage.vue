@@ -32,7 +32,6 @@ export default {
             ristoranti11: 'Berberè Pizzeria',
             ristoranti12: 'Burger King',
             ristoranti13: 'Grom',
-
         }
     }
 }
@@ -198,9 +197,7 @@ export default {
     /* Altezza massima delle immagini del carosello */
 }
 
-
-
-
 .img-cover {
     background-size: cover;
-}</style>
+}
+</style>

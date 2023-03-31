@@ -163,7 +163,6 @@ export default {
                                             <button @click="addCart(dish)" class="btn btn-primary btn-sm"><i
                                                     class="fa-solid fa-plus"></i></button>
                                             <!-- <button @click="removeCart(dish)" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus"></i></button> -->
-                                            QUESTO E' IL BUTTON PER AGGIUNGERLO AL CARRELLO
                                         </div>
                                     </div>
                                 </div>
