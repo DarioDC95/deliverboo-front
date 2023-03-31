@@ -169,10 +169,7 @@ export default {
 
 <style scoped lang="scss">
 //*Carosello
-.card .carousel-item img {
-    max-height: 500px;
-    /* Altezza massima delle immagini del carosello */
-}
+
 
 .img-cover {
     object-fit: cover;
