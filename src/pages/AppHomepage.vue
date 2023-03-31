@@ -18,7 +18,7 @@ export default {
             title2a: 'Dolci e Dessert',
             title2b: 'Pizzeria e Rosticceria',
             title2c: 'Esclusiva Deliveboo',
-            
+
             ristoranti1: 'McDonald\'s ',
             ristoranti2: 'Nima Sushi',
             ristoranti3: 'Pokèria by NIMA',
@@ -54,7 +54,7 @@ export default {
     <!-- * inizio carosello -->
 
     <div class="container-fluid">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide carousel-container" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -65,7 +65,7 @@ export default {
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
                     aria-label="Slide 4"></button>
             </div>
-            <div class="carousel-inner shadow">
+            <div class="carousel-inner shadow carousel-height">
                 <div class="carousel-item shadow active" data-bs-interval="10000">
                     <img src="/img/ristorante-fastfood.jpg" class="d-block w-100" alt="Image-Restaurant">
                     <div class="carousel-caption d-none d-md-block text-white">
@@ -113,8 +113,8 @@ export default {
         <h2 class="my-3 fs-1">{{ title }}</h2>
 
         <div class="row my-5 text-center">
-            <div class="col-sm-7">
-                <div class="card light">
+            <div class="col-sm-6">
+                <div class="card shadow">
                     <img src="/img/ristorante-giapponesi.jpg" style="height: 15em;" class="card-img-top img-cover "
                         alt="Image-Restaurant">
                     <div class="card-body">
@@ -122,10 +122,11 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="col-sm-5">
-                <div class="card">
-                    <img src="/img/OIP.jpg" style="height: 15em;" class="card-img-top img-fluid img-cover" alt="Image-Restaurant">
-                    <div class="card-body ">
+            <div class="col-sm-6">
+                <div class="card shadow" style="height: 100%;">
+                    <img src="/img/OIP.jpg" style="height: 15em;" class="card-img-top img-fluid img-cover"
+                        alt="Image-Restaurant">
+                    <div class="card-body">
                         <p class="card-text">{{ description4 }}</p>
                     </div>
                 </div>
@@ -137,24 +138,24 @@ export default {
             <div class="card shadow">
                 <img src="/img/ristorante-dolci.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{title2a}}</h5>
+                    <h5 class="card-title">{{ title2a }}</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
                         content. This content is a little bit longer.</p>
                 </div>
-                
+
             </div>
             <div class="card shadow">
                 <img src="/img/ristorante-pizzeria.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{title2b}}</h5>
+                    <h5 class="card-title">{{ title2b }}</h5>
                     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
                 </div>
-                
+
             </div>
             <div class="card shadow">
                 <img src="/img/ristorante-giapponesi.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{title2c}}</h5>
+                    <h5 class="card-title">{{ title2c }}</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
                         content. This card has even longer content than the first to show that equal height action.</p>
                 </div>
@@ -164,19 +165,24 @@ export default {
 
 
     <!-- sezione 2 -->
-
-
 </template>
 
 <style scoped lang="scss">
 //*Carosello
-
-.carousel-item img {
+.card .carousel-item img {
     max-height: 500px;
     /* Altezza massima delle immagini del carosello */
 }
 
 .img-cover {
     background-size: cover;
+}
+
+.carousel-container {
+    height: 500px;
+
+    .carousel-height {
+        max-height: 100%;
+    }
 }
 </style>

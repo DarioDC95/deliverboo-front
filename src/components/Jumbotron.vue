@@ -7,21 +7,21 @@ export default {
 </script>
 <template>
     <div class="container-fluid bg-personale">
-        <section >
+        <section>
             <div class="container">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-center">
-                            <h1 class="text-purple">I piatti che ami, a domicilio!</h1>
-                        </div>
-                        <div class="col-sm-12 col-md-6 ">
+                    <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-center">
+                        <h1 class="text-purple">I piatti che ami, a domicilio!</h1>
+                    </div>
+                    <div class="col-sm-12 col-md-6 ">
                             <img src="img/deliveboo.png" alt="deliveboo" class="img-fluid img-deliveboo">
                         </div>
                         <!-- <div class="row container-button">
-                            <div class="btn col-6">
+                                    <div class="btn col-6">
                                 
-                            </div>
-                        </div> -->
+                                    </div>
+                                </div> -->
                     </div>
 
                 </div>
@@ -29,7 +29,7 @@ export default {
         </section>
     </div>
     <div>
-        
+
     </div>
 </template>
 <style lang="scss" scoped>
@@ -47,7 +47,7 @@ export default {
 }
 
 .bg-personale {
-    bbackground: hsla(175, 100%, 40%, 1);
+    background: hsla(175, 100%, 40%, 1);
 
     background: linear-gradient(135deg, hsla(175, 100%, 40%, 1) 46%, hsla(80, 67%, 76%, 1) 46%);
 
@@ -58,5 +58,4 @@ export default {
 
 
 }
-
 </style>

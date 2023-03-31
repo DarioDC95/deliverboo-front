@@ -8,10 +8,10 @@ export default {
         AppLoader,
     },
     emits: [
-            'increase-by',
-            'decrease-by',
-            'select-page',
-        ],
+        'increase-by',
+        'decrease-by',
+        'select-page',
+    ],
     data() {
         return {
             store,
@@ -19,13 +19,13 @@ export default {
     },
     methods: {
         increaseByOne() {
-            if(store.current_page < store.last_page) {
+            if (store.current_page < store.last_page) {
                 store.current_page += 1;
                 this.$emit('increase-by')
             }
         },
         decreaseByOne() {
-            if(store.current_page > 1) {
+            if (store.current_page > 1) {
                 store.current_page -= 1;
                 this.$emit('decrease-by')
             }
@@ -46,8 +46,10 @@ export default {
                 <div class="row gy-4">
                     <div class="col-12 col-sm-6 col-md-3" v-for="(restaurant, index) in store.restaurants" :key="index">
                         <div class="card h-100">
-                            <img :src="restaurant.cover_path == null ? 'https://picsum.photos/id/1/200/300' : `${store.url_restaurants}storage/${restaurant.cover_path}`"
-                                :alt="restaurant.user.name" class="card-img-top">
+                            <div class="container-img">
+                                <img :src="restaurant.cover_path == null ? 'https://picsum.photos/id/1/200/300' : `${store.url_restaurants}storage/${restaurant.cover_path}`"
+                                    :alt="restaurant.user.name" class="card-img-top">
+                            </div>
                             <div class="card-body d-flex flex-column">
                                 <div>
                                     <h4>{{ restaurant.user.name }}</h4>
@@ -78,13 +80,17 @@ export default {
                     <div class="col">
                         <div class="mycard">
                             <div class="d-flex justify-content-center">
-                                <button @click="increaseByOne()" class="btn btn-square btn-primary fs-6" :class="store.current_page == store.last_page ? 'disabled' : ''">&#8680;</button>
+                                <button @click="increaseByOne()" class="btn btn-square btn-primary fs-6"
+                                    :class="store.current_page == store.last_page ? 'disabled' : ''">&#8680;</button>
                                 <ul class="list-unstyled d-flex mb-0">
                                     <li v-for="(value, index) in store.last_page" :key="index">
-                                        <button @click="selectPage((value))" class="btn btn-square btn-light" :class="store.current_page == value ? 'bg-dark-subtle' : ''">{{ value }}</button>
+                                        <button @click="selectPage((value))" class="btn btn-square btn-light"
+                                            :class="store.current_page == value ? 'bg-dark-subtle' : ''">{{ value
+                                            }}</button>
                                     </li>
                                 </ul>
-                                <button @click="decreaseByOne()" class="btn btn-square btn-primary fs-6" :class="store.current_page == 1 ? 'disabled' : ''">&#8678;</button>
+                                <button @click="decreaseByOne()" class="btn btn-square btn-primary fs-6"
+                                    :class="store.current_page == 1 ? 'disabled' : ''">&#8678;</button>
                             </div>
                         </div>
                     </div>
@@ -94,4 +100,12 @@ export default {
     </main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container-img {
+    height: 230px;
+
+    img {
+        max-height: 100%;
+    }
+}
+</style>
