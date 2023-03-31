@@ -23,7 +23,17 @@ export default {
                 }
             }
         },
+        partialPrice(item) {
+            let partialPriceOk = 0;
 
+            for(let i = 0; i < item.length; i++) {
+                console.log('sono dentro nel secondo for')
+                partialPriceOk += item[i].dish.price * item[i].quantity
+                console.log(partialPriceOk)
+            }
+
+            return partialPriceOk
+        }
     },
     mounted() {
         this.totalPrice()
@@ -37,9 +47,10 @@ export default {
             <div>
                 <ul>
                     <li v-for="(item, index) in store.cart" :key="index">
-                        <div v-for="(value, beta) in store.cart[index]" :key="beta" class="d-flex">
+                        <div v-for="(value, beta) in store.cart[index]" :key="beta">
                             <p><span>{{ value.dish.name }}</span><span class="mx-2">{{ `${value.dish.price}&#8364;` }}</span></p>
                             <p>Quantità: {{ value.quantity }}</p>
+                            <h5>{{ value.dish.price * value.quantity }}</h5>
                             <div>
                                 <button @click="removeCart(index)" class="btn btn-danger btn-sm "><i
                                         class="fa-solid fa-minus"></i></button>
@@ -47,6 +58,7 @@ export default {
                             </div>
 
                         </div>
+                        <h5>{{ partialPrice(item) }}</h5>
                     </li>
                 </ul>
                 <button class="btn btn-primary mx-2" @click="totalPrice()">aggiorna totale</button>
