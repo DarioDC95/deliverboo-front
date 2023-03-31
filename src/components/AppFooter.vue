@@ -13,6 +13,7 @@ export default {
         };
     },
     methods: {
+        /* animazione social icon */
         hoverSocial(index) {
             const socialLink = document.querySelectorAll('.social-link')[index];
             socialLink.classList.add('hover');
@@ -96,16 +97,12 @@ export default {
                             </div>
                         </div>
                     </nav>
-                    <!-- * inizio cod -->
 
-
-                    <!--* fine cod -->
                     <div class="container-fluid">
                         <div class="row d-flex justify-content-center align-items-center copyrigt">
                             <div class="col-md-3 col-sm-6 col-12 footer-links">
                                 <ul class="d-flex justify-content-between align-items-center m-cr">
-                                    <li class="mb-1 fs-6"><a class="text-white shadow" href="#"><i
-                                                class="fa-regular fa-copyright"> 2023</i> Deliveboo</a>
+                                    <li class="mb-1 fs-6"><a class="text-white shadow" href="#"><i class="fa-regular fa-copyright"> 2023</i> Deliveboo</a>
                                     </li>
                                 </ul>
                             </div>
