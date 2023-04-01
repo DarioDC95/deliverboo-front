@@ -9,6 +9,7 @@ export default {
 
             //* Carosello
             activeIndex: 0,
+
             restaurants: [
                 {
                     image: "/img/ristorante-hamburger1.jpg",
@@ -42,7 +43,7 @@ export default {
             ],
 
             //* 2° Sezione
-            prime: [
+            premiums: [
                 {
                     image: "/img/ristorante-hamburger1.jpg",
                     description: "Short description of restaurant 1"
@@ -70,14 +71,6 @@ export default {
                 {
                     image: "/img/ristorante-pizzeria.jpg",
                     description: "Short description of restaurant 7"
-                },
-                {
-                    image: "/img/ristorante-pizzeria.jpg",
-                    description: "Short description of restaurant 8"
-                },
-                {
-                    image: "/img/ristorante-pizzeria.jpg",
-                    description: "Short description of restaurant 9"
                 },
                 {
                     image: "/img/ristorante-pizzeria.jpg",
@@ -183,7 +176,7 @@ export default {
     </div>
     <!-- * fine carosello -->
 
-    <!-- * 1° sezione -->
+    <!-- * 1° sezione - Scopri i ristoranti -->
 
     <!-- 2 colonne -->
     <div class="container-xl">
@@ -209,68 +202,56 @@ export default {
             </div>
         </div>
 
-        <!-- 3 colonne -->
+        <!-- 3 colonne - 1° Sezione -->
         <div class="card-group gap-4">
             <div class="card shadow">
-                <img src="/img/ristorante-dolci.jpg" class="card-img-top" alt="...">
+                <img src="/img/ristorante-dolci.jpg" class="card-img-top" alt="Image-Restaurant">
                 <div class="card-body">
-                    <h5 class="card-title">{{ title2a }}</h5>
                     <p class="card-text">Dolci piaceri per rendere la giornata ancora più gustosa.</p>
                 </div>
 
             </div>
             <div class="card shadow">
-                <img src="/img/ristorante-pizzeria.jpg" class="card-img-top" alt="...">
+                <img src="/img/ristorante-pizzeria.jpg" class="card-img-top" alt="Image-Restaurant">
                 <div class="card-body">
-                    <h5 class="card-title">{{ title2b }}</h5>
                     <p class="card-text">Una base leggera per una farcitura sempre diversa.</p>
                 </div>
 
             </div>
             <div class="card shadow">
-                <img src="/img/ristorante-giapponesi.jpg" class="card-img-top" alt="...">
+                <img src="/img/ristorante-giapponesi.jpg" class="card-img-top" alt="Image-Restaurant">
                 <div class="card-body">
-                    <h5 class="card-title">{{ title2c }}</h5>
                     <p class="card-text">Le grandi esclusive che scaldano il cuore, selezionate da noi.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!--* 2° Sezione -->
+    <!--* 2° Sezione - La selezione-->
+    <div class="colore-bg bg-warning">
+        <div class="container">
+            <h2 class="my-5 fs-1 pt-5">{{ title1 }}</h2>
 
-    <div class="container-xl">
-        <h2 class="my-5 fs-1">{{ title1 }}</h2>
-
-        <div class="row">
-            <!-- 3 colonne -->
-            <div class="card-group gap-4">
-                <div class="card shadow">
-                    <img src="/img/ristorante-dolci.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ title2a }}</h5>
-                        <p class="card-text">Dolci piaceri per rendere la giornata ancora più gustosa.</p>
-                    </div>
-
+            <div class="row row-cols-1 row-cols-md-12 text-center d-flex align-content-center text-white">
+                <!-- 3 colonne -->
+                <div class="d-flex flex-wrap justify-content-center align-content-center" id="gap">
+                    <span class="card-group my-2 col-md-3 shadow" v-for="(premium, index) in premiums"
+                        :key="index">
+                        <img :src="premium.image" class="card-img-top img-contain" alt="Image-Restaurant">
+                        <div class="card-body">
+                            <p class="card-text">{{ premium.description }}</p>
+                        </div>
+                    </span>
                 </div>
-                <div class="card shadow">
-                    <img src="/img/ristorante-pizzeria.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ title2b }}</h5>
-                        <p class="card-text">Una base leggera per una farcitura sempre diversa.</p>
-                    </div>
 
-                </div>
-                <div class="card shadow">
-                    <img src="/img/ristorante-giapponesi.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ title2c }}</h5>
-                        <p class="card-text">Le grandi esclusive che scaldano il cuore, selezionate da noi.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
+
+
+
+
 </template>
 
 <style scoped lang="scss">
@@ -282,71 +263,75 @@ export default {
     max-width: 100%;
     height: 22rem;
     overflow: hidden;
+
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .slide.active {
+        opacity: 1;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 21rem;
+        object-fit: cover;
+    }
+
+    .description {
+        position: absolute;
+        top: 77%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0rem;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.3);
+        font-size: 1.5rem;
+        width: 60%;
+        max-width: 65%;
+        z-index: 1;
+    }
+
+    .controls {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        z-index: 1;
+    }
+
+    .prev-btn,
+    .next-btn {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        font-size: 2rem;
+        /* padding: 0.5rem 1rem; */
+        border: none;
+        cursor: pointer;
+    }
+
+    .prev-btn:hover,
+    .next-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 }
 
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+/* Fine Carosello */
 
-.slide.active {
-    opacity: 1;
-}
-
-.slide img {
-    width: 100%;
-    height: 21rem;
-    object-fit: cover;
-}
-
-.description {
-    position: absolute;
-    top: 77%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0rem;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.3);
-    font-size: 1.5rem;
-    width: 60%;
-    max-width: 65%;
-    z-index: 1;
-}
-
-.controls {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    z-index: 1;
-}
-
-.prev-btn,
-.next-btn {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: white;
-    font-size: 2rem;
-    /* padding: 0.5rem 1rem; */
-    border: none;
-    cursor: pointer;
-}
-
-.prev-btn:hover,
-.next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
+//! sezione 1 da visionare
 /* .margin-top {
     margin-bottom: 10px;
 }
@@ -362,4 +347,12 @@ export default {
         max-height: 100%;
     }
 } */
+
+/* 2° Sezione */
+#gap {
+  grid-template-columns: auto auto auto;
+  gap: 20px 50px;
+}
+
+
 </style>
