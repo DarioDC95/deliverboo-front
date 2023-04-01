@@ -42,55 +42,58 @@ export default {
 
             ],
 
+
+            
+
             //* 2° Sezione
             premiums: [
                 {
                     image: "/img/ristorante-hamburger1.jpg",
-                    description: "Short description of restaurant 1"
+                    description: "McDonald's"
                 },
                 {
                     image: "/img/ristorante-dolci.jpg",
-                    description: "Short description of restaurant 2"
+                    description: "Nima Sushi"
                 },
                 {
                     image: "/img/ristorante-foodfotos1.jpg",
-                    description: "Short description of restaurant 3"
+                    description: "Pokèria by NIMA"
                 },
                 {
                     image: "/img/ristorante-giapponesi.jpg",
-                    description: "Short description of restaurant 4"
+                    description: "Dauruma Kosher"
                 },
                 {
                     image: "/img/ristorante-dolce.jpg",
-                    description: "Short description of restaurant 5"
+                    description: "Temakinho"
                 },
                 {
                     image: "/img/ristorante-finger.jpg",
-                    description: "Short description of restaurant 6"
+                    description: "Berberè Pizzeria"
                 },
                 {
                     image: "/img/ristorante-pizzeria.jpg",
-                    description: "Short description of restaurant 7"
+                    description: "Old Wild West"
                 },
                 {
                     image: "/img/ristorante-pizzeria.jpg",
-                    description: "Short description of restaurant 8"
+                    description: "Roadhouse"
                 },
                 {
                     image: "/img/ristorante-pizzeria.jpg",
-                    description: "Short description of restaurant 9"
+                    description: "KFC"
                 },
                 {
                     image: "/img/ristorante-pizzeria.jpg",
-                    description: "Short description of restaurant 10"
+                    description: "La piadineria"
                 },
                 {
                     image: "/img/ristorante-pizzeria.jpg",
-                    description: "Short description of restaurant 11"
+                    description: "Burger King"
                 },
                 {
                     image: "/img/ristorante-pizzeria.jpg",
-                    description: "Short description of restaurant 12"
+                    description: "Grom"
                 },
 
             ],
@@ -99,13 +102,14 @@ export default {
             title0: 'Scopri i nostri ristoranti',
             title0a: 'Scegli tra centinaia di opzioni per il tuo prossimo pasto',
             title1: 'La selezione di Deliveboo',
+            title2: 'I tuoi piatti preferiti, consegnati da noi.',
 
-
-
+            /* 1° Sezione */
             description1: 'I grandi classici che scaldano il cuore, perfetti in ogni momento.',
             description2: 'Dolci piaceri per rendere la giornata ancora più gustosa.',
             description3: 'Serve una scusa per stare insieme? Ordina dai ristoranti che trasformeranno la tua serata in un vera festa.',
             description4: 'I più famosi, i più buoni, i preferiti. Quelli che trovi solo su Deliveboo.',
+
         };
     },
     methods: {
@@ -128,29 +132,16 @@ export default {
             title2: 'I tuo piatti preferiti, consegnati da noi.',
             title2a: 'Dolci e Dessert',
             title2b: 'Pizzeria e Rosticceria',
-            title2c: 'Esclusiva Deliveboo',
+            title2c: 'Esclusiva Deliveboo',-->
 
-            //* 3° Sezione
-            titele3: 'I tuoi piatti preferiti, consegnati da noi.',
-            ristoranti1: 'McDonald\'s ',
-            ristoranti2: 'Nima Sushi',
-            ristoranti3: 'Pokèria by NIMA',
-            ristoranti4: 'Dauruma Kosher',
-            ristoranti5: 'Temakinho',
-            ristoranti6: 'Old Wild West',
-            ristoranti7: 'Roadhouse',
-            ristoranti8: 'Grom',
-            ristoranti9: 'KFC',
-            ristoranti10: 'La piadineria',
-            ristoranti11: 'Berberè Pizzeria',
-            ristoranti12: 'Burger King',
-            ristoranti13: 'Grom', -->
+          
 
 <template>
     <Jumbotron></Jumbotron>
 
     <!-- * Main top -->
 
+    <!-- Scopri i ristoranti -->
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-12 text-center mb-5">
@@ -163,7 +154,7 @@ export default {
     <!-- * Inizio Carosello -->
     <div class="container">
         <div class="carousel">
-            <div class="slide" v-for="(restaurant, index) in restaurants" :key="index"
+            <div class="slide shadow" v-for="(restaurant, index) in restaurants" :key="index"
                 :class="{ active: index === activeIndex }">
                 <img :src="restaurant.image" alt="Restaurant image" class="rounded">
                 <p class="description shadow">{{ restaurant.description }}</p>
@@ -176,10 +167,16 @@ export default {
     </div>
     <!-- * fine carosello -->
 
-    <!-- * 1° sezione - Scopri i ristoranti -->
+    <!-- * 1° sezione - La selezione -->
 
     <!-- 2 colonne -->
     <div class="container-xl">
+
+        <div class="row">
+            <div class="col-12 text-center mb-2 my-5">
+                <h1 class="fw-bold">{{ title1 }}</h1>
+            </div>
+        </div>
 
         <div class="row my-5 text-center">
             <div class="col-sm-6">
@@ -227,16 +224,15 @@ export default {
         </div>
     </div>
 
-    <!--* 2° Sezione - La selezione-->
+    <!--* 2° Sezione - -->
     <div class="colore-bg bg-warning">
         <div class="container">
-            <h2 class="my-5 fs-1 pt-5">{{ title1 }}</h2>
+            <h2 class="my-5 fs-1 pt-5">{{ title2 }}</h2>
 
             <div class="row row-cols-1 row-cols-md-12 text-center d-flex align-content-center text-white">
                 <!-- 3 colonne -->
                 <div class="d-flex flex-wrap justify-content-center align-content-center" id="gap">
-                    <span class="card-group my-2 col-md-3 shadow" v-for="(premium, index) in premiums"
-                        :key="index">
+                    <span class="card-group my-2 col-md-3 shadow" v-for="(premium, index) in premiums" :key="index">
                         <img :src="premium.image" class="card-img-top img-contain" alt="Image-Restaurant">
                         <div class="card-body">
                             <p class="card-text">{{ premium.description }}</p>
@@ -247,11 +243,6 @@ export default {
             </div>
         </div>
     </div>
-
-
-
-
-
 </template>
 
 <style scoped lang="scss">
@@ -350,9 +341,7 @@ export default {
 
 /* 2° Sezione */
 #gap {
-  grid-template-columns: auto auto auto;
-  gap: 20px 50px;
+    grid-template-columns: auto auto auto;
+    gap: 20px 50px;
 }
-
-
 </style>
