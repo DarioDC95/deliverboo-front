@@ -42,17 +42,14 @@ export default {
 
             ],
 
-
-            
-
             //* 2° Sezione
             premiums: [
                 {
-                    image: "/img/ristorante-hamburger1.jpg",
+                    image: "/img/McDonald.webp",
                     description: "McDonald's"
                 },
                 {
-                    image: "/img/ristorante-dolci.jpg",
+                    image: "/img/Pokeria-by-Nima.webp",
                     description: "Nima Sushi"
                 },
                 {
@@ -224,17 +221,17 @@ export default {
         </div>
     </div>
 
-    <!--* 2° Sezione - -->
+    <!--* 2° Sezione - I preferiti -->
     <div class="colore-bg bg-warning">
-        <div class="container">
+        <div class="container-fluid text-center">
             <h2 class="my-5 fs-1 pt-5">{{ title2 }}</h2>
 
-            <div class="row row-cols-1 row-cols-md-12 text-center d-flex align-content-center text-white">
+            <div class="row row-cols-1 text-center d-flex align-content-center text-white">
                 <!-- 3 colonne -->
                 <div class="d-flex flex-wrap justify-content-center align-content-center" id="gap">
-                    <span class="card-group my-2 col-md-3 shadow" v-for="(premium, index) in premiums" :key="index">
-                        <img :src="premium.image" class="card-img-top img-contain" alt="Image-Restaurant">
-                        <div class="card-body">
+                    <span class="card-group my-2 col-sm-3 col-md-3 col-xl-3 shadow" v-for="(premium, index) in premiums" :key="index">
+                        <img :src="premium.image" class="card-img-top img-contain img-fluid" alt="Image-premium">
+                        <div class="card-body p-4">
                             <p class="card-text">{{ premium.description }}</p>
                         </div>
                     </span>
@@ -344,4 +341,7 @@ export default {
     grid-template-columns: auto auto auto;
     gap: 20px 50px;
 }
+
+
+
 </style>
