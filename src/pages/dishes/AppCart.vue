@@ -10,6 +10,8 @@ export default {
         removeCart(index) {
             store.cart.splice(index, 1)
 
+            let cartstorage = store.cart
+            localStorage.setItem("cart", JSON.stringify({cartstorage}))
         },
         totalPrice() {
             store.totalPrice = 0;
