@@ -45,51 +45,51 @@ export default {
             //* 2° Sezione
             premiums: [
                 {
-                    image: "/img/McDonald.webp",
+                    image: "/img/premium/McDonald.webp",
                     description: "McDonald's"
                 },
                 {
-                    image: "/img/Pokeria-by-Nima.webp",
+                    image: "/img/premium/nima-sushi.webp",
                     description: "Nima Sushi"
                 },
                 {
-                    image: "/img/ristorante-foodfotos1.jpg",
+                    image: "/img/premium/Pokeria-by-Nima.webp",
                     description: "Pokèria by NIMA"
                 },
                 {
-                    image: "/img/ristorante-giapponesi.jpg",
-                    description: "Dauruma Kosher"
+                    image: "/img/premium/daruma_kosher.webp",
+                    description: "Daruma Kosher"
                 },
                 {
-                    image: "/img/ristorante-dolce.jpg",
+                    image: "/img/premium/temakinho.webp",
                     description: "Temakinho"
                 },
                 {
-                    image: "/img/ristorante-finger.jpg",
+                    image: "/img/premium/pizza-barberè.webp",
                     description: "Berberè Pizzeria"
                 },
                 {
-                    image: "/img/ristorante-pizzeria.jpg",
+                    image: "/img/premium/Old-Wild-West-1.jpg",
                     description: "Old Wild West"
                 },
                 {
-                    image: "/img/ristorante-pizzeria.jpg",
+                    image: "/img/premium/roadhouse_experience.jpg",
                     description: "Roadhouse"
                 },
                 {
-                    image: "/img/ristorante-pizzeria.jpg",
+                    image: "/img/premium/kfc-faxafeni.jpg",
                     description: "KFC"
                 },
                 {
-                    image: "/img/ristorante-pizzeria.jpg",
+                    image: "/img/premium/la-piadineria.jpg",
                     description: "La piadineria"
                 },
                 {
-                    image: "/img/ristorante-pizzeria.jpg",
+                    image: "/img/premium/burger-king.jpg",
                     description: "Burger King"
                 },
                 {
-                    image: "/img/ristorante-pizzeria.jpg",
+                    image: "/img/premium/grom.jpg",
                     description: "Grom"
                 },
 
@@ -230,7 +230,7 @@ export default {
                 <!-- 3 colonne -->
                 <div class="d-flex flex-wrap justify-content-center align-content-center" id="gap">
                     <span class="card-group my-2 col-sm-3 col-md-3 col-xl-3 shadow" v-for="(premium, index) in premiums" :key="index">
-                        <img :src="premium.image" class="card-img-top img-contain img-fluid" alt="Image-premium">
+                        <img :src="premium.image" class="card-img-top img-cover" alt="Image-premium">
                         <div class="card-body p-4">
                             <p class="card-text">{{ premium.description }}</p>
                         </div>
