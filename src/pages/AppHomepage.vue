@@ -77,7 +77,7 @@ export default {
                     description: "Roadhouse"
                 },
                 {
-                    image: "/img/premium/kfc-faxafeni.jpg",
+                    image: "/img/premium/Kfc-2.webp",
                     description: "KFC"
                 },
                 {
@@ -123,16 +123,7 @@ export default {
 
 }
 </script>
-
-<!--  
-            //* 2° Sezione 
-            title2: 'I tuo piatti preferiti, consegnati da noi.',
-            title2a: 'Dolci e Dessert',
-            title2b: 'Pizzeria e Rosticceria',
-            title2c: 'Esclusiva Deliveboo',-->
-
           
-
 <template>
     <Jumbotron></Jumbotron>
 
@@ -197,7 +188,7 @@ export default {
         </div>
 
         <!-- 3 colonne - 1° Sezione -->
-        <div class="card-group gap-4">
+        <div class="card-group gap-4 mb-5em">
             <div class="card shadow">
                 <img src="/img/ristorante-dolci.jpg" class="card-img-top" alt="Image-Restaurant">
                 <div class="card-body">
@@ -223,18 +214,19 @@ export default {
 
     <!--* 2° Sezione - I preferiti -->
     <div class="colore-bg bg-warning">
-        <div class="container-fluid text-center">
+        <div class="container-xl text-center">
             <h2 class="my-5 fs-1 pt-5">{{ title2 }}</h2>
 
-            <div class="row row-cols-1 text-center d-flex align-content-center text-white">
+            <div class="row text-center d-flex align-content-center text-white">
                 <!-- 3 colonne -->
-                <div class="d-flex flex-wrap justify-content-center align-content-center" id="gap">
-                    <span class="card-group my-2 col-sm-3 col-md-3 col-xl-3 shadow" v-for="(premium, index) in premiums" :key="index">
-                        <img :src="premium.image" class="card-img-top img-cover" alt="Image-premium">
-                        <div class="card-body p-4">
-                            <p class="card-text">{{ premium.description }}</p>
+                <div id="gap" class="d-flex flex-wrap justify-content-center mb-5em ">
+                    <div id="cont-img" class="m-2 mb-4 card my-2 col-sm-5 col-md-3 col-xl-3 shadow" style="width: 22rem; height:18em ;"
+                        v-for="(premium, index) in premiums" :key="index">
+                        <img id="img-dim" :src="premium.image" class="card-img-top p-1 w-auto h-75" alt="Image-premium">
+                        <div class="card-body">
+                            <p class="card-text text-black fw-bolder ">{{ premium.description }}</p>
                         </div>
-                    </span>
+                    </div>
                 </div>
 
             </div>
@@ -317,9 +309,12 @@ export default {
     }
 }
 
-/* Fine Carosello */
+//* Fine Carosello 
 
-//! sezione 1 da visionare
+//? 1° SEZIONE
+
+//! 2 olonne da visionare
+
 /* .margin-top {
     margin-bottom: 10px;
 }
@@ -336,12 +331,9 @@ export default {
     }
 } */
 
-/* 2° Sezione */
-#gap {
-    grid-template-columns: auto auto auto;
-    gap: 20px 50px;
+//* 3 Colonne
+.mb-5em {
+    margin-bottom: 5em; //! utilizzato per gli spazi bottom section
 }
-
-
 
 </style>
