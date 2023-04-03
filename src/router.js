@@ -7,7 +7,8 @@ import AppFailed404 from './components/AppFailed404.vue';
 import AppIndexRestaurants from './pages/restaurants/AppIndexRestaurants.vue';
 import AppIndexMenu from './pages/dishes/AppIndexMenu.vue';
 import AppCart from './pages/dishes/AppCart.vue';
-import payment from './pages/payment.vue'
+import payment from './pages/payment.vue';
+import AppOrderRecap from './pages/AppOrderRecap';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -41,6 +42,11 @@ const router = createRouter({
       path: '/payment',
       name: 'payment',
       component: payment
+    },
+    {
+      path: '/recap',
+      name: 'order-recap',
+      component: AppOrderRecap
     }
   ]
 })
