@@ -20,6 +20,7 @@ export default {
   },
   methods: {
     getRestaurants() {
+      
       axios.get(`${store.url_restaurants}api/restaurants?page=${store.current_page}`).then((response) => {
         if (response.data.success) {
           store.restaurants = response.data.result.data;
@@ -34,7 +35,9 @@ export default {
         }
       })
     },
+
     changePage() {
+      
       this.getRestaurants();
     }
   }
