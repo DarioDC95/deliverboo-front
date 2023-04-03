@@ -17,7 +17,7 @@ export default {
   },
   mounted() {
     this.getRestaurants();
-    
+
     // recupero le info da localStorage
     if (localStorage.getItem("cart")) {
       let dataCart = JSON.parse(localStorage.getItem("cart"));
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     getRestaurants() {
-      
+
       axios.get(`${store.url_restaurants}api/restaurants?page=${store.current_page}`).then((response) => {
         if (response.data.success) {
           store.restaurants = response.data.result.data;
@@ -47,33 +47,33 @@ export default {
 
       let stringJoin = store.prova.join()
 
-      if(stringJoin == ''){
-          axios.get(`${store.url_restaurants}api/restaurants?page=${store.current_page}`).then((response) => {
-              if (response.data.success) {
-              store.restaurants = response.data.result.data;
-              store.loading = false;
-              store.last_page = response.data.result.last_page;
-              store.loading = false;
+      if (stringJoin == '') {
+        axios.get(`${store.url_restaurants}api/restaurants?page=${store.current_page}`).then((response) => {
+          if (response.data.success) {
+            store.restaurants = response.data.result.data;
+            store.loading = false;
+            store.last_page = response.data.result.last_page;
+            store.loading = false;
 
-              }
-              else {
-              this.$router.push('/failed');
-              }
-          })
+          }
+          else {
+            this.$router.push('/failed');
+          }
+        })
       }
-      else{
-          axios.get(`${store.url_restaurants}api/restaurants/${stringJoin}?page=${store.current_page}`).then((response) => {
-              if (response.data.success) {
-              store.restaurants = response.data.result.data;
-              store.loading = false;
-              store.last_page = response.data.result.last_page;
-              store.loading = false;
+      else {
+        axios.get(`${store.url_restaurants}api/restaurants/${stringJoin}?page=${store.current_page}`).then((response) => {
+          if (response.data.success) {
+            store.restaurants = response.data.result.data;
+            store.loading = false;
+            store.last_page = response.data.result.last_page;
+            store.loading = false;
 
-              }
-              else {
-              this.$router.push('/failed');
-              }
-          })
+          }
+          else {
+            this.$router.push('/failed');
+          }
+        })
       }
     }
   }

@@ -10,6 +10,7 @@ export const store = reactive({
     cart: [],
     totalPrice: [],
     types: [],
-    prova: []
+    prova: [],
+    payment: false
 
 })

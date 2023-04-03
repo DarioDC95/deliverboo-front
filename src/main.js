@@ -3,6 +3,7 @@ import App from './App.vue'
 import "/node_modules/bootstrap/dist/css/bootstrap.css"
 import * as bootstrap from 'bootstrap'
 import { router } from './router.js'
+import { store } from './store'
 
 createApp(App).use(router).mount('#app')
 
@@ -16,8 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }, function (err, instance) {
         button.addEventListener('click', function () {
             instance.requestPaymentMethod(function (err, payload) {
-                // Submit payload.nonce to your server
+
+                router.push('/cart')
             });
         })
     });
+
 });
+
