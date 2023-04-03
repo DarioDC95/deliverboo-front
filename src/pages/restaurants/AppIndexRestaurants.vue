@@ -17,6 +17,7 @@ export default {
     data() {
         return {
             store,
+            open: false,
         }
     },
     methods: {
@@ -46,6 +47,29 @@ export default {
                 }
             })
         },
+        // Multiselect
+        openMultiselect() {
+            this.open = !this.open
+
+            let items = document.querySelectorAll(".item");
+
+            items.forEach(item => {
+                item.addEventListener("click", () => {
+                    item.classList.toggle("checked");
+            
+                    let checked = document.querySelectorAll(".checked"),
+                        btnText = document.querySelector(".btn-text");
+            
+                    if(checked && checked.length > 0){
+                        btnText.innerText = `${checked.length} Selected`;
+                    }else{
+                        btnText.innerText = "Seleziona Tipologia";
+                    }
+                });
+            })
+        },
+
+        // da rifare
         prova(){
             const selectBtn = document.querySelector(".select-btn"),
             items = document.querySelectorAll(".item");
@@ -71,8 +95,8 @@ export default {
                     });
                 })
             }
-            
         },
+        // fino a qui
         setDelete() {
 
             const inputTypes = document.querySelectorAll('.types-checks:checked')
@@ -85,28 +109,28 @@ export default {
             if(stringJoin == ''){
                 axios.get(`${store.url_restaurants}api/restaurants?page=${store.current_page}`).then((response) => {
                     if (response.data.success) {
-                    store.restaurants = response.data.result.data;
-                    store.loading = false;
-                    store.last_page = response.data.result.last_page;
-                    store.loading = false;
+                        store.restaurants = response.data.result.data;
+                        store.loading = false;
+                        store.last_page = response.data.result.last_page;
+                        store.loading = false;
 
                     }
                     else {
-                    this.$router.push('/failed');
+                        this.$router.push('/failed');
                     }
                 })
             }
             else{
                 axios.get(`${store.url_restaurants}api/restaurants/${stringJoin}?page=${store.current_page}`).then((response) => {
                     if (response.data.success) {
-                    store.restaurants = response.data.result.data;
-                    store.loading = false;
-                    store.last_page = response.data.result.last_page;
-                    store.loading = false;
+                        store.restaurants = response.data.result.data;
+                        store.loading = false;
+                        store.last_page = response.data.result.last_page;
+                        store.loading = false;
 
                     }
                     else {
-                    this.$router.push('/failed');
+                        this.$router.push('/failed');
                     }
                 })
             }
@@ -125,10 +149,10 @@ export default {
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-12">
-                        <div class="container-select">
-                            <div class="select-btn">
+                        <div class="container-select mb-4">
+                            <div class="select-btn" :class="open ? 'open' : ''" @click="openMultiselect()">
                                 <div class="btn-text"  >Seleziona Tipologia</div>
-                                <div class="arrow-dwn" @click="prova()">
+                                <div class="arrow-dwn">
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                             </div>
@@ -251,13 +275,16 @@ export default {
             transform: rotate(-180deg);
         }
         .list-items{
-            position: relative;
+            position: absolute;
+            top: 50px;
             margin-top: 0px;
             border-radius: 8px;
             padding: 0px;
             background-color: #fff;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
             height: 0;
+            width: 100%;
+            z-index: 9999;
             overflow-y: hidden;
             transition: 1s all;
         }
