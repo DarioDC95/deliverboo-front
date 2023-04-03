@@ -1,5 +1,7 @@
 <script>
 import { store } from '../../store';
+import axios from 'axios';
+
 
 import AppLoader from '../../components/AppLoader.vue';
 
@@ -33,8 +35,91 @@ export default {
         selectPage(value) {
             store.current_page = value;
             this.$emit('select-page')
+        },
+        getTypes(){
+        axios.get(`${store.url_restaurants}api/types`).then((response) => {
+                if (response.data.success) {
+                store.types = response.data.result;
+                }
+                else {
+                this.$router.push('/failed');
+                }
+            })
+        },
+        prova(){
+            const selectBtn = document.querySelector(".select-btn"),
+            items = document.querySelectorAll(".item");
+
+            if(selectBtn != null) {
+
+                selectBtn.addEventListener("click", () => {
+                    selectBtn.classList.toggle("open");
+                });
+                
+                items.forEach(item => {
+                    item.addEventListener("click", () => {
+                        item.classList.toggle("checked");
+                
+                        let checked = document.querySelectorAll(".checked"),
+                            btnText = document.querySelector(".btn-text");
+                
+                            if(checked && checked.length > 0){
+                                btnText.innerText = `${checked.length} Selected`;
+                            }else{
+                                btnText.innerText = "Seleziona Tipologia";
+                            }
+                    });
+                })
+            }
+            
+        },
+        setDelete() {
+
+        const inputTypes = document.querySelectorAll('.types-checks:checked')
+        const arrayFiltered = []
+        inputTypes.forEach(item => arrayFiltered.push(item.value))
+        store.prova = arrayFiltered
+        let stringJoin = store.prova.join()
+
+
+
+        store.current_page = 1
+        if(stringJoin == ''){
+                axios.get(`${store.url_restaurants}api/restaurants?page=${store.current_page}`).then((response) => {
+                if (response.data.success) {
+                store.restaurants = response.data.result.data;
+                store.loading = false;
+                store.last_page = response.data.result.last_page;
+                store.loading = false;
+
+
+                }
+                else {
+                this.$router.push('/failed');
+                }
+            })
+        }
+        else{
+            axios.get(`${store.url_restaurants}api/restaurants/${store.prova}&page=1`).then((response) => {
+                    if (response.data.success) {
+                    store.restaurants = response.data.result.data;
+                    store.loading = false;
+                    store.last_page = response.data.result.last_page;
+                    store.loading = false;
+   
+                    }
+                    else {
+                    this.$router.push('/failed');
+                    }
+                })
+            
+
         }
     },
+    },
+    mounted(){
+        this.getTypes()
+    }
 }
 </script>
 
@@ -43,6 +128,30 @@ export default {
     <main v-else>
         <section>
             <div class="container mt-5">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="container-select">
+                            <div class="select-btn">
+                                <div class="btn-text"  >Seleziona Tipologia</div>
+                                <div class="arrow-dwn" @click="prova()">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                            </div>
+                
+                            <ul class="list-items">
+                               
+                                <li class="item" v-for="(item, index) in store.types" :key="index">
+                                    <input type="checkbox" class="input-checkbox types-checks" :value="item.id" id="item.id" @click="setDelete()" name="types[]">
+                                    <div class="checkbox">
+                                        <i class="fa-solid fa-check check-icon"></i>
+                                    </div>
+                                    <div class="item-text">{{ item.name }}</div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <div class="row gy-4">
                     <div class="col-12 col-sm-6 col-md-3" v-for="(restaurant, index) in store.restaurants" :key="index">
                         <div class="card h-100">
@@ -109,4 +218,118 @@ export default {
         object-fit: scale-down;
     }
 }
+
+.container-select{
+        position: relative;
+        max-width: 320px;
+        width: 100%;
+
+        .select-btn{
+            display: flex;
+            height: 50px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        .select-btn .btn-text{
+            font-size: 17px;
+            font-weight: 400;
+            color: #333;
+        }
+        .select-btn .arrow-dwn{
+            display: flex;
+            height: 21px;
+            width: 21px;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 50%;
+            background: #6e93f7;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .select-btn.open .arrow-dwn{
+            transform: rotate(-180deg);
+        }
+        .list-items{
+            position: relative;
+            margin-top: 0px;
+            border-radius: 8px;
+            padding: 0px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            height: 0;
+            overflow-y: hidden;
+            transition: 1s all;
+        }
+        .select-btn.open ~ .list-items{
+            margin-top: 15px;
+            height: 250px;
+            padding: 16px;
+            overflow-y: auto;
+        }
+        .list-items .item{
+            display: flex;
+            align-items: center;
+            list-style: none;
+            height: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            /* padding: 0 15px; */
+            border-radius: 8px;
+            position: relative;
+        }
+        .list-items .item:hover{
+            background-color: #e7edfe;
+        }
+        .item .item-text{
+            font-size: 16px;
+            font-weight: 400;
+            color: #333;
+        }
+        .item .input-checkbox{
+            position: absolute;
+            left: 0;
+            z-index: 1;
+            cursor: pointer;
+            opacity: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .item .checkbox{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 16px;
+            width: 16px;
+            border-radius: 4px;
+            margin-right: 12px;
+            border: 1.5px solid #c0c0c0;
+            transition: all 0.3s ease-in-out;
+            margin-left: 20px;
+        }
+        /* verifico se è :checked l'input */
+        .item .input-checkbox:checked ~ .checkbox{
+            background-color: #4070f4;
+            border-color: #4070f4;
+            box-shadow: 0px 0px 5px 2px #4070f4 ;
+        }
+        /* .item.checked .checkbox{
+            background-color: #4070f4;
+            border-color: #4070f4;
+        } */
+        .checkbox .check-icon{
+            color: #fff;
+            font-size: 11px;
+            transform: scale(0);
+            transition: all 0.2s ease-in-out;
+        }
+        .item.checked .check-icon{
+            transform: scale(1);
+        }
+    }
 </style>
