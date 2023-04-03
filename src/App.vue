@@ -44,8 +44,37 @@ export default {
     },
 
     changePage() {
-      
-      this.getRestaurants();
+
+      let stringJoin = store.prova.join()
+
+      if(stringJoin == ''){
+          axios.get(`${store.url_restaurants}api/restaurants?page=${store.current_page}`).then((response) => {
+              if (response.data.success) {
+              store.restaurants = response.data.result.data;
+              store.loading = false;
+              store.last_page = response.data.result.last_page;
+              store.loading = false;
+
+              }
+              else {
+              this.$router.push('/failed');
+              }
+          })
+      }
+      else{
+          axios.get(`${store.url_restaurants}api/restaurants/${stringJoin}?page=${store.current_page}`).then((response) => {
+              if (response.data.success) {
+              store.restaurants = response.data.result.data;
+              store.loading = false;
+              store.last_page = response.data.result.last_page;
+              store.loading = false;
+
+              }
+              else {
+              this.$router.push('/failed');
+              }
+          })
+      }
     }
   }
 }

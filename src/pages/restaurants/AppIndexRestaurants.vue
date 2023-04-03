@@ -75,47 +75,42 @@ export default {
         },
         setDelete() {
 
-        const inputTypes = document.querySelectorAll('.types-checks:checked')
-        const arrayFiltered = []
-        inputTypes.forEach(item => arrayFiltered.push(item.value))
-        store.prova = arrayFiltered
-        let stringJoin = store.prova.join()
+            const inputTypes = document.querySelectorAll('.types-checks:checked')
+            const arrayFiltered = []
+            inputTypes.forEach(item => arrayFiltered.push(item.value))
+            store.prova = arrayFiltered
+            let stringJoin = store.prova.join()
 
-
-
-        store.current_page = 1
-        if(stringJoin == ''){
+            store.current_page = 1
+            if(stringJoin == ''){
                 axios.get(`${store.url_restaurants}api/restaurants?page=${store.current_page}`).then((response) => {
-                if (response.data.success) {
-                store.restaurants = response.data.result.data;
-                store.loading = false;
-                store.last_page = response.data.result.last_page;
-                store.loading = false;
-
-
-                }
-                else {
-                this.$router.push('/failed');
-                }
-            })
-        }
-        else{
-            axios.get(`${store.url_restaurants}api/restaurants/${store.prova}&page=1`).then((response) => {
                     if (response.data.success) {
                     store.restaurants = response.data.result.data;
                     store.loading = false;
                     store.last_page = response.data.result.last_page;
                     store.loading = false;
-   
+
                     }
                     else {
                     this.$router.push('/failed');
                     }
                 })
-            
+            }
+            else{
+                axios.get(`${store.url_restaurants}api/restaurants/${stringJoin}?page=${store.current_page}`).then((response) => {
+                    if (response.data.success) {
+                    store.restaurants = response.data.result.data;
+                    store.loading = false;
+                    store.last_page = response.data.result.last_page;
+                    store.loading = false;
 
-        }
-    },
+                    }
+                    else {
+                    this.$router.push('/failed');
+                    }
+                })
+            }
+        },
     },
     mounted(){
         this.getTypes()
