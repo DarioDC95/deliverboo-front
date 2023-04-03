@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, function (err, instance) {
         button.addEventListener('click', function () {
             instance.requestPaymentMethod(function (err, payload) {
-
+                store.payment = true
                 router.push('/cart')
             });
         })
