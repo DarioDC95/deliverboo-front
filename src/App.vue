@@ -17,6 +17,13 @@ export default {
   },
   mounted() {
     this.getRestaurants();
+    
+    // recupero le info da localStorage
+    if (localStorage.getItem("cart")) {
+      let dataCart = JSON.parse(localStorage.getItem("cart"));
+      store.cart = dataCart.cartstorage;
+      console.log(store.cart)
+    }
   },
   methods: {
     getRestaurants() {

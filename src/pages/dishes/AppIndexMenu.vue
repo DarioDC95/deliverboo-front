@@ -84,8 +84,6 @@ export default {
 
             let cartstorage = store.cart
             localStorage.setItem("cart", JSON.stringify({cartstorage}))
-            let ciao = localStorage.getItem("cart")
-            console.log(ciao)
         }
     }
 }
