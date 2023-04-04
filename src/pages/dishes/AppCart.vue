@@ -26,12 +26,9 @@ export default {
         totalPrice() {
             store.totalPrice = 0;
             for (let i = 0; i < store.cart.length; i++) {
-                console.log('sono dentro il primo for')
 
                 for (let j = 0; j < store.cart[i].length; j++) {
-                    console.log('sono dentro nel secondo for')
                     store.totalPrice += (store.cart[i][j].dish.price * store.cart[i][j].quantity)
-                    console.log(store.cart[i][j].dish.price)
                 }
             }
 
@@ -41,9 +38,7 @@ export default {
             let partialPriceOk = 0;
 
             for (let i = 0; i < item.length; i++) {
-                console.log('sono dentro nel secondo for')
                 partialPriceOk += item[i].dish.price * item[i].quantity
-                console.log(partialPriceOk)
             }
 
             return partialPriceOk
@@ -69,7 +64,7 @@ export default {
                 emptyCart.classList.add('d-none')
                 emptyCart.classList.remove('d-inline-block')
 
-                location.href = 'http://localhost:5174/payment'
+                location.href = 'http://localhost:5173/payment'
             }
             else {
 
