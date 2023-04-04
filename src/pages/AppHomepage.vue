@@ -42,6 +42,18 @@ export default {
 
             ],
 
+            //* 1° Sezione
+
+            //? COMING SOON...
+
+                /* 1° Sezione  //!DA FIXARE */
+            description1: 'I grandi classici che scaldano il cuore, perfetti in ogni momento.',
+            description2: 'Dolci piaceri per rendere la giornata ancora più gustosa.',
+            description3: 'Serve una scusa per stare insieme? Ordina dai ristoranti che trasformeranno la tua serata in un vera festa.',
+            description4: 'I più famosi, i più buoni, i preferiti. Quelli che trovi solo su Deliveboo.',
+
+
+
             //* 2° Sezione
             premiums: [
                 {
@@ -95,18 +107,33 @@ export default {
 
             ],
 
+            //* 3° Sezione
+
+            badge0: 'Halal',
+            badge1: 'Colazione',
+            badge2: 'Vegetariano',
+            badge3: 'Messicano',
+            badge4: 'Dessert',
+            badge5: 'Indiano',
+            badge6: 'Greco',
+            badge7: 'Giapponese',
+            badge8: 'Cinese',
+            badge9: 'Libanese',
+            badge10: 'Americano',
+            badge11: 'Italiano',
+            badge12: 'Thailandese',
+            badge13: 'Sushi',
+            badge14: 'Pizza',
+
+
             /* titoli delle sezioni */
             title0: 'Scopri i nostri ristoranti',
             title0a: 'Scegli tra centinaia di opzioni per il tuo prossimo pasto',
             title1: 'La selezione di Deliveboo',
             title2: 'I tuoi piatti preferiti, consegnati da noi.',
+            title3: 'Cerchi qualcos\'altro?',
 
-            /* 1° Sezione */
-            description1: 'I grandi classici che scaldano il cuore, perfetti in ogni momento.',
-            description2: 'Dolci piaceri per rendere la giornata ancora più gustosa.',
-            description3: 'Serve una scusa per stare insieme? Ordina dai ristoranti che trasformeranno la tua serata in un vera festa.',
-            description4: 'I più famosi, i più buoni, i preferiti. Quelli che trovi solo su Deliveboo.',
-
+            
         };
     },
     methods: {
@@ -212,27 +239,100 @@ export default {
         </div>
     </div>
 
-    <!--* 2° Sezione - I preferiti -->
-    <div class="colore-bg bg-warning">
+    <!-- * 2° Sezione - I preferiti -->
+    <div class="colore-bg bg-warning bg-gradient">
         <div class="container-xl text-center">
-            <h2 class="my-5 fs-1 pt-5">{{ title2 }}</h2>
+            <h2 class="my-5 fs-1 pt-5 fw-bold">{{ title2 }}</h2>
 
             <div class="row text-center d-flex align-content-center text-white">
                 <!-- 3 colonne -->
                 <div id="gap" class="d-flex flex-wrap justify-content-center mb-5em ">
-                    <div id="cont-img" class="m-2 mb-4 card my-2 col-sm-5 col-md-3 col-xl-3 shadow" style="width: 22rem; height:18em ;"
-                        v-for="(premium, index) in premiums" :key="index">
-                        <img id="img-dim" :src="premium.image" class="card-img-top p-1 w-auto h-75" alt="Image-premium">
+                    <div id="cont-img" class="m-2 mb-4 card my-2 col-sm-5 col-md-3 col-xl-3 shadow"
+                        style="width: 22rem; height:18em ;" v-for="(premium, index) in premiums" :key="index">
+                        <img id="img-dim" :src="premium.image" class="card-img-top p-1 w-auto h-75 rounded border-light-subtle border-bottom" alt="Image-premium">
                         <div class="card-body">
                             <p class="card-text text-black fw-bolder ">{{ premium.description }}</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- * 3° Sezione - Cerchi qualcos'altro? -->
+    <div class="container-xl text-center">
+        <h2 class="fs-1 pt-5 fw-bold">{{ title3 }}</h2>
+
+        <div class="row my-4 shadow">
+            <div class="gap-2 p-3 col-12 d-flex flex-wrap justify-content-left m-auto w-100 fs-2 shadow">
+
+                <!-- #0 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge0}}</span>
+                </a>
+                <!-- #1 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge1}}</span>
+                </a>
+                <!-- #2 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge2}}</span>
+                </a>
+                <!-- #3 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge3}}</span>
+                </a>
+                <!-- #4 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge4}}</span>
+                </a>
+                <!-- #5 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge5}}</span>
+                </a>
+                <!-- #6 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge6}}</span>
+                </a>
+                <!-- #7 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge7}}</span>
+                </a>
+                <!-- #8 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge8}}</span>
+                </a>
+                <!-- #9 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge9}}</span>
+                </a>
+                <!-- #10 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge10}}</span>
+                </a>
+                <!-- #11 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge11}}</span>
+                </a>
+                <!-- #12 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge12}}</span>
+                </a>
+                <!-- #13 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge13}}</span>
+                </a>
+                <!-- #14 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{badge14}}</span>
+                </a>
             </div>
         </div>
     </div>
 </template>
+
+
+<!-- ! STYLE -->
 
 <style scoped lang="scss">
 //* Carousel
@@ -334,6 +434,13 @@ export default {
 //* 3 Colonne
 .mb-5em {
     margin-bottom: 5em; //! utilizzato per gli spazi bottom section
+}
+
+
+/* 3° Sezione - Badge */
+
+.dist-badge{
+    margin: 1vmin;
 }
 
 </style>
