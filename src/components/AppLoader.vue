@@ -6,7 +6,7 @@
 </script>
 
 <template>
-    <div class="card flex-row justify-content-center align-items-center border-0">
+    <div class="card loader flex-row justify-content-center align-items-center border-0">
         <div class="lds-ring me-3"><div></div><div></div><div></div><div></div></div>
         <h5 class="m-0 me-2">Sto caricando</h5>
         <div class="dots"><div></div><div></div><div></div></div>
@@ -14,6 +14,10 @@
 </template>
 
 <style scoped lang="scss">
+
+    .loader {
+        height: 100vh;
+    }
     .lds-ring {
         display: inline-block;
         position: relative;
