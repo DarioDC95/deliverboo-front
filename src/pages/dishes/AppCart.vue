@@ -23,6 +23,20 @@ export default {
             let cartstorage = store.cart
             localStorage.setItem("cart", JSON.stringify({ cartstorage }))
         },
+        removeDish(index, beta) {
+            if(store.cart[index].length >= 1 && store.cart[index][beta].quantity > 1) {
+                store.cart[index][beta].quantity--
+            }
+            else if (store.cart[index].length > 1 && store.cart[index][beta].quantity == 1) {
+                store.cart[index].splice(beta, 1)
+            }
+            else if (store.cart[index].length == 1 && store.cart[index][beta].quantity == 1) {
+                store.cart.splice(index, 1)
+            }
+
+            let cartstorage = store.cart
+            localStorage.setItem("cart", JSON.stringify({ cartstorage }))
+        },
         totalPrice() {
             let totalPrice = 0
             for (let i = 0; i < store.cart.length; i++) {
@@ -165,6 +179,7 @@ export default {
                                         <div>
                                             <p>x {{ value.quantity }} <span class="fw-bold ms-2">{{ value.dish.name
                                             }}:</span></p>
+                                            <div class="prova" @click="removeDish(index, beta)">&#8861;</div>
                                         </div>
                                         <div>
                                             <span class="">{{ `${value.dish.price}&#8364;` }} = {{ value.dish.price *
