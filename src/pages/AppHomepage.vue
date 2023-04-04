@@ -336,7 +336,7 @@ export default {
         </div>
     </div>
 
-    <!-- <Recensioni></Recensioni> -->
+    <Recensioni></Recensioni>
 </template>
 
 
