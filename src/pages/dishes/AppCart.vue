@@ -46,7 +46,7 @@ export default {
                 }
             }
 
-            store.totalPrice = totalPrice
+            store.totalPrice = totalPrice.toFixed(2)
             return store.totalPrice
         },
         partialPrice(item) {
@@ -176,19 +176,18 @@ export default {
                                 </div>
                                 <div v-for="(value, beta) in store.cart[index]" :key="beta">
                                     <div class="d-flex ms-2 justify-content-between card-personale">
-                                        <div>
-                                            <p>x {{ value.quantity }} <span class="fw-bold ms-2">{{ value.dish.name
+                                        <div class="my-auto">
+                                            <p><span class="prova" @click="removeDish(index, beta)">&#8861;</span>x {{ value.quantity }} <span class="fw-bold ms-2">{{ value.dish.name
                                             }}:</span></p>
-                                            <div class="prova" @click="removeDish(index, beta)">&#8861;</div>
+                                            
                                         </div>
-                                        <div>
-                                            <span class="">{{ `${value.dish.price}&#8364;` }} = {{ value.dish.price *
-                                                value.quantity }}&#8364;</span>
-
+                                        <div class="my-auto">
+                                            <span class="">{{ `${value.dish.price}&#8364;` }} = {{ (value.dish.price *
+                                                value.quantity).toFixed(2) }}&#8364;</span>
                                         </div>
                                     </div>
                                 </div>
-                                <h5>Prezzo del ristorante: {{ partialPrice(item) }}</h5>
+                                <h5>Prezzo del ristorante: {{ partialPrice(item).toFixed(2) }}</h5>
                             </li>
                         </ul>
 
