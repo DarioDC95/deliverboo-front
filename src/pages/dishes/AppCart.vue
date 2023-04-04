@@ -1,9 +1,19 @@
 <script>
 import { store } from '../../store';
+import axios, { formToJSON } from 'axios';
+
 export default {
     data() {
         return {
-            store
+            store,
+            name_client: '',
+            surname_client: '',
+            email_client: '',
+            phone_client:'',
+            address_client: '',
+            success: false,
+            errors: {}
+
         }
     },
     methods: {
@@ -24,6 +34,8 @@ export default {
                     console.log(store.cart[i][j].dish.price)
                 }
             }
+
+            return store.totalPrice
         },
         partialPrice(item) {
             let partialPriceOk = 0;
@@ -35,6 +47,38 @@ export default {
             }
 
             return partialPriceOk
+        },
+        sendForm(){
+            const form = {
+                name_client: this.name_client,
+                surname_client: this.surname_client,
+                email_client: this.email_client,
+                phone_client: this.phone_client,
+                address_client: this.address_client
+            }
+
+            store.loading = true;
+            this.errors = {}
+
+            axios.post(`${store.url_restaurants}api/cart`, form).then((response) => {
+                
+                console.log(response)
+                if(!response.data.success){
+                    this.errors = response.data.errors
+                    store.loading = false
+                }
+                else{
+                    this.name_client= '',
+                    this.surname_client= '',
+                    this.email_client='',
+                    this.phone_client= '',
+                    this.address_client= '' 
+                    this.success= true,
+                    store.loading = false
+
+                    
+                }
+            })
         }
     },
     mounted() {
@@ -45,32 +89,131 @@ export default {
 
 <template>
     <main>
-        <section>
-            <div>
-                <ul>
-                    <li v-for="(item, index) in store.cart" :key="index">
-                        <div v-for="(value, beta) in store.cart[index]" :key="beta">
-                            <p><span>{{ value.dish.name }}</span><span class="mx-2">{{ `${value.dish.price}&#8364;` }}</span></p>
-                            <p>Quantità: {{ value.quantity }}</p>
-                            <h5>{{ value.dish.price * value.quantity }}</h5>
-                            <div>
-                                <button @click="removeCart(index)" class="btn btn-danger btn-sm "><i
-                                        class="fa-solid fa-minus"></i></button>
-
+        <section class="container">
+            <div class="row mt-5">
+                <div class="col-7">
+                    <form @submit.prevent="sendForm">
+                        <div class="col-12">
+                            <div class="col-6">
+                                <label class="control-label fw-bold my-2" for="nome">Nome</label>
+                                <input type="text" class="form-control" name="name_client" id="name" v-model="name_client" placeholder="Inserisci il nome">
+                                <div  v-for="(error, index) in errors.name_client" :key="`message-error-${index}`" class="alert alert-danger my-2">     
+                                    <p  class="fw-bold">{{error}}</p>
+                                </div>
                             </div>
-
+                            <div class="col-6">
+                                <label class="control-label fw-bold my-2" for="cognome">Cognome</label>
+                                <input type="text" class="form-control" name="surname_client" id="surname" v-model="surname_client" placeholder="Inserisci il cognome">
+                                <div  v-for="(error, index) in errors.surname_client" :key="`message-error-${index}`" class="alert alert-danger my-2">     
+                                    <p  class="fw-bold">{{error}}</p>
+                                </div>
+                            </div>
                         </div>
-                        <h5>{{ partialPrice(item) }}</h5>
-                    </li>
-                </ul>
-                <button class="btn btn-primary mx-2" @click="totalPrice()">aggiorna totale</button>
+                        <div class="col-12">
+                            <div class="col-6">
+                                <label class="control-label fw-bold my-2" for="mail">Email</label>
+                                <input type="mail" class="form-control" name="email_client" id="mail" v-model="email_client" placeholder="Inserisci l'email">
+                                <div  v-for="(error, index) in errors.email_client" :key="`message-error-${index}`" class="alert alert-danger my-2">     
+                                    <p  class="fw-bold">{{error}}</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label class="control-label fw-bold my-2" for="phone">Telefono</label>
+                                <input type="phone" class="form-control" name="phone_client" id="phone" v-model="phone_client" placeholder="Inserisci il Numero di telefono">
+                                <div  v-for="(error, index) in errors.phone_client" :key="`message-error-${index}`" class="alert alert-danger my-2">     
+                                    <p  class="fw-bold">{{error}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="col-8">
+                                <label class="control-label fw-bold my-2" for="address">Indirizzo</label>
+                                <input type="text" class="form-control" name="address_client" id="address" v-model="address_client" placeholder="Inserisci la via">
+                                <div  v-for="(error, index) in errors.address_client" :key="`message-error-${index}`" class="alert alert-danger my-2">     
+                                    <p  class="fw-bold">{{error}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 mb-5">
+                            <button type="submit" class="btn-personale mt-4" >Invia</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-5 border-personale">
+                    <div class="p-5">
+                        <ul class="list-unstyled">
+                            <li v-for="(item, index) in store.cart" :key="index">
+                                <div class="d-flex justify-content-between">
+                                    
+                                        <div class="my-auto">{{ item[0].dish.restaurant.user.name }}</div>
+                                    
+                                    
+                                        <div @click="removeCart(index)" class="prova" >&#8861;</div>
+                                    
+                                </div>
+                                <div v-for="(value, beta) in store.cart[index]" :key="beta">
+                                    <div class="d-flex ms-2 justify-content-between card-personale">
+                                        <div>
+                                            <p>x {{ value.quantity }} <span class="fw-bold ms-2">{{ value.dish.name }}:</span></p>
+                                        </div>
+                                        <div>
+                                            <span class="">{{ `${value.dish.price}&#8364;` }}  = {{ value.dish.price * value.quantity }}&#8364;</span>
+                                            
+                                        </div>
+                                    </div>                                        
+                                </div>
+                                <h5>Prezzo del ristorante:  {{ partialPrice(item) }}</h5>
+                            </li>
+                        </ul>
+        
+                        <div>
+                            <h2>Total:  {{ totalPrice() }}</h2>
+                        </div>
 
-            </div>
-            <div>
-                <h2>Totale: {{ store.totalPrice }}</h2>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+    .card-personale{
+        border-bottom:1px solid #d5d6d6 ;
+    }
+
+    .prova{
+        font-size: 30px;
+        cursor: pointer;
+        color: red;
+    }
+
+    .border-personale{
+        border: 2px solid #d5d6d6;
+        border-radius: 15px;
+        box-shadow: 12px 12px 2px 1px rgba(19 19 20 / 37%);
+    }
+    .btn-personale{
+        width: 150px;
+        height: 50px;
+        border-radius: 45px;
+        transition: all 0.3s;
+        cursor: pointer;
+        // font-size: 1.2rem;
+        background-color: #315cfd;
+        border: 3px solid #315cfd;
+        
+        &:hover{
+            // border: #315cfd;
+            background: #fff;
+            color:#315cfd;
+            // font-size: 1.5rem;
+        }
+    }
+
+
+
+
+</style>
