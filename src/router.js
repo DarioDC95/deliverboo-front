@@ -8,7 +8,7 @@ import AppIndexRestaurants from './pages/restaurants/AppIndexRestaurants.vue';
 import AppIndexMenu from './pages/dishes/AppIndexMenu.vue';
 import AppCart from './pages/dishes/AppCart.vue';
 import payment from './pages/payment.vue';
-import AppOrderRecap from './pages/AppOrderRecap';
+import AppOrderRecap from './pages/AppOrderRecap.vue';
 
 const router = createRouter({
   history: createWebHistory(),
