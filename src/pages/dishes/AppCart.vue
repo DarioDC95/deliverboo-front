@@ -9,7 +9,7 @@ export default {
             name_client: '',
             surname_client: '',
             email_client: '',
-            phone_client:'',
+            phone_client: '',
             address_client: '',
             success: false,
             errors: {}
@@ -21,14 +21,14 @@ export default {
             store.cart.splice(index, 1)
 
             let cartstorage = store.cart
-            localStorage.setItem("cart", JSON.stringify({cartstorage}))
+            localStorage.setItem("cart", JSON.stringify({ cartstorage }))
         },
         totalPrice() {
             store.totalPrice = 0;
-            for(let i = 0; i< store.cart.length; i++){
+            for (let i = 0; i < store.cart.length; i++) {
                 console.log('sono dentro il primo for')
-                
-                for(let j=0 ; j< store.cart[i].length ; j++){
+
+                for (let j = 0; j < store.cart[i].length; j++) {
                     console.log('sono dentro nel secondo for')
                     store.totalPrice += (store.cart[i][j].dish.price * store.cart[i][j].quantity)
                     console.log(store.cart[i][j].dish.price)
@@ -40,7 +40,7 @@ export default {
         partialPrice(item) {
             let partialPriceOk = 0;
 
-            for(let i = 0; i < item.length; i++) {
+            for (let i = 0; i < item.length; i++) {
                 console.log('sono dentro nel secondo for')
                 partialPriceOk += item[i].dish.price * item[i].quantity
                 console.log(partialPriceOk)
@@ -48,7 +48,7 @@ export default {
 
             return partialPriceOk
         },
-        sendForm(){
+        sendForm() {
             const form = {
                 name_client: this.name_client,
                 surname_client: this.surname_client,
@@ -61,22 +61,22 @@ export default {
             this.errors = {}
 
             axios.post(`${store.url_restaurants}api/cart`, form).then((response) => {
-                
+
                 console.log(response)
-                if(!response.data.success){
+                if (!response.data.success) {
                     this.errors = response.data.errors
                     store.loading = false
                 }
-                else{
-                    this.name_client= '',
-                    this.surname_client= '',
-                    this.email_client='',
-                    this.phone_client= '',
-                    this.address_client= '' 
-                    this.success= true,
-                    store.loading = false
+                else {
+                    this.name_client = '',
+                        this.surname_client = '',
+                        this.email_client = '',
+                        this.phone_client = '',
+                        this.address_client = ''
+                    this.success = true,
+                        store.loading = false
 
-                    
+
                 }
             })
         }
@@ -96,46 +96,57 @@ export default {
                         <div class="col-12">
                             <div class="col-6">
                                 <label class="control-label fw-bold my-2" for="nome">Nome</label>
-                                <input type="text" class="form-control" name="name_client" id="name" v-model="name_client" placeholder="Inserisci il nome">
-                                <div  v-for="(error, index) in errors.name_client" :key="`message-error-${index}`" class="alert alert-danger my-2">     
-                                    <p  class="fw-bold">{{error}}</p>
+                                <input type="text" class="form-control" name="name_client" id="name" v-model="name_client"
+                                    placeholder="Inserisci il nome">
+                                <div v-for="(error, index) in errors.name_client" :key="`message-error-${index}`"
+                                    class="alert alert-danger my-2">
+                                    <p class="fw-bold">{{ error }}</p>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <label class="control-label fw-bold my-2" for="cognome">Cognome</label>
-                                <input type="text" class="form-control" name="surname_client" id="surname" v-model="surname_client" placeholder="Inserisci il cognome">
-                                <div  v-for="(error, index) in errors.surname_client" :key="`message-error-${index}`" class="alert alert-danger my-2">     
-                                    <p  class="fw-bold">{{error}}</p>
+                                <input type="text" class="form-control" name="surname_client" id="surname"
+                                    v-model="surname_client" placeholder="Inserisci il cognome">
+                                <div v-for="(error, index) in errors.surname_client" :key="`message-error-${index}`"
+                                    class="alert alert-danger my-2">
+                                    <p class="fw-bold">{{ error }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="col-6">
                                 <label class="control-label fw-bold my-2" for="mail">Email</label>
-                                <input type="mail" class="form-control" name="email_client" id="mail" v-model="email_client" placeholder="Inserisci l'email">
-                                <div  v-for="(error, index) in errors.email_client" :key="`message-error-${index}`" class="alert alert-danger my-2">     
-                                    <p  class="fw-bold">{{error}}</p>
+                                <input type="mail" class="form-control" name="email_client" id="mail" v-model="email_client"
+                                    placeholder="Inserisci l'email">
+                                <div v-for="(error, index) in errors.email_client" :key="`message-error-${index}`"
+                                    class="alert alert-danger my-2">
+                                    <p class="fw-bold">{{ error }}</p>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <label class="control-label fw-bold my-2" for="phone">Telefono</label>
-                                <input type="phone" class="form-control" name="phone_client" id="phone" v-model="phone_client" placeholder="Inserisci il Numero di telefono">
-                                <div  v-for="(error, index) in errors.phone_client" :key="`message-error-${index}`" class="alert alert-danger my-2">     
-                                    <p  class="fw-bold">{{error}}</p>
+                                <input type="phone" class="form-control" name="phone_client" id="phone"
+                                    v-model="phone_client" placeholder="Inserisci il Numero di telefono">
+                                <div v-for="(error, index) in errors.phone_client" :key="`message-error-${index}`"
+                                    class="alert alert-danger my-2">
+                                    <p class="fw-bold">{{ error }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="col-8">
                                 <label class="control-label fw-bold my-2" for="address">Indirizzo</label>
-                                <input type="text" class="form-control" name="address_client" id="address" v-model="address_client" placeholder="Inserisci la via">
-                                <div  v-for="(error, index) in errors.address_client" :key="`message-error-${index}`" class="alert alert-danger my-2">     
-                                    <p  class="fw-bold">{{error}}</p>
+                                <input type="text" class="form-control" name="address_client" id="address"
+                                    v-model="address_client" placeholder="Inserisci la via">
+                                <div v-for="(error, index) in errors.address_client" :key="`message-error-${index}`"
+                                    class="alert alert-danger my-2">
+                                    <p class="fw-bold">{{ error }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-4 mb-5">
-                            <button type="submit" class="btn-personale mt-4" >Invia</button>
+
+                            <a href="http://localhost:5173/payment" type="submit" class="btn-personale">Paga</a>
                         </div>
                     </form>
                 </div>
@@ -144,30 +155,32 @@ export default {
                         <ul class="list-unstyled">
                             <li v-for="(item, index) in store.cart" :key="index">
                                 <div class="d-flex justify-content-between">
-                                    
-                                        <div class="my-auto">{{ item[0].dish.restaurant.user.name }}</div>
-                                    
-                                    
-                                        <div @click="removeCart(index)" class="prova" >&#8861;</div>
-                                    
+
+                                    <div class="my-auto">{{ item[0].dish.restaurant.user.name }}</div>
+
+
+                                    <div @click="removeCart(index)" class="prova">&#8861;</div>
+
                                 </div>
                                 <div v-for="(value, beta) in store.cart[index]" :key="beta">
                                     <div class="d-flex ms-2 justify-content-between card-personale">
                                         <div>
-                                            <p>x {{ value.quantity }} <span class="fw-bold ms-2">{{ value.dish.name }}:</span></p>
+                                            <p>x {{ value.quantity }} <span class="fw-bold ms-2">{{ value.dish.name
+                                            }}:</span></p>
                                         </div>
                                         <div>
-                                            <span class="">{{ `${value.dish.price}&#8364;` }}  = {{ value.dish.price * value.quantity }}&#8364;</span>
-                                            
+                                            <span class="">{{ `${value.dish.price}&#8364;` }} = {{ value.dish.price *
+                                                value.quantity }}&#8364;</span>
+
                                         </div>
-                                    </div>                                        
+                                    </div>
                                 </div>
-                                <h5>Prezzo del ristorante:  {{ partialPrice(item) }}</h5>
+                                <h5>Prezzo del ristorante: {{ partialPrice(item) }}</h5>
                             </li>
                         </ul>
-        
+
                         <div>
-                            <h2>Total:  {{ totalPrice() }}</h2>
+                            <h2>Total: {{ totalPrice() }}</h2>
                         </div>
 
                     </div>
@@ -179,41 +192,43 @@ export default {
 </template>
 
 <style scoped lang="scss">
+.card-personale {
+    border-bottom: 1px solid #d5d6d6;
+}
 
-    .card-personale{
-        border-bottom:1px solid #d5d6d6 ;
+.prova {
+    font-size: 30px;
+    cursor: pointer;
+    color: red;
+}
+
+.border-personale {
+    border: 2px solid #d5d6d6;
+    border-radius: 15px;
+    box-shadow: 12px 12px 2px 1px rgba(19 19 20 / 37%);
+}
+
+.btn-personale {
+    // width: 150px;
+    // height: 50px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    cursor: pointer;
+    // font-size: 1.2rem;
+    background-color: #315cfd;
+    border: 3px solid #315cfd;
+    text-decoration: none;
+    color: white;
+    padding: 5px 20px;
+    margin-top: 15px;
+    display: inline-block;
+    text-align: center;
+
+    &:hover {
+        // border: #315cfd;
+        background: #fff;
+        color: #315cfd;
+        // font-size: 1.5rem;
     }
-
-    .prova{
-        font-size: 30px;
-        cursor: pointer;
-        color: red;
-    }
-
-    .border-personale{
-        border: 2px solid #d5d6d6;
-        border-radius: 15px;
-        box-shadow: 12px 12px 2px 1px rgba(19 19 20 / 37%);
-    }
-    .btn-personale{
-        width: 150px;
-        height: 50px;
-        border-radius: 45px;
-        transition: all 0.3s;
-        cursor: pointer;
-        // font-size: 1.2rem;
-        background-color: #315cfd;
-        border: 3px solid #315cfd;
-        
-        &:hover{
-            // border: #315cfd;
-            background: #fff;
-            color:#315cfd;
-            // font-size: 1.5rem;
-        }
-    }
-
-
-
-
+}
 </style>
