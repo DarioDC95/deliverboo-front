@@ -22,10 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     router.push('/recap')
 
                 }, 2000);
-
             });
         })
     });
-
 });
 

@@ -49,36 +49,35 @@ export default {
             return partialPriceOk
         },
         sendForm() {
-            const form = {
-                name_client: this.name_client,
-                surname_client: this.surname_client,
-                email_client: this.email_client,
-                phone_client: this.phone_client,
-                address_client: this.address_client
+            
+            if(store.cart.length != 0) {
+
+                console.log('array-cart pieno')
+                store.form = {
+                    name_client: this.name_client,
+                    surname_client: this.surname_client,
+                    email_client: this.email_client,
+                    phone_client: this.phone_client,
+                    address_client: this.address_client,
+                    shopping_cart: store.cart
+                }
+
+                let formstorage = store.form
+                localStorage.setItem("form", JSON.stringify({ formstorage }))
+
+                let emptyCart = document.querySelector('.empty-cart');
+                emptyCart.classList.add('d-none')
+                emptyCart.classList.remove('d-inline-block')
+
+                location.href = 'http://localhost:5174/payment'
             }
+            else {
 
-            store.loading = true;
-            this.errors = {}
-
-            axios.post(`${store.url_restaurants}api/cart`, form).then((response) => {
-
-                console.log(response)
-                if (!response.data.success) {
-                    this.errors = response.data.errors
-                    store.loading = false
-                }
-                else {
-                    this.name_client = '',
-                        this.surname_client = '',
-                        this.email_client = '',
-                        this.phone_client = '',
-                        this.address_client = ''
-                    this.success = true,
-                        store.loading = false
-
-
-                }
-            })
+                console.log('array-cart vuoto')
+                let emptyCart = document.querySelector('.empty-cart');
+                emptyCart.classList.remove('d-none')
+                emptyCart.classList.add('d-inline-block')
+            }
         }
     },
     mounted() {
@@ -97,7 +96,7 @@ export default {
                             <div class="col-6">
                                 <label class="control-label fw-bold my-2" for="nome">Nome</label>
                                 <input type="text" class="form-control" name="name_client" id="name" v-model="name_client"
-                                    placeholder="Inserisci il nome">
+                                    placeholder="Inserisci il nome" required pattern="\S(.*\S)?">
                                 <div v-for="(error, index) in errors.name_client" :key="`message-error-${index}`"
                                     class="alert alert-danger my-2">
                                     <p class="fw-bold">{{ error }}</p>
@@ -106,7 +105,7 @@ export default {
                             <div class="col-6">
                                 <label class="control-label fw-bold my-2" for="cognome">Cognome</label>
                                 <input type="text" class="form-control" name="surname_client" id="surname"
-                                    v-model="surname_client" placeholder="Inserisci il cognome">
+                                    v-model="surname_client" placeholder="Inserisci il cognome" required pattern="\S(.*\S)?">
                                 <div v-for="(error, index) in errors.surname_client" :key="`message-error-${index}`"
                                     class="alert alert-danger my-2">
                                     <p class="fw-bold">{{ error }}</p>
@@ -116,8 +115,8 @@ export default {
                         <div class="col-12">
                             <div class="col-6">
                                 <label class="control-label fw-bold my-2" for="mail">Email</label>
-                                <input type="mail" class="form-control" name="email_client" id="mail" v-model="email_client"
-                                    placeholder="Inserisci l'email">
+                                <input type="email" class="form-control" name="email_client" id="mail" v-model="email_client"
+                                    placeholder="Inserisci l'email" required pattern="\S(.*\S)?">
                                 <div v-for="(error, index) in errors.email_client" :key="`message-error-${index}`"
                                     class="alert alert-danger my-2">
                                     <p class="fw-bold">{{ error }}</p>
@@ -125,8 +124,8 @@ export default {
                             </div>
                             <div class="col-6">
                                 <label class="control-label fw-bold my-2" for="phone">Telefono</label>
-                                <input type="phone" class="form-control" name="phone_client" id="phone"
-                                    v-model="phone_client" placeholder="Inserisci il Numero di telefono">
+                                <input type="tel" minlength="9" class="form-control" name="phone_client" id="phone"
+                                    v-model="phone_client" placeholder="Inserisci il Numero di telefono" required pattern="\S(.*\S)?">
                                 <div v-for="(error, index) in errors.phone_client" :key="`message-error-${index}`"
                                     class="alert alert-danger my-2">
                                     <p class="fw-bold">{{ error }}</p>
@@ -137,7 +136,7 @@ export default {
                             <div class="col-8">
                                 <label class="control-label fw-bold my-2" for="address">Indirizzo</label>
                                 <input type="text" class="form-control" name="address_client" id="address"
-                                    v-model="address_client" placeholder="Inserisci la via">
+                                    v-model="address_client" placeholder="Inserisci la via" required pattern="\S(.*\S)?">
                                 <div v-for="(error, index) in errors.address_client" :key="`message-error-${index}`"
                                     class="alert alert-danger my-2">
                                     <p class="fw-bold">{{ error }}</p>
@@ -146,7 +145,10 @@ export default {
                         </div>
                         <div class="col-4 mb-5">
 
-                            <a href="http://localhost:5173/payment" type="submit" class="btn-personale">Paga</a>
+                            <button type="submit" class="btn-personale">Paga</button>
+                        </div>
+                        <div class="empty-cart d-none alert alert-danger my-2">
+                            devi mettere qualcosa nel carrello
                         </div>
                     </form>
                 </div>
