@@ -1,8 +1,8 @@
 <script>
-
+import Recensioni from "../components/Recensioni.vue";
 import Jumbotron from "../components/Jumbotron.vue";
 export default {
-    components: { Jumbotron },
+    components: { Jumbotron, Recensioni },
     name: "AppHome",
     data() {
         return {
@@ -165,6 +165,7 @@ export default {
           
 <template>
     <Jumbotron></Jumbotron>
+    <Recensioni></Recensioni>
 
     <!-- * Main top -->
 
@@ -447,4 +448,5 @@ export default {
 
 .dist-badge {
     margin: 1vmin;
-}</style>
+}
+</style>
