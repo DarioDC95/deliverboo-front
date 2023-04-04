@@ -24,14 +24,15 @@ export default {
             localStorage.setItem("cart", JSON.stringify({ cartstorage }))
         },
         totalPrice() {
-            store.totalPrice = 0;
+            let totalPrice = 0
             for (let i = 0; i < store.cart.length; i++) {
 
                 for (let j = 0; j < store.cart[i].length; j++) {
-                    store.totalPrice += (store.cart[i][j].dish.price * store.cart[i][j].quantity)
+                    totalPrice += (store.cart[i][j].dish.price * store.cart[i][j].quantity)
                 }
             }
 
+            store.totalPrice = totalPrice
             return store.totalPrice
         },
         partialPrice(item) {
@@ -64,7 +65,7 @@ export default {
                 emptyCart.classList.add('d-none')
                 emptyCart.classList.remove('d-inline-block')
 
-                location.href = 'http://localhost:5173/payment'
+                location.href = 'http://localhost:5174/payment'
             }
             else {
 

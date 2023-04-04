@@ -8,7 +8,7 @@ export const store = reactive({
     last_page: null,
     dishes_by_restaurant: null,
     cart: [],
-    totalPrice: [],
+    totalPrice: 0,
     types: [],
     prova: [],
     payment: false,

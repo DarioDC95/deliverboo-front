@@ -25,13 +25,15 @@ export default {
             })
         },
         totalPrice() {
-            store.totalPrice = 0;
+            let totalPrice = 0
             for (let i = 0; i < store.cart.length; i++) {
+
                 for (let j = 0; j < store.cart[i].length; j++) {
-                    store.totalPrice += (store.cart[i][j].dish.price * store.cart[i][j].quantity)
+                    totalPrice += (store.cart[i][j].dish.price * store.cart[i][j].quantity)
                 }
             }
 
+            store.totalPrice = totalPrice
             return store.totalPrice
         },
 
@@ -84,7 +86,7 @@ export default {
         <div class="row">
             <div class="col-12 d-flex justify-content-around">
                 <h1>Totale</h1>
-                <!-- <h1>{{totalPrice()}}&#8364;</h1> -->
+                <h1>{{totalPrice()}}&#8364;</h1>
             </div>
         </div>
         <div class="col-12 border border-secondary my-2"></div>
