@@ -68,36 +68,8 @@ export default {
                 });
             })
         },
-
-        // da rifare
-        prova(){
-            const selectBtn = document.querySelector(".select-btn"),
-            items = document.querySelectorAll(".item");
-
-            if(selectBtn != null) {
-
-                selectBtn.addEventListener("click", () => {
-                    selectBtn.classList.toggle("open");
-                });
-                
-                items.forEach(item => {
-                    item.addEventListener("click", () => {
-                        item.classList.toggle("checked");
-                
-                        let checked = document.querySelectorAll(".checked"),
-                            btnText = document.querySelector(".btn-text");
-                
-                            if(checked && checked.length > 0){
-                                btnText.innerText = `${checked.length} Selected`;
-                            }else{
-                                btnText.innerText = "Seleziona Tipologia";
-                            }
-                    });
-                })
-            }
-        },
         // fino a qui
-        setDelete() {
+        setFilter() {
 
             const inputTypes = document.querySelectorAll('.types-checks:checked')
             const arrayFiltered = []
@@ -160,7 +132,7 @@ export default {
                             <ul class="list-items">
                                
                                 <li class="item" v-for="(item, index) in store.types" :key="index">
-                                    <input type="checkbox" class="input-checkbox types-checks" :value="item.id" id="item.id" @click="setDelete()" name="types[]">
+                                    <input type="checkbox" class="input-checkbox types-checks" :value="item.id" id="item.id" @click="setFilter()" name="types[]">
                                     <div class="checkbox">
                                         <i class="fa-solid fa-check check-icon"></i>
                                     </div>
