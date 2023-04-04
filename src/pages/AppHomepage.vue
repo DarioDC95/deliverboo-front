@@ -7,7 +7,7 @@ export default {
     data() {
         return {
 
-            //* Carosello
+            //* CAROSELLO
             activeIndex: 0,
 
             restaurants: [
@@ -42,19 +42,31 @@ export default {
 
             ],
 
-            //* 1° Sezione
+            //* 1° SEZIONE
 
-            //? COMING SOON...
-
-                /* 1° Sezione  //!DA FIXARE */
+            /* 2 Colonne */
             description1: 'I grandi classici che scaldano il cuore, perfetti in ogni momento.',
             description2: 'Dolci piaceri per rendere la giornata ancora più gustosa.',
-            description3: 'Serve una scusa per stare insieme? Ordina dai ristoranti che trasformeranno la tua serata in un vera festa.',
-            description4: 'I più famosi, i più buoni, i preferiti. Quelli che trovi solo su Deliveboo.',
 
+            /* 3 Colonne */
+            selections: [
+                {
+                    image: "/img/ristorante-foodfotos1.jpg",
+                    description: "I grandi classici che scaldano il cuore, perfetti in ogni momento."
+                },
+                {
+                    image: "/img/ristorante-pizzeria.jpg",
+                    description: "I più famosi, i più buoni, i preferiti. Quelli che trovi solo su Deliveboo."
+                },
+                {
+                    image: "/img/premium/nima-sushi.webp",
+                    description: "Serve una scusa per stare insieme? Ordina dai ristoranti che trasformeranno la tua serata in un vera festa."
+                },
 
+            ],
 
-            //* 2° Sezione
+            //* 2° SEZIONE
+
             premiums: [
                 {
                     image: "/img/premium/McDonald.webp",
@@ -133,7 +145,7 @@ export default {
             title2: 'I tuoi piatti preferiti, consegnati da noi.',
             title3: 'Cerchi qualcos\'altro?',
 
-            
+
         };
     },
     methods: {
@@ -193,63 +205,53 @@ export default {
             </div>
         </div>
 
-        <div class="row my-5 text-center">
-            <div class="col-sm-6">
+        <div class="row my-4 text-center">
+            <div class="col-sm-6 col-md-6 col-lg-8 g-4">
                 <div class="card shadow">
-                    <img src="/img/ristorante-giapponesi.jpg" style="height: 15em;" class="card-img-top img-cover "
+                    <img src="/img/cibo-nei-fast-food.jpg" style="height: 18em;" class="card-img-top p-2"
                         alt="Image-Restaurant">
-                    <div class="card-body">
-                        <p class="card-text">{{ description3 }}</p>
+                    <div class="card-body" style="height: 5em;">
+                        <p class="card-text">{{ description1 }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="card shadow " style="height: 100%;">
-                    <img src="/img/OIP.jpg" style="height: 15em;" class="card-img-top img-fluid img-cover"
-                        alt="Image-Restaurant">
-                    <div class="card-body">
-                        <p class="card-text">{{ description4 }}</p>
+            <div class="col-sm-6 col-md-6 col-lg-4 g-4">
+                <div class="card shadow">
+                    <img src="/img/dolci2.jpg" class="card-img-top p-2" style="height: 18em;" alt="Image-Restaurant">
+                    <div class="card-body" style="height: 5em;">
+                        <p class="card-text">{{ description2 }}</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- 3 colonne - 1° Sezione -->
-        <div class="card-group gap-4 mb-5em">
-            <div class="card shadow">
-                <img src="/img/ristorante-dolci.jpg" class="card-img-top" alt="Image-Restaurant">
-                <div class="card-body">
-                    <p class="card-text">Dolci piaceri per rendere la giornata ancora più gustosa.</p>
-                </div>
 
-            </div>
-            <div class="card shadow">
-                <img src="/img/ristorante-pizzeria.jpg" class="card-img-top" alt="Image-Restaurant">
-                <div class="card-body">
-                    <p class="card-text">Una base leggera per una farcitura sempre diversa.</p>
-                </div>
-
-            </div>
-            <div class="card shadow">
-                <img src="/img/ristorante-giapponesi.jpg" class="card-img-top" alt="Image-Restaurant">
-                <div class="card-body">
-                    <p class="card-text">Le grandi esclusive che scaldano il cuore, selezionate da noi.</p>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-sm-1 g-4">
+            <div class="col" v-for="(selection, index) in selections" :key="index">
+                <div class="card shadow" style="height: 24em;">
+                    <img :src="selection.image" class="card-img-top p-2 rounded" alt="Image-Restaurant" style="height: 17em;">
+                    <div class="card-body py-4 text-center">
+                        <p class="card-text">{{ selection.description }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- * 2° Sezione - I preferiti -->
-    <div class="colore-bg bg-warning bg-gradient">
-        <div class="container-xl text-center">
-            <h2 class="my-5 fs-1 pt-5 fw-bold">{{ title2 }}</h2>
 
+    <div class="colore-bg bg-warning bg-gradient" style="margin-top: 7em;">
+        <div class="container-xl text-center">
+            <h2 class="my-5 fs-1 pt-4 fw-bold">{{ title2 }}</h2>
+            <!-- 3 colonne -->
             <div class="row text-center d-flex align-content-center text-white">
-                <!-- 3 colonne -->
-                <div id="gap" class="d-flex flex-wrap justify-content-center mb-5em ">
+                <div id="gap" class=" d-flex flex-wrap justify-content-center mb-5em ">
                     <div id="cont-img" class="m-2 mb-4 card my-2 col-sm-5 col-md-3 col-xl-3 shadow"
                         style="width: 22rem; height:18em ;" v-for="(premium, index) in premiums" :key="index">
-                        <img id="img-dim" :src="premium.image" class="card-img-top p-1 w-auto h-75 rounded border-light-subtle border-bottom" alt="Image-premium">
+                        <img id="img-dim" :src="premium.image"
+                            class="card-img-top p-1 w-auto h-75 rounded border-light-subtle border-bottom"
+                            alt="Image-premium">
                         <div class="card-body">
                             <p class="card-text text-black fw-bolder ">{{ premium.description }}</p>
                         </div>
@@ -260,6 +262,7 @@ export default {
     </div>
 
     <!-- * 3° Sezione - Cerchi qualcos'altro? -->
+
     <div class="container-xl text-center">
         <h2 class="fs-1 pt-5 fw-bold">{{ title3 }}</h2>
 
@@ -268,63 +271,63 @@ export default {
 
                 <!-- #0 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge0}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge0 }}</span>
                 </a>
                 <!-- #1 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge1}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge1 }}</span>
                 </a>
                 <!-- #2 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge2}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge2 }}</span>
                 </a>
                 <!-- #3 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge3}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge3 }}</span>
                 </a>
                 <!-- #4 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge4}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge4 }}</span>
                 </a>
                 <!-- #5 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge5}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge5 }}</span>
                 </a>
                 <!-- #6 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge6}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge6 }}</span>
                 </a>
                 <!-- #7 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge7}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge7 }}</span>
                 </a>
                 <!-- #8 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge8}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge8 }}</span>
                 </a>
                 <!-- #9 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge9}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge9 }}</span>
                 </a>
                 <!-- #10 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge10}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge10 }}</span>
                 </a>
                 <!-- #11 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge11}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge11 }}</span>
                 </a>
                 <!-- #12 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge12}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge12 }}</span>
                 </a>
                 <!-- #13 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge13}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge13 }}</span>
                 </a>
                 <!-- #14 -->
                 <a class="dist-badge" href="#">
-                    <span class="badge opacity-75 text-bg-secondary">{{badge14}}</span>
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge14 }}</span>
                 </a>
             </div>
         </div>
@@ -371,7 +374,7 @@ export default {
 
     .description {
         position: absolute;
-        top: 77%;
+        top: 70%;
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 0rem;
@@ -439,8 +442,7 @@ export default {
 
 /* 3° Sezione - Badge */
 
-.dist-badge{
+.dist-badge {
     margin: 1vmin;
 }
-
 </style>
