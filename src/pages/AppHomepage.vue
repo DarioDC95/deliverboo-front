@@ -165,7 +165,6 @@ export default {
           
 <template>
     <Jumbotron></Jumbotron>
-    <Recensioni></Recensioni>
 
     <!-- * Main top -->
 
@@ -336,6 +335,8 @@ export default {
             </div>
         </div>
     </div>
+
+    <!-- <Recensioni></Recensioni> -->
 </template>
 
 
