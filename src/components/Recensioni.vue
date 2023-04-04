@@ -139,7 +139,7 @@ export default {
             .descrizione {
                 color: rgba(0, 0, 0, 0.7);
                 font-size: 15px;
-                height: 100px;
+
                 margin: 20px 0;
             }
 
