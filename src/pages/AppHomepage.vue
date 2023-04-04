@@ -6,168 +6,419 @@ export default {
     name: "AppHome",
     data() {
         return {
-            //* carosello
-            title: 'La selezione di Deliveboo',
+
+            //* CAROSELLO
+            activeIndex: 0,
+
+            restaurants: [
+                {
+                    image: "/img/ristorante-hamburger1.jpg",
+                    description: "I grandi classici che scaldano il cuore, perfetti in ogni momento."
+                },
+                {
+                    image: "/img/ristorante-dolci.jpg",
+                    description: "Short description of restaurant 2"
+                },
+                {
+                    image: "/img/ristorante-foodfotos1.jpg",
+                    description: "Short description of restaurant 3"
+                },
+                {
+                    image: "/img/ristorante-giapponesi.jpg",
+                    description: "Short description of restaurant 4"
+                },
+                {
+                    image: "/img/ristorante-dolce.jpg",
+                    description: "Short description of restaurant 5"
+                },
+                {
+                    image: "/img/ristorante-finger.jpg",
+                    description: "Short description of restaurant 6"
+                },
+                {
+                    image: "/img/ristorante-pizzeria.jpg",
+                    description: "Short description of restaurant 7"
+                },
+
+            ],
+
+            //* 1° SEZIONE
+
+            /* 2 Colonne */
             description1: 'I grandi classici che scaldano il cuore, perfetti in ogni momento.',
             description2: 'Dolci piaceri per rendere la giornata ancora più gustosa.',
-            description3: 'Serve una scusa per stare insieme? Ordina dai ristoranti che trasformeranno la tua serata in un vera festa.',
-            description4: 'I più famosi, i più buoni, i preferiti. Quelli che trovi solo su Deliveboo.',
 
-            //* 2° Sezione 
-            title2: 'I tuo piatti preferiti, consegnati da noi.',
-            title2a: 'Dolci e Dessert',
-            title2b: 'Pizzeria e Rosticceria',
-            title2c: 'Esclusiva Deliveboo',
+            /* 3 Colonne */
+            selections: [
+                {
+                    image: "/img/ristorante-foodfotos1.jpg",
+                    description: "I grandi classici che scaldano il cuore, perfetti in ogni momento."
+                },
+                {
+                    image: "/img/ristorante-pizzeria.jpg",
+                    description: "I più famosi, i più buoni, i preferiti. Quelli che trovi solo su Deliveboo."
+                },
+                {
+                    image: "/img/premium/nima-sushi.webp",
+                    description: "Serve una scusa per stare insieme? Ordina dai ristoranti che trasformeranno la tua serata in un vera festa."
+                },
 
-            ristoranti1: 'McDonald\'s ',
-            ristoranti2: 'Nima Sushi',
-            ristoranti3: 'Pokèria by NIMA',
-            ristoranti4: 'Dauruma Kosher',
-            ristoranti5: 'Temakinho',
-            ristoranti6: 'Old Wild West',
-            ristoranti7: 'Roadhouse',
-            ristoranti8: 'Grom',
-            ristoranti9: 'KFC',
-            ristoranti10: 'La piadineria',
-            ristoranti11: 'Berberè Pizzeria',
-            ristoranti12: 'Burger King',
-            ristoranti13: 'Grom',
+            ],
+
+            //* 2° SEZIONE
+
+            premiums: [
+                {
+                    image: "/img/premium/McDonald.webp",
+                    description: "McDonald's"
+                },
+                {
+                    image: "/img/premium/nima-sushi.webp",
+                    description: "Nima Sushi"
+                },
+                {
+                    image: "/img/premium/Pokeria-by-Nima.webp",
+                    description: "Pokèria by NIMA"
+                },
+                {
+                    image: "/img/premium/daruma_kosher.webp",
+                    description: "Daruma Kosher"
+                },
+                {
+                    image: "/img/premium/temakinho.webp",
+                    description: "Temakinho"
+                },
+                {
+                    image: "/img/premium/pizza-barberè.webp",
+                    description: "Berberè Pizzeria"
+                },
+                {
+                    image: "/img/premium/Old-Wild-West-1.jpg",
+                    description: "Old Wild West"
+                },
+                {
+                    image: "/img/premium/roadhouse_experience.jpg",
+                    description: "Roadhouse"
+                },
+                {
+                    image: "/img/premium/Kfc-2.webp",
+                    description: "KFC"
+                },
+                {
+                    image: "/img/premium/la-piadineria.jpg",
+                    description: "La piadineria"
+                },
+                {
+                    image: "/img/premium/burger-king.jpg",
+                    description: "Burger King"
+                },
+                {
+                    image: "/img/premium/grom.jpg",
+                    description: "Grom"
+                },
+
+            ],
+
+            //* 3° Sezione
+
+            badge0: 'Halal',
+            badge1: 'Colazione',
+            badge2: 'Vegetariano',
+            badge3: 'Messicano',
+            badge4: 'Dessert',
+            badge5: 'Indiano',
+            badge6: 'Greco',
+            badge7: 'Giapponese',
+            badge8: 'Cinese',
+            badge9: 'Libanese',
+            badge10: 'Americano',
+            badge11: 'Italiano',
+            badge12: 'Thailandese',
+            badge13: 'Sushi',
+            badge14: 'Pizza',
+
+
+            /* titoli delle sezioni */
+            title0: 'Scopri i nostri ristoranti',
+            title0a: 'Scegli tra centinaia di opzioni per il tuo prossimo pasto',
+            title1: 'La selezione di Deliveboo',
+            title2: 'I tuoi piatti preferiti, consegnati da noi.',
+            title3: 'Cerchi qualcos\'altro?',
+
+
+        };
+    },
+    methods: {
+        previousSlide() {
+            this.activeIndex =
+                (this.activeIndex === 0) ? this.restaurants.length - 1 : this.activeIndex - 1;
+        },
+        nextSlide() {
+            this.activeIndex =
+                (this.activeIndex === this.restaurants.length - 1) ? 0 : this.activeIndex + 1;
         }
+
     }
+
 }
 </script>
-
+          
 <template>
     <Jumbotron></Jumbotron>
 
-    <!-- * main top -->
+    <!-- * Main top -->
 
+    <!-- Scopri i ristoranti -->
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <h1 class="fw-bold">Scopri i nostri ristoranti</h1>
-                <p class="lead fs-3">Scegli tra centinaia di opzioni per il tuo prossimo pasto</p>
+                <h1 class="fw-bold">{{ title0 }}</h1>
+                <p class="lead fs-3">{{ title0a }}</p>
             </div>
         </div>
     </div>
 
-    <!-- * inizio carosello -->
-
-    <div class="container-xxl">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide carousel-container" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
-                    aria-label="Slide 4"></button>
+    <!-- * Inizio Carosello -->
+    <div class="container">
+        <div class="carousel">
+            <div class="slide shadow" v-for="(restaurant, index) in restaurants" :key="index"
+                :class="{ active: index === activeIndex }">
+                <img :src="restaurant.image" alt="Restaurant image" class="rounded">
+                <p class="description shadow">{{ restaurant.description }}</p>
             </div>
-            <div class="carousel-inner shadow carousel-height">
-                <div class="carousel-item shadow active" data-bs-interval="10000">
-                    <img src="/img/ristorante-fastfood.jpg" class="d-block w-100" alt="Image-Restaurant">
-                    <div class="carousel-caption d-none d-md-block text-white">
-                        <div class="">
-                            <p class="fs-2">{{ description1 }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img src="/img/ristorante-dolci.jpg" class="d-block w-100" alt="Image-Restaurant">
-                    <div class="carousel-caption d-none d-md-block text-white">
-                        <p class="fs-2">{{ description2 }}</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="/img/ristorante-giapponesi.jpg" class="d-block w-100" alt="Image-Restaurant">
-                    <div class="carousel-caption d-none d-md-block text-white">
-                        <p class="fs-2">{{ description3 }}</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="/img/ristorante-pizzeria.jpg" class="d-block w-100" alt="Image-Restaurant">
-                    <div class="carousel-caption d-none d-md-block text-white">
-                        <p class="fs-2">{{ description4 }}</p>
-                    </div>
-                </div>
+            <div class="controls">
+                <button @click="previousSlide" class="prev-btn">&#10094;</button>
+                <button @click="nextSlide" class="next-btn">&#10095;</button>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
     </div>
-
     <!-- * fine carosello -->
 
-    <!-- * 1° sezione -->
+    <!-- * 1° sezione - La selezione -->
 
     <!-- 2 colonne -->
     <div class="container-xl">
-        <h2 class="my-3 fs-1">{{ title }}</h2>
 
-        <div class="row my-5 text-center">
-            <div class="col-sm-6">
+        <div class="row">
+            <div class="col-12 text-center mb-2 my-5">
+                <h1 class="fw-bold">{{ title1 }}</h1>
+            </div>
+        </div>
+
+        <div class="row my-4 text-center">
+            <div class="col-sm-6 col-md-6 col-lg-8 g-4">
                 <div class="card shadow">
-                    <img src="/img/ristorante-giapponesi.jpg" style="height: 15em;" class="card-img-top img-cover "
+                    <img src="/img/cibo-nei-fast-food.jpg" style="height: 18em;" class="card-img-top p-2"
                         alt="Image-Restaurant">
-                    <div class="card-body">
-                        <p class="card-text">{{ description3 }}</p>
+                    <div class="card-body" style="height: 5em;">
+                        <p class="card-text">{{ description1 }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="card shadow " style="height: 100%;">
-                    <img src="/img/OIP.jpg" style="height: 15em;" class="card-img-top img-fluid img-cover"
-                        alt="Image-Restaurant">
-                    <div class="card-body">
-                        <p class="card-text">{{ description4 }}</p>
+            <div class="col-sm-6 col-md-6 col-lg-4 g-4">
+                <div class="card shadow">
+                    <img src="/img/dolci2.jpg" class="card-img-top p-2" style="height: 18em;" alt="Image-Restaurant">
+                    <div class="card-body" style="height: 5em;">
+                        <p class="card-text">{{ description2 }}</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 3 colonne -->
-        <div class="card-group gap-4">
-            <div class="card shadow">
-                <img src="/img/ristorante-dolci.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ title2a }}</h5>
-                    <p class="card-text">Dolci piaceri per rendere la giornata ancora più gustosa.</p>
-                </div>
+        <!-- 3 colonne - 1° Sezione -->
 
-            </div>
-            <div class="card shadow">
-                <img src="/img/ristorante-pizzeria.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ title2b }}</h5>
-                    <p class="card-text">Una base leggera per una farcitura sempre diversa.</p>
-                </div>
-
-            </div>
-            <div class="card shadow">
-                <img src="/img/ristorante-giapponesi.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ title2c }}</h5>
-                    <p class="card-text">Le grandi esclusive che scaldano il cuore, selezionate da noi.</p>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-sm-1 g-4">
+            <div class="col" v-for="(selection, index) in selections" :key="index">
+                <div class="card shadow" style="height: 24em;">
+                    <img :src="selection.image" class="card-img-top p-2 rounded" alt="Image-Restaurant" style="height: 17em;">
+                    <div class="card-body py-4 text-center">
+                        <p class="card-text">{{ selection.description }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- * 2° Sezione - I preferiti -->
 
-    <!-- sezione 2 -->
+    <div class="colore-bg bg-warning bg-gradient" style="margin-top: 7em;">
+        <div class="container-xl text-center">
+            <h2 class="my-5 fs-1 pt-4 fw-bold">{{ title2 }}</h2>
+            <!-- 3 colonne -->
+            <div class="row text-center d-flex align-content-center text-white">
+                <div id="gap" class=" d-flex flex-wrap justify-content-center mb-5em ">
+                    <div id="cont-img" class="m-2 mb-4 card my-2 col-sm-5 col-md-3 col-xl-3 shadow"
+                        style="width: 22rem; height:18em ;" v-for="(premium, index) in premiums" :key="index">
+                        <img id="img-dim" :src="premium.image"
+                            class="card-img-top p-1 w-auto h-75 rounded border-light-subtle border-bottom"
+                            alt="Image-premium">
+                        <div class="card-body">
+                            <p class="card-text text-black fw-bolder ">{{ premium.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- * 3° Sezione - Cerchi qualcos'altro? -->
+
+    <div class="container-xl text-center">
+        <h2 class="fs-1 pt-5 fw-bold">{{ title3 }}</h2>
+
+        <div class="row my-4 shadow">
+            <div class="gap-2 p-3 col-12 d-flex flex-wrap justify-content-left m-auto w-100 fs-2 shadow">
+
+                <!-- #0 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge0 }}</span>
+                </a>
+                <!-- #1 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge1 }}</span>
+                </a>
+                <!-- #2 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge2 }}</span>
+                </a>
+                <!-- #3 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge3 }}</span>
+                </a>
+                <!-- #4 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge4 }}</span>
+                </a>
+                <!-- #5 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge5 }}</span>
+                </a>
+                <!-- #6 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge6 }}</span>
+                </a>
+                <!-- #7 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge7 }}</span>
+                </a>
+                <!-- #8 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge8 }}</span>
+                </a>
+                <!-- #9 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge9 }}</span>
+                </a>
+                <!-- #10 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge10 }}</span>
+                </a>
+                <!-- #11 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge11 }}</span>
+                </a>
+                <!-- #12 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge12 }}</span>
+                </a>
+                <!-- #13 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge13 }}</span>
+                </a>
+                <!-- #14 -->
+                <a class="dist-badge" href="#">
+                    <span class="badge opacity-75 text-bg-secondary">{{ badge14 }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </template>
 
+
+<!-- ! STYLE -->
+
 <style scoped lang="scss">
-//*Carosello
-.margin-top {
+//* Carousel
+
+.carousel {
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    height: 22rem;
+    overflow: hidden;
+
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .slide.active {
+        opacity: 1;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 21rem;
+        object-fit: cover;
+    }
+
+    .description {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0rem;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.3);
+        font-size: 1.5rem;
+        width: 60%;
+        max-width: 65%;
+        z-index: 1;
+    }
+
+    .controls {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        z-index: 1;
+    }
+
+    .prev-btn,
+    .next-btn {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        font-size: 2rem;
+        /* padding: 0.5rem 1rem; */
+        border: none;
+        cursor: pointer;
+    }
+
+    .prev-btn:hover,
+    .next-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}
+
+//* Fine Carosello 
+
+//? 1° SEZIONE
+
+//! 2 olonne da visionare
+
+/* .margin-top {
     margin-bottom: 10px;
 }
 
@@ -181,5 +432,17 @@ export default {
     .carousel-height {
         max-height: 100%;
     }
+} */
+
+//* 3 Colonne
+.mb-5em {
+    margin-bottom: 5em; //! utilizzato per gli spazi bottom section
+}
+
+
+/* 3° Sezione - Badge */
+
+.dist-badge {
+    margin: 1vmin;
 }
 </style>
