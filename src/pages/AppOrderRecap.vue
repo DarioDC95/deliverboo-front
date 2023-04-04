@@ -36,15 +36,8 @@ export default {
             <div class="col-12 text-center mt-2">
                 <h4>Domande sull ordine?</h4>
                 <h5 class="my-4">Chiama il partner al numero +39 333 333 333</h5>
-
             </div>
-
         </div>
-
-
-
-
-
     </div>
 </template>
 <style lang="">
