@@ -37,13 +37,13 @@ export default {
             store.current_page = value;
             this.$emit('select-page')
         },
-        getTypes(){
-        axios.get(`${store.url_restaurants}api/types`).then((response) => {
+        getTypes() {
+            axios.get(`${store.url_restaurants}api/types`).then((response) => {
                 if (response.data.success) {
-                store.types = response.data.result;
+                    store.types = response.data.result;
                 }
                 else {
-                this.$router.push('/failed');
+                    this.$router.push('/failed');
                 }
             })
         },
@@ -56,13 +56,13 @@ export default {
             items.forEach(item => {
                 item.addEventListener("click", () => {
                     item.classList.toggle("checked");
-            
+
                     let checked = document.querySelectorAll(".checked"),
                         btnText = document.querySelector(".btn-text");
-            
-                    if(checked && checked.length > 0){
+
+                    if (checked && checked.length > 0) {
                         btnText.innerText = `${checked.length} Selected`;
-                    }else{
+                    } else {
                         btnText.innerText = "Seleziona Tipologia";
                     }
                 });
@@ -78,7 +78,7 @@ export default {
             let stringJoin = store.prova.join()
 
             store.current_page = 1
-            if(stringJoin == ''){
+            if (stringJoin == '') {
                 axios.get(`${store.url_restaurants}api/restaurants?page=${store.current_page}`).then((response) => {
                     if (response.data.success) {
                         store.restaurants = response.data.result.data;
@@ -92,7 +92,7 @@ export default {
                     }
                 })
             }
-            else{
+            else {
                 axios.get(`${store.url_restaurants}api/restaurants/${stringJoin}?page=${store.current_page}`).then((response) => {
                     if (response.data.success) {
                         store.restaurants = response.data.result.data;
@@ -108,7 +108,7 @@ export default {
             }
         },
     },
-    mounted(){
+    mounted() {
         this.getTypes()
     }
 }
@@ -123,16 +123,17 @@ export default {
                     <div class="col-12">
                         <div class="container-select mb-4">
                             <div class="select-btn" :class="open ? 'open' : ''" @click="openMultiselect()">
-                                <div class="btn-text"  >Seleziona Tipologia</div>
+                                <div class="btn-text">Seleziona Tipologia</div>
                                 <div class="arrow-dwn">
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                             </div>
-                
+
                             <ul class="list-items">
-                               
+
                                 <li class="item" v-for="(item, index) in store.types" :key="index">
-                                    <input type="checkbox" class="input-checkbox types-checks" :value="item.id" id="item.id" @click="setFilter()" name="types[]">
+                                    <input type="checkbox" class="input-checkbox types-checks" :value="item.id" id="item.id"
+                                        @click="setFilter()" name="types[]">
                                     <div class="checkbox">
                                         <i class="fa-solid fa-check check-icon"></i>
                                     </div>
@@ -150,7 +151,7 @@ export default {
                                 <img :src="restaurant.cover_path == null ? 'https://picsum.photos/id/1/200/300' : `${store.url_restaurants}storage/${restaurant.cover_path}`"
                                     :alt="restaurant.user.name" class="card-img-top">
                             </div>
-                            <div class="card-body d-flex flex-column">
+                            <div class="card-body d-flex flex-column text-center">
                                 <div>
                                     <h4>{{ restaurant.user.name }}</h4>
                                     <h6>Via: {{ restaurant.address }}</h6>
@@ -210,120 +211,132 @@ export default {
     }
 }
 
-.container-select{
-        position: relative;
-        max-width: 320px;
-        width: 100%;
+.container-select {
+    position: relative;
+    max-width: 320px;
+    width: 100%;
 
-        .select-btn{
-            display: flex;
-            height: 50px;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            background-color: #fff;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        }
-        .select-btn .btn-text{
-            font-size: 17px;
-            font-weight: 400;
-            color: #333;
-        }
-        .select-btn .arrow-dwn{
-            display: flex;
-            height: 21px;
-            width: 21px;
-            color: #fff;
-            font-size: 14px;
-            border-radius: 50%;
-            background: #6e93f7;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-        }
-        .select-btn.open .arrow-dwn{
-            transform: rotate(-180deg);
-        }
-        .list-items{
-            position: absolute;
-            top: 50px;
-            margin-top: 0px;
-            border-radius: 8px;
-            padding: 0px;
-            background-color: #fff;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            height: 0;
-            width: 100%;
-            z-index: 9999;
-            overflow-y: hidden;
-            transition: 1s all;
-        }
-        .select-btn.open ~ .list-items{
-            margin-top: 15px;
-            height: 250px;
-            padding: 16px;
-            overflow-y: auto;
-        }
-        .list-items .item{
-            display: flex;
-            align-items: center;
-            list-style: none;
-            height: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-            /* padding: 0 15px; */
-            border-radius: 8px;
-            position: relative;
-        }
-        .list-items .item:hover{
-            background-color: #e7edfe;
-        }
-        .item .item-text{
-            font-size: 16px;
-            font-weight: 400;
-            color: #333;
-        }
-        .item .input-checkbox{
-            position: absolute;
-            left: 0;
-            z-index: 1;
-            cursor: pointer;
-            opacity: 0;
-            height: 100%;
-            width: 100%;
-        }
-        .item .checkbox{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 16px;
-            width: 16px;
-            border-radius: 4px;
-            margin-right: 12px;
-            border: 1.5px solid #c0c0c0;
-            transition: all 0.3s ease-in-out;
-            margin-left: 20px;
-        }
-        /* verifico se è :checked l'input */
-        .item .input-checkbox:checked ~ .checkbox{
-            background-color: #4070f4;
-            border-color: #4070f4;
-            box-shadow: 0px 0px 5px 2px #4070f4 ;
-        }
-        /* .item.checked .checkbox{
+    .select-btn {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .select-btn .btn-text {
+        font-size: 17px;
+        font-weight: 400;
+        color: #333;
+    }
+
+    .select-btn .arrow-dwn {
+        display: flex;
+        height: 21px;
+        width: 21px;
+        color: #fff;
+        font-size: 14px;
+        border-radius: 50%;
+        background: #6e93f7;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+    }
+
+    .select-btn.open .arrow-dwn {
+        transform: rotate(-180deg);
+    }
+
+    .list-items {
+        position: absolute;
+        top: 50px;
+        margin-top: 0px;
+        border-radius: 8px;
+        padding: 0px;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        height: 0;
+        width: 100%;
+        z-index: 9999;
+        overflow-y: hidden;
+        transition: 1s all;
+    }
+
+    .select-btn.open~.list-items {
+        margin-top: 15px;
+        height: 250px;
+        padding: 16px;
+        overflow-y: auto;
+    }
+
+    .list-items .item {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        height: 50px;
+        cursor: pointer;
+        transition: 0.3s;
+        /* padding: 0 15px; */
+        border-radius: 8px;
+        position: relative;
+    }
+
+    .list-items .item:hover {
+        background-color: #e7edfe;
+    }
+
+    .item .item-text {
+        font-size: 16px;
+        font-weight: 400;
+        color: #333;
+    }
+
+    .item .input-checkbox {
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        cursor: pointer;
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .item .checkbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 16px;
+        width: 16px;
+        border-radius: 4px;
+        margin-right: 12px;
+        border: 1.5px solid #c0c0c0;
+        transition: all 0.3s ease-in-out;
+        margin-left: 20px;
+    }
+
+    /* verifico se è :checked l'input */
+    .item .input-checkbox:checked~.checkbox {
+        background-color: #4070f4;
+        border-color: #4070f4;
+        box-shadow: 0px 0px 5px 2px #4070f4;
+    }
+
+    /* .item.checked .checkbox{
             background-color: #4070f4;
             border-color: #4070f4;
         } */
-        .checkbox .check-icon{
-            color: #fff;
-            font-size: 11px;
-            transform: scale(0);
-            transition: all 0.2s ease-in-out;
-        }
-        .item.checked .check-icon{
-            transform: scale(1);
-        }
+    .checkbox .check-icon {
+        color: #fff;
+        font-size: 11px;
+        transform: scale(0);
+        transition: all 0.2s ease-in-out;
     }
-</style>
+
+    .item.checked .check-icon {
+        transform: scale(1);
+    }
+}</style>
