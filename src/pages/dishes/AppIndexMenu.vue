@@ -83,7 +83,7 @@ export default {
             }
 
             let cartstorage = store.cart
-            localStorage.setItem("cart", JSON.stringify({cartstorage}))
+            localStorage.setItem("cart", JSON.stringify({ cartstorage }))
         }
     }
 }
@@ -100,27 +100,31 @@ export default {
                         <div class="card h-100">
                             <img :src="dish.image_path == '' ? '../../../img/logo-blue.png' : `${store.url_restaurants}storage/${dish.image_path}`"
                                 :alt="dish.name" class="card-img-top mt-3">
-                            <div class="card-body d-flex flex-column">
+                            <div class="card-body d-flex flex-column justify-content-between">
                                 <div>
-                                    <h4>{{ dish.name }}</h4>
+                                    <div>
+                                        <h4>{{ dish.name }}</h4>
+                                    </div>
+                                    <div class="flex-grow-1 d-flex flex-column  ">
+                                        <div class="mb-2">
+                                            <p class="mb-0">
+                                                <em><strong>Ingredienti:</strong></em>
+                                            </p>
+                                            <div>
+                                                {{ dish.ingredients }}
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <p class="mb-0">
+                                                <em><strong>Descrizione:</strong></em>
+                                            </p>
+                                            <div>
+                                                {{ dish.description }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="flex-grow-1 d-flex flex-column ">
-                                    <div class="mb-2">
-                                        <p class="mb-0">
-                                            <em><strong>Ingredienti:</strong></em>
-                                        </p>
-                                        <div>
-                                            {{ dish.ingredients }}
-                                        </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <p class="mb-0">
-                                            <em><strong>Descrizione:</strong></em>
-                                        </p>
-                                        <div>
-                                            {{ dish.description }}
-                                        </div>
-                                    </div>
+                                <div>
                                     <div class="mb-4">
                                         <p class="mb-0">
                                             <em><strong>Prezzo:</strong></em>
@@ -161,12 +165,11 @@ export default {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mt-auto">
-                                        <div>
-                                            <button @click="addCart(dish)" class="btn btn-primary btn-sm"><i
-                                                    class="fa-solid fa-plus"> Aggiungi al carrello</i></button>
-                                            <!-- <button @click="removeCart(dish)" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus"></i></button> -->
-                                        </div>
+
+                                    <div>
+                                        <button @click="addCart(dish)" class="btn btn-primary btn-sm"><i
+                                                class="fa-solid fa-plus"> Aggiungi al carrello</i></button>
+                                        <!-- <button @click="removeCart(dish)" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus"></i></button> -->
                                     </div>
                                 </div>
                             </div>
