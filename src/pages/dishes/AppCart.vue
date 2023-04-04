@@ -65,7 +65,7 @@ export default {
                 emptyCart.classList.add('d-none')
                 emptyCart.classList.remove('d-inline-block')
 
-                location.href = 'http://localhost:5174/payment'
+                location.href = 'http://localhost:5173/payment'
             }
             else {
 
