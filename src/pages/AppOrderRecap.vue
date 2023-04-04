@@ -1,7 +1,33 @@
 <script>
+import { store } from '../store';
+import axios, { formToJSON } from 'axios';
 export default {
+    data(){
+        return{
+            store,
+        }
+    },
+    methods:{
+        getForm(){
+            let dataform = JSON.parse(localStorage.getItem("form"));
+            store.form = dataform.formstorage
+            axios.post(`${store.url_restaurants}api/cart`, store.form).then((response) => {
+                console.log(response)
+                if (!response.data.success) {
+                    store.loading = false
+                }
+                else {
+                    store.form
+                    this.success = true,
+                    store.loading = false
 
+                }
+            })
+        }
+
+    }
 }
+
 </script>
 <template >
     <div class="container">
@@ -19,7 +45,7 @@ export default {
         <div class="row mt-2">
             <div class="col-12 d-flex justify-content-around">
                 <div>
-                    dati ordine
+                    
                 </div>
                 <img src="../../img/rider.gif" class="w-25 " alt=" gif-rider">
             </div>
