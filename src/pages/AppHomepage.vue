@@ -208,7 +208,7 @@ export default {
         <div class="row my-4 text-center">
             <div class="col-sm-6 col-md-6 col-lg-8 g-4">
                 <div class="card shadow">
-                    <img src="/img/cibo-nei-fast-food.jpg" style="height: 18em;" class="card-img-top p-2"
+                    <img src="/img/cibo-nei-fast-food.jpg" style="height: 18em;object-fit: cover;" class="card-img-top p-2"
                         alt="Image-Restaurant">
                     <div class="card-body" style="height: 5em;">
                         <p class="card-text">{{ description1 }}</p>
@@ -217,7 +217,8 @@ export default {
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 g-4">
                 <div class="card shadow">
-                    <img src="/img/dolci2.jpg" class="card-img-top p-2" style="height: 18em;" alt="Image-Restaurant">
+                    <img src="/img/dolci2.jpg" class="card-img-top p-2" style="height: 18em;object-fit: cover"
+                        alt="Image-Restaurant">
                     <div class="card-body" style="height: 5em;">
                         <p class="card-text">{{ description2 }}</p>
                     </div>
@@ -229,8 +230,9 @@ export default {
 
         <div class="row row-cols-1 row-cols-md-3 row-cols-sm-1 g-4">
             <div class="col" v-for="(selection, index) in selections" :key="index">
-                <div class="card shadow" style="height: 24em;">
-                    <img :src="selection.image" class="card-img-top p-2 rounded" alt="Image-Restaurant" style="height: 17em;">
+                <div class="card shadow" style="height: 24em;object-fit: cover">
+                    <img :src="selection.image" class="card-img-top p-2 rounded" alt="Image-Restaurant"
+                        style="height: 17em;">
                     <div class="card-body py-4 text-center">
                         <p class="card-text">{{ selection.description }}</p>
                     </div>
@@ -248,7 +250,8 @@ export default {
             <div class="row text-center d-flex align-content-center text-white">
                 <div id="gap" class=" d-flex flex-wrap justify-content-center mb-5em ">
                     <div id="cont-img" class="m-2 mb-4 card my-2 col-sm-5 col-md-3 col-xl-3 shadow"
-                        style="width: 22rem; height:18em ;" v-for="(premium, index) in premiums" :key="index">
+                        style="width: 22rem; height:18em ;object-fit: cover" v-for="(premium, index) in premiums"
+                        :key="index">
                         <img id="img-dim" :src="premium.image"
                             class="card-img-top p-1 w-auto h-75 rounded border-light-subtle border-bottom"
                             alt="Image-premium">
@@ -444,5 +447,4 @@ export default {
 
 .dist-badge {
     margin: 1vmin;
-}
-</style>
+}</style>
