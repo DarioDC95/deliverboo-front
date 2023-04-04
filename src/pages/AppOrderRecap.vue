@@ -40,7 +40,17 @@ export default {
     },
     mounted(){
         this.getForm()
-    }
+    },
+    beforeRouteLeave() {
+        store.cart = []
+        store.form = {}
+
+        let cartstorage = store.cart
+        localStorage.setItem("cart", JSON.stringify({ cartstorage }))
+
+        let formstorage = store.form
+        localStorage.setItem("form", JSON.stringify({ formstorage }))
+    },
     
 }
 
