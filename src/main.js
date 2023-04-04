@@ -16,16 +16,27 @@ document.addEventListener('DOMContentLoaded', function () {
         selector: '#dropin-container'
     }, function (err, instance) {
         button.addEventListener('click', function () {
-            instance.requestPaymentMethod(function (err, payload) {
+            // instance.requestPaymentMethod(function (err, payload) {
+
+
+            // });
+            instance.requestPaymentMethod(function (err) {
+                if (err) {
+                    console.log('Request Payment Method Error', err);
+                    return;
+                }
+                // Add the nonce to the form and submit
+                // document.querySelector('#nonce').value = payload.nonce;
+                // form.submit();
                 setTimeout(() => {
                     store.payment = true
                     router.push('/recap')
 
                 }, 2000);
-
             });
         })
     });
 
 });
+
 

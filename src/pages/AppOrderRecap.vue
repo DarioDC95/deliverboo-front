@@ -7,7 +7,7 @@ export default {
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center my-5">
-                <img src="../../img/logo-blue.png" class="w-25" alt="logo">
+                <img src="../../img/logo-blue.png" id="logo" alt="logo">
             </div>
             <div class="col-12 text-center my-1">
                 <h2>Ottima scelta, 'nome di chi compra'</h2>
@@ -40,6 +40,8 @@ export default {
         </div>
     </div>
 </template>
-<style lang="">
-    
+<style lang="scss" scoped>
+#logo {
+    width: 50vw;
+}
 </style>
