@@ -9,8 +9,6 @@ export default {
     },
     methods: {
         getForm() {
-            let dataform = JSON.parse(localStorage.getItem("form"));
-            store.form = dataform.formstorage
             console.log(store.form)
             axios.post(`${store.url_restaurants}api/cart`, store.form).then((response) => {
                 if (!response.data.success) {
@@ -19,8 +17,7 @@ export default {
                 else {
                     store.form
                     this.success = true,
-                        store.loading = false
-
+                    store.loading = false
                 }
             })
         },
@@ -36,10 +33,17 @@ export default {
             store.totalPrice = totalPrice.toFixed(2)
             return store.totalPrice
         },
-
     },
-    mounted() {
-        this.getForm()
+    created() {
+        let dataform = JSON.parse(localStorage.getItem("form"));
+        store.form = dataform.formstorage
+    },
+    beforeRouteEnter (to, from, next) {
+        next(vm => {
+            if (from.name === 'payment') {
+                vm.getForm();
+            }
+        });
     },
     beforeRouteLeave() {
         store.cart = []
@@ -51,7 +55,6 @@ export default {
         let formstorage = store.form
         localStorage.setItem("form", JSON.stringify({ formstorage }))
     },
-
 }
 
 </script>
