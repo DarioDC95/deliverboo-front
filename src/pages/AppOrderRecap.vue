@@ -33,7 +33,7 @@ export default {
                 }
             }
 
-            store.totalPrice = totalPrice
+            store.totalPrice = totalPrice.toFixed(2)
             return store.totalPrice
         },
 
