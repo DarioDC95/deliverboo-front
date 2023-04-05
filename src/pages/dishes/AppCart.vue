@@ -100,10 +100,10 @@ export default {
     <main>
         <section class="container">
             <div class="row mt-5">
-                <div class="col-7">
+                <div class="col-md-7 col-12">
                     <form @submit.prevent="sendForm">
                         <div class="col-12">
-                            <div class="col-6">
+                            <div class="col-12 col-md-10">
                                 <label class="control-label fw-bold my-2" for="nome">Nome</label>
                                 <input type="text" class="form-control" name="name_client" id="name" v-model="name_client"
                                     placeholder="Inserisci il nome" required pattern="\S(.*\S)?">
@@ -112,7 +112,7 @@ export default {
                                     <p class="fw-bold">{{ error }}</p>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-10">
                                 <label class="control-label fw-bold my-2" for="cognome">Cognome</label>
                                 <input type="text" class="form-control" name="surname_client" id="surname"
                                     v-model="surname_client" placeholder="Inserisci il cognome" required pattern="\S(.*\S)?">
@@ -123,7 +123,7 @@ export default {
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="col-6">
+                            <div class="col-12 col-md-10">
                                 <label class="control-label fw-bold my-2" for="mail">Email</label>
                                 <input type="email" class="form-control" name="email_client" id="mail" v-model="email_client"
                                     placeholder="Inserisci l'email" required pattern=".+@.+\..+\.*$">
@@ -132,7 +132,7 @@ export default {
                                     <p class="fw-bold">{{ error }}</p>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-10">
                                 <label class="control-label fw-bold my-2" for="phone">Telefono</label>
                                 <input type="tel" minlength="9" class="form-control" name="phone_client" id="phone"
                                     v-model="phone_client" placeholder="Inserisci il Numero di telefono" required pattern="\S(.*\S)?">
@@ -143,7 +143,7 @@ export default {
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="col-8">
+                            <div class="col-12 col-md-10">
                                 <label class="control-label fw-bold my-2" for="address">Indirizzo</label>
                                 <input type="text" class="form-control" name="address_client" id="address"
                                     v-model="address_client" placeholder="Inserisci la via" required pattern="\S(.*\S)?">
@@ -162,7 +162,7 @@ export default {
                         </div>
                     </form>
                 </div>
-                <div class="col-5 border-personale">
+                <div class="col-md-5 border-personale col-12">
                     <div class="p-5">
                         <ul class="list-unstyled">
                             <li v-for="(item, index) in store.cart" :key="index">
