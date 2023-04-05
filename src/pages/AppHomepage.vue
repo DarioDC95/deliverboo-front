@@ -9,6 +9,7 @@ export default {
 
             //* CAROSELLO
             activeIndex: 0,
+            slideInterval: null,
 
             restaurants: [
                 {
@@ -41,6 +42,8 @@ export default {
                 },
 
             ],
+
+            
 
             //* 1° SEZIONE
 
@@ -148,14 +151,30 @@ export default {
 
         };
     },
+    mounted() {
+        this.startAutoPlay();
+    },
+
     methods: {
+
         previousSlide() {
             this.activeIndex =
                 (this.activeIndex === 0) ? this.restaurants.length - 1 : this.activeIndex - 1;
         },
+
         nextSlide() {
             this.activeIndex =
                 (this.activeIndex === this.restaurants.length - 1) ? 0 : this.activeIndex + 1;
+        },
+
+        startAutoPlay() {
+            this.slideInterval = setInterval(() => {
+                this.nextSlide();
+            }, 3000);
+        },
+
+        stopAutoPlay() {
+            clearInterval(this.slideInterval);
         }
 
     }
@@ -180,7 +199,7 @@ export default {
 
     <!-- * Inizio Carosello -->
     <div class="container">
-        <div class="carousel">
+        <div class="carousel" @mouseenter="stopAutoPlay" @mouseleave="startAutoPlay">
             <div class="slide shadow" v-for="(restaurant, index) in restaurants" :key="index"
                 :class="{ active: index === activeIndex }">
                 <img :src="restaurant.image" alt="Restaurant image" class="rounded">
