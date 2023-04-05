@@ -126,7 +126,7 @@ export default {
                             <div class="col-6">
                                 <label class="control-label fw-bold my-2" for="mail">Email</label>
                                 <input type="email" class="form-control" name="email_client" id="mail" v-model="email_client"
-                                    placeholder="Inserisci l'email" required pattern="\S(.*\S)?">
+                                    placeholder="Inserisci l'email" required pattern=".+@.+\..+\.*$">
                                 <div v-for="(error, index) in errors.email_client" :key="`message-error-${index}`"
                                     class="alert alert-danger my-2">
                                     <p class="fw-bold">{{ error }}</p>

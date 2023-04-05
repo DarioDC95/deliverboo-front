@@ -43,8 +43,6 @@ export default {
 
             ],
 
-
-
             //* 1° SEZIONE
 
             /* 2 Colonne */
@@ -444,29 +442,10 @@ export default {
 
 //? 1° SEZIONE
 
-//! 2 olonne da visionare
-
-/* .margin-top {
-    margin-bottom: 10px;
-}
-
-.img-cover {
-    object-fit: cover;
-}
-
-.carousel-container {
-    height: 500px;
-
-    .carousel-height {
-        max-height: 100%;
-    }
-} */
-
 //* 3 Colonne
 .mb-5em {
     margin-bottom: 5em; //! utilizzato per gli spazi bottom section
 }
-
 
 /* 3° Sezione - Badge */
 
