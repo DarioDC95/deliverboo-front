@@ -157,22 +157,26 @@ export default {
 
     methods: {
 
+        //* Precedente Slide 
         previousSlide() {
             this.activeIndex =
                 (this.activeIndex === 0) ? this.restaurants.length - 1 : this.activeIndex - 1;
         },
 
+        //* Prossima Slide 
         nextSlide() {
             this.activeIndex =
                 (this.activeIndex === this.restaurants.length - 1) ? 0 : this.activeIndex + 1;
         },
 
+        //*  Avvia l'Auto Play
         startAutoPlay() {
             this.slideInterval = setInterval(() => {
                 this.nextSlide();
             }, 3000);
         },
 
+        //* Ferma l'Auto Play
         stopAutoPlay() {
             clearInterval(this.slideInterval);
         }
