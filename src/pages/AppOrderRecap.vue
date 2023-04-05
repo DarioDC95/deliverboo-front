@@ -2,13 +2,13 @@
 import { store } from '../store';
 import axios, { formToJSON } from 'axios';
 export default {
-    data(){
-        return{
+    data() {
+        return {
             store,
         }
     },
-    methods:{
-        getForm(){
+    methods: {
+        getForm() {
             let dataform = JSON.parse(localStorage.getItem("form"));
             store.form = dataform.formstorage
             console.log(store.form)
@@ -19,7 +19,7 @@ export default {
                 else {
                     store.form
                     this.success = true,
-                    store.loading = false
+                        store.loading = false
 
                 }
             })
@@ -38,7 +38,7 @@ export default {
         },
 
     },
-    mounted(){
+    mounted() {
         this.getForm()
     },
     beforeRouteLeave() {
@@ -51,7 +51,7 @@ export default {
         let formstorage = store.form
         localStorage.setItem("form", JSON.stringify({ formstorage }))
     },
-    
+
 }
 
 </script>
@@ -59,7 +59,7 @@ export default {
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center my-5">
-                <img src="../../img/logo-blue.png" id="logo" alt="logo">
+                <img src="../../img/logo-blue.png" class="logo" alt="logo">
             </div>
             <div class="col-12 text-center my-1">
                 <h2>Ottima scelta, {{ store.form.name_client }}</h2>
@@ -68,35 +68,36 @@ export default {
         </div>
 
         <div class="col-12 border border-secondary my-2"></div>
-        <div class="row mt-2">
-            <div class="col-12 d-flex justify-content-between">
-                <div class="d-flex flex-column fs-2">
-                    <div>
-                       Nome: {{ store.form.name_client }}
-                    </div>
-                    <div>
-                      Cognome:  {{ store.form.surname_client }}
-                    </div>
-                    <div>
-                    Email: {{ store.form.email_client }}
-                    </div>
-                    <div>
-                     Via:   {{ store.form.address_client }}
-                    </div>
-                    <div>
-                     Tel:   {{ store.form.phone_client }}
-                    </div>
-                   
+        <div class="row mt-2 justify-content-center text-center">
 
+            <div class="d-flex flex-column fs-2 col-12 col-lg-6 ">
+                <div>
+                    Nome: {{ store.form.name_client }}
                 </div>
-                <img src="../../img/rider.gif" class="w-25 " alt=" gif-rider">
+                <div>
+                    Cognome: {{ store.form.surname_client }}
+                </div>
+                <div>
+                    Email: {{ store.form.email_client }}
+                </div>
+                <div>
+                    Via: {{ store.form.address_client }}
+                </div>
+                <div>
+                    Tel: {{ store.form.phone_client }}
+                </div>
             </div>
+
+            <div class="col-12 col-lg-6">
+                <img src="../../img/rider.gif" class="w-100" alt=" gif-rider">
+            </div>
+
         </div>
         <div class="col-12 border border-secondary my-2"></div>
         <div class="row">
             <div class="col-12 d-flex justify-content-around">
                 <h1>Totale</h1>
-                <h1>{{totalPrice()}}&#8364;</h1>
+                <h1>{{ totalPrice() }}&#8364;</h1>
             </div>
         </div>
         <div class="col-12 border border-secondary my-2"></div>
@@ -109,7 +110,7 @@ export default {
     </div>
 </template>
 <style lang="scss" scoped>
-#logo {
+.logo {
     width: 50vw;
 }
 </style>
