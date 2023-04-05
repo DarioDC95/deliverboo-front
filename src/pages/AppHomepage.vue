@@ -43,7 +43,7 @@ export default {
 
             ],
 
-            
+
 
             //* 1° SEZIONE
 
@@ -402,7 +402,7 @@ export default {
 
     .description {
         position: absolute;
-        top: 70%;
+        top: 62%;
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 0rem;
