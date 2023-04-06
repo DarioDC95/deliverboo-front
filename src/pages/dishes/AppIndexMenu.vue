@@ -88,7 +88,7 @@ export default {
                         :class="dish.visible ? '' : 'd-none'">
                         <div class="card h-100">
                             <img :src="dish.image_path == '' ? '../../../img/logo-blue.png' : `${store.url_restaurants}storage/${dish.image_path}`"
-                                :alt="dish.name" class="card-img-top mt-3">
+                                :alt="dish.name" class="card-img-top ">
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <div>
                                     <div>
@@ -157,7 +157,7 @@ export default {
 
                                     <div>
                                         <button @click="addCart(dish)" class="btn btn-primary btn-sm"><i
-                                                class="fa-solid fa-plus"> Aggiungi al carrello</i></button>
+                                                class="fa-solid fa-plus"> </i> Aggiungi al carrello</button>
                                         <!-- <button @click="removeCart(dish)" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus"></i></button> -->
                                     </div>
                                 </div>
