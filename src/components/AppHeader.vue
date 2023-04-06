@@ -46,10 +46,10 @@ export default {
                                     <button class="btn-personal"
                                         :class="$route.name == value.routeName ? 'present-page' : ''">
                                         <i class="fa-solid fa-cart-shopping"></i>
-                                        <span
-                                            class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">prova
-                                            <span class="visually-hidden"></span>
-                                        </span>
+                                        <!-- <span
+                                                class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">prova
+                                                <span class="visually-hidden"></span>
+                                            </span> -->
                                     </button>
                                 </router-link>
                             </div>
@@ -93,4 +93,5 @@ export default {
 .btn-personal.present-page {
     background-color: #d0eb99;
     border: #0f7d8a 3px solid;
-}</style>
+}
+</style>
