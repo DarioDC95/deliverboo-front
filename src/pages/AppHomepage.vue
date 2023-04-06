@@ -251,9 +251,9 @@ export default {
 
         <div class="row row-cols-1 row-cols-md-3 row-cols-sm-1 g-4">
             <div class="col" v-for="(selection, index) in selections" :key="index">
-                <div class="card shadow" style="height: 24em;object-fit: cover">
+                <div class="card shadow" style="height: 24em;">
                     <img :src="selection.image" class="card-img-top p-2 rounded" alt="Image-Restaurant"
-                        style="height: 17em;">
+                        style="height: 17em;object-fit: cover">
                     <div class="card-body py-4 text-center">
                         <p class="card-text">{{ selection.description }}</p>
                     </div>
