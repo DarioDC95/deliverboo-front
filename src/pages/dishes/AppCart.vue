@@ -99,8 +99,10 @@ export default {
 <template>
     <main>
         <section class="container">
-            <div class="row mt-5">
-                <div class="col-md-7 col-12">
+            <div class="row my-5">
+                <div class="col-md-6">
+
+                    <!-- Form -->
                     <form @submit.prevent="sendForm">
                         <div class="col-12">
                             <div class="col-12 col-md-10">
@@ -162,8 +164,10 @@ export default {
                         </div>
                     </form>
                 </div>
-                <div class="col-md-5 border-personale col-12">
-                    <div class="p-5">
+
+                <!-- Lista Ordini -->
+                <div class="p-3 col-sm-12 col-md-6 col-lg-5 border-3 border-personale">
+                    <div>
                         <ul class="list-unstyled">
                             <li v-for="(item, index) in store.cart" :key="index">
                                 <div class="d-flex justify-content-between">
@@ -216,8 +220,8 @@ export default {
 
 .border-personale {
     border: 2px solid #d5d6d6;
-    border-radius: 15px;
-    box-shadow: 12px 12px 2px 1px rgba(19 19 20 / 37%);
+    border-radius: 1em;
+    box-shadow: 0.8em 0.8em 0.3em 0.1em rgba(19 19 20 / 37%);
 }
 
 .btn-personale {
