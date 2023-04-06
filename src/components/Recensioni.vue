@@ -6,32 +6,32 @@ export default {
             reviews: [
                 {
                     name: 'Franco Trentalance',
-                    img: 'https://tse3.mm.bing.net/th?id=OIP.rFQyRuKghsBDKgQzpMdI0QHaE8&pid=Api',
+                    img: '/img/wayne-barnett-founder-ceo.jpg',
                     descrizione: 'Ordino con Deliveroo da diversi anni, almeno 6 volte al mese e mi sono sempre trovata benissimo. I rider suonano al citofono (come è giusto che sia) oppure chiamano quando si trovano sotto casa. Consegne sempre puntuali e curate!',
                     stars: '★★★★★',
                     opacity: 0
                 },
                 {
                     name: 'Myke Chapman',
-                    img: 'https://tse2.mm.bing.net/th?id=OIP.5h52GonOodNx774-44sZzwHaFS&pid=Api',
+                    img: '/img/Leonardo_DiCaprio_June_2014.jpg',
                     descrizione: 'Ordino svariate volte da Deliveroo e mi sono sempre trovato bene! Ovviamente in giorni festivi o al sabato è normale che gli ordini tardino anche di 10-15 minuti, c\'è da aspettarselo. Rider molto gentili, app perfetta e servizio impeccabile. Lo promuovo a pieni voti!',
                     stars: '★★★★☆',
                 },
                 {
                     name: 'Martina Smeraldi',
-                    img: 'https://tse2.mm.bing.net/th?id=OIP.BHspYQ2i-3jWLblpiuGftwHaE8&pid=Api',
+                    img: '/img/angela-caroll-chief-editor.jpg',
                     descrizione: 'Non capisco tutte le recensioni negative. Quasi mai avuto problemi, e quando ci sono stati, sono stati risolti velocemente dal negozio. Magari dovreste rivalutare da dove ordinare, e consultare prima le recensioni!',
                     stars: '★★★★☆',
                 },
                 {
                     name: 'Rocco Hunt',
-                    img: 'https://tse2.mm.bing.net/th?id=OIP.VMMEWpgpPYog1oDAEiabwwHaEK&pid=Api',
+                    img: '/img/American-actor-Robert-De-Niro-2019.webp',
                     descrizione: 'Tutto come programmato. Tracciamento dettagliato dell\'ordine e consegna veloce come da indicazioni. Rider gentile e disponibile nonostante le incomprensioni relative al numero civico. Ottimo servizio!',
                     stars: '★★★★★',
                 },
                 {
                     name: 'Filomena Mastromartino',
-                    img: 'https://tse4.mm.bing.net/th?id=OIP.qEKUpp-xiKRgsCWAvY3CQwHaE8&pid=Api',
+                    img: '/img/angela-lopez-social-media-manager.jpg',
                     descrizione: 'Ho provato altre compagnie di consegna...ritorno sempre a Deliveroo: puntuale, preciso e funzionale!!',
                     stars: '★★★★★',
                 }
