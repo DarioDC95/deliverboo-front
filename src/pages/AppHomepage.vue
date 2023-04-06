@@ -18,27 +18,27 @@ export default {
                 },
                 {
                     image: "/img/ristorante-dolci.jpg",
-                    description: "Short description of restaurant 2"
+                    description: "I dessert  stimolano la nostra golosità, scoprili insieme a noi!"
                 },
                 {
                     image: "/img/ristorante-foodfotos1.jpg",
-                    description: "Short description of restaurant 3"
+                    description: "Carni di: BLACK ANGUS, WAGYU e SUINO 100% Italiano "
                 },
                 {
                     image: "/img/ristorante-giapponesi.jpg",
-                    description: "Short description of restaurant 4"
+                    description: "I nostri migliori ristoranti, selezionati per te!"
                 },
                 {
                     image: "/img/ristorante-dolce.jpg",
-                    description: "Short description of restaurant 5"
+                    description: "Voglia di dolce? Vieni a vedere le nostre novità"
                 },
                 {
                     image: "/img/ristorante-finger.jpg",
-                    description: "Short description of restaurant 6"
+                    description: "Le migliori trattorie vicino casa tua"
                 },
                 {
                     image: "/img/ristorante-pizzeria.jpg",
-                    description: "Short description of restaurant 7"
+                    description: "Voglia di una pizza? Scopri tantissimi gusti qui su Deliveboo!"
                 },
 
             ],
@@ -46,7 +46,7 @@ export default {
             //* 1° SEZIONE
 
             /* 2 Colonne */
-            description1: 'I grandi classici che scaldano il cuore, perfetti in ogni momento.',
+            description1: 'Burger King, BBQ Brothers, KFC e molto altro.. scopri di più!',
             description2: 'Dolci piaceri per rendere la giornata ancora più gustosa.',
 
             /* 3 Colonne */
