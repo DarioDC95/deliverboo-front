@@ -85,7 +85,6 @@ export default {
                         store.loading = false;
                         store.last_page = response.data.result.last_page;
                         store.loading = false;
-
                     }
                     else {
                         this.$router.push('/failed');
@@ -99,7 +98,6 @@ export default {
                         store.loading = false;
                         store.last_page = response.data.result.last_page;
                         store.loading = false;
-
                     }
                     else {
                         this.$router.push('/failed');
