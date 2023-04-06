@@ -191,12 +191,12 @@ export default {
                                         </div>
                                     </div>
                                 </div>
-                                <h5>Prezzo del ristorante: {{ partialPrice(item).toFixed(2) }}</h5>
+                                <h5>Prezzo del ristorante: {{ partialPrice(item).toFixed(2) }}€</h5>
                             </li>
                         </ul>
 
                         <div>
-                            <h2>Total: {{ totalPrice() }}</h2>
+                            <h2>Total: {{ totalPrice() }}€</h2>
                         </div>
 
                     </div>
