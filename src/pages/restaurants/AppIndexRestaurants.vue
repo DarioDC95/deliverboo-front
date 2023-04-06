@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 import AppLoader from '../../components/AppLoader.vue';
+import { nextTick } from 'vue';
 
 export default {
     components: {
@@ -52,21 +53,22 @@ export default {
             this.open = !this.open
 
             let items = document.querySelectorAll(".item");
-
-            items.forEach(item => {
-                item.addEventListener("click", () => {
-                    item.classList.toggle("checked");
-
-                    let checked = document.querySelectorAll(".checked"),
-                        btnText = document.querySelector(".btn-text");
-
-                    if (checked && checked.length > 0) {
-                        btnText.innerText = `${checked.length} Selected`;
-                    } else {
-                        btnText.innerText = "Seleziona Tipologia";
-                    }
-                });
-            })
+        },
+        arrayVerify(id) {
+            if(store.prova.includes(String(id))) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+        innerTextChange() {
+            if (store.prova.length == 0) {
+                return 'Seleziona una Tipologia'
+            }
+            else {
+                return `${store.prova.length}${' '}${'Selected'}`
+            }
         },
         // fino a qui
         setFilter() {
@@ -110,7 +112,7 @@ export default {
     },
     mounted() {
         this.getTypes()
-    }
+    },
 }
 </script>
 
@@ -123,7 +125,7 @@ export default {
                     <div class="col-12">
                         <div class="container-select mb-4">
                             <div class="select-btn" :class="open ? 'open' : ''" @click="openMultiselect()">
-                                <div class="btn-text">Seleziona Tipologia</div>
+                                <div class="btn-text">{{ innerTextChange() }}</div>
                                 <div class="arrow-dwn">
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </div>
@@ -131,9 +133,9 @@ export default {
 
                             <ul class="list-items">
 
-                                <li class="item" v-for="(item, index) in store.types" :key="index">
+                                <li class="item" v-for="(item, index) in store.types" :key="index" :class="arrayVerify(item.id) ? 'checked' : ''">
                                     <input type="checkbox" class="input-checkbox types-checks" :value="item.id" id="item.id"
-                                        @click="setFilter()" name="types[]">
+                                        @click="setFilter()" name="types[]" :checked="arrayVerify(item.id)">
                                     <div class="checkbox">
                                         <i class="fa-solid fa-check check-icon"></i>
                                     </div>
@@ -145,7 +147,7 @@ export default {
                     </div>
                 </div>
                 <div class="row gy-4">
-                    <div class="col-12 col-sm-6 col-md-3" v-for="(restaurant, index) in store.restaurants" :key="index">
+                    <div class="col-12 col-sm-6 col-lg-3" v-for="(restaurant, index) in store.restaurants" :key="index">
                         <div class="card h-100">
                             <div class="container-img">
                                 <img :src="restaurant.cover_path == null ? 'https://picsum.photos/id/1/200/300' : `${store.url_restaurants}storage/${restaurant.cover_path}`"
