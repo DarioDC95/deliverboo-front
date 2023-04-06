@@ -51,8 +51,6 @@ export default {
         // Multiselect
         openMultiselect() {
             this.open = !this.open
-
-            let items = document.querySelectorAll(".item");
         },
         arrayVerify(id) {
             if(store.prova.includes(String(id))) {
