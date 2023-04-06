@@ -84,7 +84,7 @@ export default {
         <section class="menu">
             <div class="container">
                 <div class="row mt-3 gy-4">
-                    <div v-for="(dish, index) in store.dishes_by_restaurant" :key="index" class="col-12 col-sm-6 col-md-3"
+                    <div v-for="(dish, index) in store.dishes_by_restaurant" :key="index" class="col-12 col-sm-6 col-lg-3"
                         :class="dish.visible ? '' : 'd-none'">
                         <div class="card h-100">
                             <img :src="dish.image_path == '' ? '../../../img/logo-blue.png' : `${store.url_restaurants}storage/${dish.image_path}`"
