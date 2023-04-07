@@ -202,11 +202,13 @@ export default {
     <!-- * Inizio Carosello -->
     <div class="container">
         <div class="carousel" @mouseenter="stopAutoPlay" @mouseleave="startAutoPlay">
-            <div class="slide shadow" v-for="(restaurant, index) in restaurants" :key="index"
-                :class="{ active: index === activeIndex }">
-                <img :src="restaurant.image" alt="Restaurant image" class="rounded">
-                <p class="description shadow">{{ restaurant.description }}</p>
-            </div>
+            <a href="#" class="text-decoration-none">
+                <div class="slide shadow" v-for="(restaurant, index) in restaurants" :key="index"
+                    :class="{ active: index === activeIndex }">
+                    <img :src="restaurant.image" alt="Restaurant image" class="rounded">
+                    <p class="description shadow">{{ restaurant.description }}</p>
+                </div>
+            </a>
             <div class="controls">
                 <button @click="previousSlide" class="prev-btn">&#10094;</button>
                 <button @click="nextSlide" class="next-btn">&#10095;</button>
@@ -225,42 +227,45 @@ export default {
                 <h1 class="fw-bold">{{ title1 }}</h1>
             </div>
         </div>
-
-        <div class="row my-4 text-center">
-            <div class="col-sm-6 col-md-6 col-lg-8 g-4">
-                <div class="card shadow">
-                    <img src="/img/cibo-nei-fast-food.jpg" style="height: 18em;object-fit: cover;" class="card-img-top p-2"
-                        alt="Image-Restaurant">
-                    <div class="card-body" style="height: 5em;">
-                        <p class="card-text">{{ description1 }}</p>
+        <a href="#" class="text-decoration-none">
+            <div class="row my-4 text-center">
+                <div class="col-sm-6 col-md-6 col-lg-8 g-4">
+                    <div class="card shadow">
+                        <img src="/img/cibo-nei-fast-food.jpg" style="height: 18em;object-fit: cover;"
+                            class="card-img-top p-2" alt="Image-Restaurant">
+                        <div class="card-body" style="height: 5em;">
+                            <p class="card-text">{{ description1 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 g-4">
+                    <div class="card shadow">
+                        <img src="/img/dolci2.jpg" class="card-img-top p-2" style="height: 18em;object-fit: cover"
+                            alt="Image-Restaurant">
+                        <div class="card-body" style="height: 5em;">
+                            <p class="card-text">{{ description2 }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-4 g-4">
-                <div class="card shadow">
-                    <img src="/img/dolci2.jpg" class="card-img-top p-2" style="height: 18em;object-fit: cover"
-                        alt="Image-Restaurant">
-                    <div class="card-body" style="height: 5em;">
-                        <p class="card-text">{{ description2 }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </a>
 
         <!-- 3 colonne - 1° Sezione -->
-
-        <div class="row row-cols-1 row-cols-md-3 row-cols-sm-1 g-4">
-            <div class="col" v-for="(selection, index) in selections" :key="index">
-                <div class="card shadow" style="height: 24em;">
-                    <img :src="selection.image" class="card-img-top p-2 rounded" alt="Image-Restaurant"
-                        style="height: 17em;object-fit: cover">
-                    <div class="card-body py-4 text-center">
-                        <p class="card-text">{{ selection.description }}</p>
+        <a href="#" class="text-decoration-none">
+            <div class="row row-cols-1 row-cols-md-3 row-cols-sm-1 g-4">
+                <div class="col" v-for="(selection, index) in selections" :key="index">
+                    <div class="card shadow" style="height: 24em;">
+                        <img :src="selection.image" class="card-img-top p-2 rounded" alt="Image-Restaurant"
+                            style="height: 17em;object-fit: cover">
+                        <div class="card-body py-4 text-center">
+                            <p class="card-text">{{ selection.description }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
+
 
     <!-- * 2° Sezione - I preferiti -->
 
@@ -268,20 +273,22 @@ export default {
         <div class="container-xl text-center">
             <h2 class="my-5 fs-1 pt-4 fw-bold">{{ title2 }}</h2>
             <!-- 3 colonne -->
-            <div class="row text-center d-flex align-content-center text-white">
-                <div id="gap" class=" d-flex flex-wrap justify-content-center mb-5em ">
-                    <div id="cont-img" class="m-2 mb-4 card my-2 col-sm-5 col-md-3 col-xl-3 shadow"
-                        style="width: 22rem; height:18em ;object-fit: cover" v-for="(premium, index) in premiums"
-                        :key="index">
-                        <img id="img-dim" :src="premium.image"
-                            class="card-img-top p-1 w-auto h-75 rounded border-light-subtle border-bottom"
-                            alt="Image-premium">
-                        <div class="card-body">
-                            <p class="card-text text-black fw-bolder ">{{ premium.description }}</p>
+            <a href="#" class="text-decoration-none">
+                <div class="row text-center d-flex align-content-center text-white">
+                    <div id="gap" class=" d-flex flex-wrap justify-content-center mb-5em ">
+                        <div id="cont-img" class="m-2 mb-4 card my-2 col-sm-5 col-md-3 col-xl-3 shadow"
+                            style="width: 25rem; height:20em ;object-fit: cover" v-for="(premium, index) in premiums"
+                            :key="index">
+                            <img id="img-dim" :src="premium.image"
+                                class="card-img-top p-1 w-auto h-75 rounded border-light-subtle border-bottom"
+                                alt="Image-premium">
+                            <div class="card-body">
+                                <p class="card-text text-black fw-bolder ">{{ premium.description }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
